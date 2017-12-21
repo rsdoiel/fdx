@@ -469,6 +469,5 @@ func (doc *FinalDraft) TitlePageAsMap() map[string]string {
 		// Find Draft date
 		// Find Contact
 	}
-
 	return m
 }

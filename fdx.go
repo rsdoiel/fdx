@@ -456,3 +456,19 @@ type SceneNumberOptions struct {
 	ShowNumbersOnRight string   `xml:",attr,omitempty"`
 	FontSpec           *FontSpec
 }
+
+// TitlePageAsMap returns the contents of the TitlePage elements as a simple map[string]string
+// If TitlePage is nil, then an empty map is returned. Map keys are lower case
+func (doc *FinalDraft) TitlePageAsMap() map[string]string {
+	m := map[string]string{}
+	if doc.TitlePage != nil {
+		// Find Title
+		// Find Credit
+		// Find Author
+		// Find Source
+		// Find Draft date
+		// Find Contact
+	}
+
+	return m
+}

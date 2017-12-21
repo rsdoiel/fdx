@@ -37,6 +37,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path"
+	"strings"
 	"testing"
 )
 
@@ -77,6 +78,60 @@ func TestConversion(t *testing.T) {
 	}
 	for _, fname := range fileList {
 		testFdxFile(t, path.Join("testdata", fname))
+	}
+}
+
+func TestTitlePageToMap(t *testing.T) {
+	// The following shouldn't return populated maps
+	noTitlePages := []string{
+		"sample-01.fdx",
+		"sample-02.fdx",
+	}
+	screenplay := new(FinalDraft)
+	for _, fname := range noTitlePages {
+		src, err := ioutil.ReadFile(path.Join("testdata", fname))
+		if err != nil {
+			t.Errorf("%s", err)
+		} else {
+			if err := xml.Unmarshal(src, &screenplay); err != nil {
+				t.Errorf("Can't Unmarshal %s, %s", fname, err)
+			} else {
+				m := screenplay.TitlePageAsMap()
+				if len(m) > 0 {
+					t.Errorf("was expecting an empty map, got %+v\n", m)
+				}
+			}
+		}
+
+	}
+
+	haveTitlePages := map[string][]string{
+		"Big%20Fish.fdx":                   []string{"Title", "Credit", "Author", "Source", "Contact"},
+		"Brick%20&%20Steel.fdx":            []string{"Title", "Credit", "Author", "Source", "Draft date", "Contact"},
+		"The%20Last%20Birthday%20Card.fdx": []string{"Title", "Credit"},
+		"sample-03.fdx":                    []string{"Title", "Credit", "Author", "Draft date", "Contact"},
+	}
+	for fname, fieldnames := range haveTitlePages {
+		src, err := ioutil.ReadFile(path.Join("testdata", fname))
+		if err != nil {
+			if strings.HasPrefix(fname, "sample") {
+				t.Errorf("%s", err)
+				t.FailNow()
+			} else {
+				fmt.Printf("Skipping %s", fname)
+			}
+		} else {
+			if err := xml.Unmarshal(src, &screenplay); err != nil {
+				t.Errorf("Can't Unmarshal %s, %s", fname, err)
+			} else {
+				m := screenplay.TitlePageAsMap()
+				for _, field := range fieldnames {
+					if _, ok := m[field]; ok != true {
+						t.Errorf("%s is missing map value for %s", fname, field)
+					}
+				}
+			}
+		}
 	}
 }
 

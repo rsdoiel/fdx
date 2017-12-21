@@ -44,7 +44,7 @@ var (
 	expectedDocs map[string][]byte
 )
 
-func fdxFile(t *testing.T, fname string) {
+func testFdxFile(t *testing.T, fname string) {
 	src, err := ioutil.ReadFile(fname)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "skipping %s, %s", fname, err)
@@ -67,9 +67,16 @@ func fdxFile(t *testing.T, fname string) {
 }
 
 func TestConversion(t *testing.T) {
-	fdxFile(t, "testdata/testplay-01a.fdx")
-	fdxFile(t, "testdata/testplay-01b.fdx")
-	fdxFile(t, "testdata/Big Fish.fdx")
+	fileList := []string{
+		"Big%20Fish.fdx",
+		"Brick%20&%20Steel.fdx",
+		"sample-01.fdx",
+		"sample-02.fdx",
+		"The%20Last%20Birthday%20Card.fdx",
+	}
+	for _, fname := range fileList {
+		testFdxFile(t, path.Join("testdata", fname))
+	}
 }
 
 func TestMain(m *testing.M) {

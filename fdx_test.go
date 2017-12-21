@@ -70,9 +70,10 @@ func TestConversion(t *testing.T) {
 	fileList := []string{
 		"Big%20Fish.fdx",
 		"Brick%20&%20Steel.fdx",
+		"The%20Last%20Birthday%20Card.fdx",
 		"sample-01.fdx",
 		"sample-02.fdx",
-		"The%20Last%20Birthday%20Card.fdx",
+		"sample-03.fdx",
 	}
 	for _, fname := range fileList {
 		testFdxFile(t, path.Join("testdata", fname))

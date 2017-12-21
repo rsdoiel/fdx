@@ -134,7 +134,8 @@ type Text struct {
 
 type TitlePage struct {
 	XMLName         xml.Name `json:"-"`
-	HeaderAndFooter HeaderAndFooter
+	HeaderAndFooter *HeaderAndFooter
+	Content         *Content
 }
 
 type Revisions struct {

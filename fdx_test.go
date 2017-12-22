@@ -48,13 +48,16 @@ var (
 func testFdxFile(t *testing.T, fname string) {
 	src, err := ioutil.ReadFile(fname)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "skipping %s, %s", fname, err)
+		if strings.HasPrefix(fname, "sample") == true {
+			t.Errorf("%s, %s", fname, err)
+		} else {
+			fmt.Fprintf(os.Stderr, "Skipping %s\n", fname)
+		}
 		return
 	}
 	fdx := new(FinalDraft)
 	if err := xml.Unmarshal(src, &fdx); err != nil {
 		t.Errorf("%s", err)
-		t.FailNow()
 	} else {
 		os.RemoveAll(path.Join("testout", path.Base(fname)))
 		if src2, err := xml.MarshalIndent(fdx, " ", "    "); err != nil {
@@ -81,58 +84,98 @@ func TestConversion(t *testing.T) {
 	}
 }
 
-func TestTitlePageToMap(t *testing.T) {
+func TestTitlePageToString(t *testing.T) {
 	// The following shouldn't return populated maps
 	noTitlePages := []string{
 		"sample-01.fdx",
 		"sample-02.fdx",
 	}
-	screenplay := new(FinalDraft)
 	for _, fname := range noTitlePages {
 		src, err := ioutil.ReadFile(path.Join("testdata", fname))
 		if err != nil {
 			t.Errorf("%s", err)
 		} else {
+			screenplay := new(FinalDraft)
 			if err := xml.Unmarshal(src, &screenplay); err != nil {
 				t.Errorf("Can't Unmarshal %s, %s", fname, err)
 			} else {
-				m := screenplay.TitlePageAsMap()
-				if len(m) > 0 {
-					t.Errorf("was expecting an empty map, got %+v\n", m)
+				if screenplay.TitlePage != nil {
+					page := screenplay.TitlePage.String()
+					t.Errorf("was expecting an nil TitlePage, got %q\n", page)
 				}
 			}
 		}
-
 	}
 
 	haveTitlePages := map[string][]string{
-		"Big%20Fish.fdx":                   []string{"Title", "Credit", "Author", "Source", "Contact"},
-		"Brick%20&%20Steel.fdx":            []string{"Title", "Credit", "Author", "Source", "Draft date", "Contact"},
-		"The%20Last%20Birthday%20Card.fdx": []string{"Title", "Credit"},
-		"sample-03.fdx":                    []string{"Title", "Credit", "Author", "Draft date", "Contact"},
+		"Big%20Fish.fdx":                   []string{"BIG FISH", "This is a Southern story, full of lies and fabrications, "},
+		"Brick%20&%20Steel.fdx":            []string{"BRICK & STEEL"},
+		"The%20Last%20Birthday%20Card.fdx": []string{"THE LAST BIRTHDAY CARD"},
+		"sample-03.fdx":                    []string{"SAMPLE 03"},
 	}
-	for fname, fieldnames := range haveTitlePages {
+	for fname, textTerms := range haveTitlePages {
 		src, err := ioutil.ReadFile(path.Join("testdata", fname))
 		if err != nil {
-			if strings.HasPrefix(fname, "sample") {
+			if strings.HasPrefix(fname, "sample") == true {
 				t.Errorf("%s", err)
-				t.FailNow()
 			} else {
-				fmt.Printf("Skipping %s", fname)
+				fmt.Printf("Skipping %s\n", fname)
 			}
 		} else {
+			screenplay := new(FinalDraft)
 			if err := xml.Unmarshal(src, &screenplay); err != nil {
 				t.Errorf("Can't Unmarshal %s, %s", fname, err)
 			} else {
-				m := screenplay.TitlePageAsMap()
-				for _, field := range fieldnames {
-					if _, ok := m[field]; ok != true {
-						t.Errorf("%s is missing map value for %s", fname, field)
+				if screenplay.TitlePage == nil {
+					t.Errorf("Missing title page for %s", fname)
+				} else {
+					page := screenplay.TitlePage.String()
+					for _, knownText := range textTerms {
+						if strings.Contains(page, knownText) == false {
+							t.Errorf("%s is missing %q", fname, knownText)
+						}
 					}
 				}
 			}
 		}
 	}
+}
+
+func TestToString(t *testing.T) {
+	expected := "Hello World!"
+	text := new(Text)
+	text.InnerText = expected
+	result := text.String()
+	if expected != result {
+		t.Errorf("expected %q, got %q for %T", expected, result, text)
+	}
+	paragraph := new(Paragraph)
+	paragraph.Text = append(paragraph.Text, text)
+	result = paragraph.String()
+	if expected != result {
+		t.Errorf("expected %q, got %q for %T", expected, result, paragraph)
+	}
+	content := new(Content)
+	content.Paragraph = append(content.Paragraph, paragraph)
+	result = content.String()
+	if expected != result {
+		t.Errorf("expected %q, got %q for %T", expected, result, content)
+	}
+	titlePage := new(TitlePage)
+	titlePage.Content = content
+	result = titlePage.String()
+	if expected != result {
+		t.Errorf("expected %q, got %q for %T", expected, result, titlePage)
+	}
+	doc := new(FinalDraft)
+	doc.TitlePage = titlePage
+	doc.Content = content
+	expected = fmt.Sprintf("%s\n%s", expected, expected)
+	result = doc.String()
+	if expected != result {
+		t.Errorf("expected %q, got %q for %T", expected, result, doc)
+	}
+
 }
 
 func TestMain(m *testing.M) {

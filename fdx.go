@@ -33,6 +33,7 @@ package fdx
 
 import (
 	"encoding/xml"
+	"strings"
 )
 
 const (
@@ -457,17 +458,78 @@ type SceneNumberOptions struct {
 	FontSpec           *FontSpec
 }
 
-// TitlePageAsMap returns the contents of the TitlePage elements as a simple map[string]string
-// If TitlePage is nil, then an empty map is returned. Map keys are lower case
-func (doc *FinalDraft) TitlePageAsMap() map[string]string {
-	m := map[string]string{}
-	if doc.TitlePage != nil {
-		// Find Title
-		// Find Credit
-		// Find Author
-		// Find Source
-		// Find Draft date
-		// Find Contact
+// String (of FinalDraft) returns a plan text version of the FinalDraft tree
+func (doc *FinalDraft) String() string {
+	if doc != nil {
+		src := []string{}
+		if doc.TitlePage != nil {
+			s := doc.TitlePage.String()
+			// FIXME: Apply screen playwide settings (e.g. PageLayout, HeaderAndFooter, etc)
+			src = append(src, s)
+		}
+		if doc.Content != nil {
+			s := doc.Content.String()
+			// FIXME: Apply screen playwide settings (e.g. PageLayout, HeaderAndFooter, etc)
+			src = append(src, s)
+		}
+		return strings.Join(src, "\n")
 	}
-	return m
+	return ""
+}
+
+// String (of Text) returns plain text of a single text element
+func (text *Text) String() string {
+	if text != nil && len(text.InnerText) > 0 {
+		src := text.InnerText
+		//FIXME: Apply attribute formatting instructions here
+		if strings.Contains(text.Style, "AllCaps") {
+			src = strings.ToUpper(src)
+		}
+		return src
+	}
+	return ""
+}
+
+// String (of Paragraph) returns plain text of a single paragraph
+func (paragraph *Paragraph) String() string {
+	if paragraph != nil && len(paragraph.Text) > 0 {
+		src := []string{}
+		for _, text := range paragraph.Text {
+			s := text.String()
+			//FIXME: Apply attribute formatting instructions here
+			src = append(src, s)
+		}
+		//FIXME: Make sure I am joining with the correct space characters
+		return strings.Join(src, "\n\n")
+	}
+	return ""
+}
+
+// String (of Content) returns plain text version of paragraphs
+func (c *Content) String() string {
+	if c != nil && c.Paragraph != nil && len(c.Paragraph) > 0 {
+		src := []string{}
+		for _, p := range c.Paragraph {
+			s := p.String()
+			src = append(src, s)
+		}
+		return strings.Join(src, "")
+	}
+	return ""
+}
+
+// String (of TitlePage) returns a plain text version of TitlePage
+func (tp *TitlePage) String() string {
+	if tp != nil && tp.Content != nil && len(tp.Content.Paragraph) > 0 {
+		// Move through Title Page content and render the plain text.
+		return tp.Content.String()
+	}
+	return ""
+}
+
+// Parse takes []byte and returns a FinalDraft struct and error
+func Parse(src []byte) (*FinalDraft, error) {
+	document := new(FinalDraft)
+	err := xml.Unmarshal(src, &document)
+	return document, err
 }

@@ -14,6 +14,9 @@ ifeq ($(OS), Windows)
 	EXT = .exe
 endif
 
+build: fdx.go cmd/fdx2txt/fdx2txt.go
+	go build -o bin/fdx2txt$(EXT) cmd/fdx2txt/fdx2txt.go
+
 test:
 	go test
 

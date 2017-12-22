@@ -2,11 +2,11 @@
 # About the test data
 
 The [fountain](fountain.io) website has some good files for reviewing
-formatting between founting, fdx and PDF.  Some are referenced in the 
-test programs but they are optional.  It is not clear to me the 
-licensing arrangements so I have not included them in this repository.
+formatting difference between fountain, fdx and PDF.  Some are referenced in the 
+test programs but they are optional.  It is not clear to me the licensing 
+arrangements for the text so I have not included them in this repository.
 
-If you want to include them in the test go to the fountain website and
+If you want to include them in the test sequence go to the fountain website and
 download them and place them in the _testdata_ directory. When you
 run `go test` they will be found and included in the basic test process.
 

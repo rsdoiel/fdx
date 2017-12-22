@@ -458,7 +458,7 @@ type SceneNumberOptions struct {
 	FontSpec           *FontSpec
 }
 
-// String (of FinalDraft) returns a plan text version of the FinalDraft tree
+// String (of FinalDraft) returns a plan text in Fountain format for FinalDraft
 func (doc *FinalDraft) String() string {
 	if doc != nil {
 		src := []string{}
@@ -477,7 +477,7 @@ func (doc *FinalDraft) String() string {
 	return ""
 }
 
-// String (of Text) returns plain text of a single text element
+// String (of Text) returns plain text in the Fountain format for a single text element
 func (text *Text) String() string {
 	if text != nil {
 		src := text.InnerText
@@ -499,7 +499,7 @@ func (text *Text) String() string {
 	return ""
 }
 
-// String (of Paragraph) returns plain text of a single paragraph
+// String (of Paragraph) returns plain text in Fountain format for a single paragraph
 func (paragraph *Paragraph) String() string {
 	if paragraph != nil && len(paragraph.Text) > 0 {
 		src := []string{}
@@ -514,7 +514,7 @@ func (paragraph *Paragraph) String() string {
 	return ""
 }
 
-// String (of Content) returns plain text version of paragraphs
+// String (of Content) returns plain text in Fountain format for Content
 func (c *Content) String() string {
 	if c != nil && c.Paragraph != nil && len(c.Paragraph) > 0 {
 		src := []string{}
@@ -527,7 +527,7 @@ func (c *Content) String() string {
 	return ""
 }
 
-// String (of TitlePage) returns a plain text version of TitlePage
+// String (of TitlePage) returns a plain text in Fountain format (unfielded) for TitlePage
 func (tp *TitlePage) String() string {
 	if tp != nil && tp.Content != nil && len(tp.Content.Paragraph) > 0 {
 		// Move through Title Page content and render the plain text.

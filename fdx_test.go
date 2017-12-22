@@ -152,19 +152,19 @@ func TestToString(t *testing.T) {
 	paragraph := new(Paragraph)
 	paragraph.Text = append(paragraph.Text, text)
 	result = paragraph.String()
-	if expected != result {
+	if (expected + "\n") != result {
 		t.Errorf("expected %q, got %q for %T", expected, result, paragraph)
 	}
 	content := new(Content)
 	content.Paragraph = append(content.Paragraph, paragraph)
 	result = content.String()
-	if expected != result {
+	if (expected + "\n") != result {
 		t.Errorf("expected %q, got %q for %T", expected, result, content)
 	}
 	titlePage := new(TitlePage)
 	titlePage.Content = content
 	result = titlePage.String()
-	if expected != result {
+	if (expected + "\n") != result {
 		t.Errorf("expected %q, got %q for %T", expected, result, titlePage)
 	}
 	doc := new(FinalDraft)

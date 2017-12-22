@@ -485,6 +485,15 @@ func (text *Text) String() string {
 		if strings.Contains(text.Style, "AllCaps") {
 			src = strings.ToUpper(src)
 		}
+		if strings.Contains(text.Style, "Italics") {
+			src = "*" + src + "*"
+		}
+		if strings.Contains(text.Style, "Bold") {
+			src = "**" + src + "**"
+		}
+		if strings.Contains(text.Style, "Underline") {
+			src = "_" + src + "_"
+		}
 		return src
 	}
 	return ""

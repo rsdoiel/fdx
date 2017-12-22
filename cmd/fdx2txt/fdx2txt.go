@@ -93,14 +93,14 @@ func main() {
 		os.Exit(0)
 	}
 
-	// ReadAll of fdx file and then render as a string
+	// ReadAll of input
 	src, err := ioutil.ReadAll(app.In)
 	cli.ExitOnError(app.Eout, err, quiet)
-
+	// Parse input
 	screenplay, err := fdx.Parse(src)
 	cli.OnError(app.Eout, err, quiet)
-	fmt.Printf("DEBUG: title page: %s\n", screenplay.TitlePage.String())
 
+	//and then render as a string
 	if newLine {
 		fmt.Fprintf(app.Out, "%s\n", screenplay.String())
 	} else {

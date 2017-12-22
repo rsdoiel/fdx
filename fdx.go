@@ -500,7 +500,7 @@ func (paragraph *Paragraph) String() string {
 			src = append(src, s)
 		}
 		//FIXME: Make sure I am joining with the correct space characters
-		return strings.Join(src, "\n\n")
+		return strings.Join(src, "\n") + "\n"
 	}
 	return ""
 }

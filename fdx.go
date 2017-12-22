@@ -479,13 +479,13 @@ func (doc *FinalDraft) String() string {
 
 // String (of Text) returns plain text of a single text element
 func (text *Text) String() string {
-	if text != nil && len(text.InnerText) > 0 {
+	if text != nil {
 		src := text.InnerText
 		//FIXME: Apply attribute formatting instructions here
-		if strings.Contains(text.Style, "AllCaps") {
+		if strings.Contains(text.Style, "AllCaps") || strings.Contains(text.Font, "Capitals") {
 			src = strings.ToUpper(src)
 		}
-		if strings.Contains(text.Style, "Italics") {
+		if strings.Contains(text.Style, "Italic") {
 			src = "*" + src + "*"
 		}
 		if strings.Contains(text.Style, "Bold") {

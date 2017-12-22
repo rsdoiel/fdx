@@ -109,7 +109,7 @@ func TestTitlePageToString(t *testing.T) {
 
 	haveTitlePages := map[string][]string{
 		"Big%20Fish.fdx":                   []string{"BIG FISH", "This is a Southern story, full of lies and fabrications, "},
-		"Brick%20&%20Steel.fdx":            []string{"BRICK & STEEL"},
+		"Brick%20&%20Steel.fdx":            []string{"BRICK AND STEEL"},
 		"The%20Last%20Birthday%20Card.fdx": []string{"THE LAST BIRTHDAY CARD"},
 		"sample-03.fdx":                    []string{"SAMPLE 03"},
 	}
@@ -147,8 +147,58 @@ func TestToString(t *testing.T) {
 	text.InnerText = expected
 	result := text.String()
 	if expected != result {
-		t.Errorf("expected %q, got %q for %T", expected, result, text)
+		t.Errorf("expected (font %q, style %q) %q, got %q for %T", text.Font, text.Style, expected, result, text)
 	}
+	text.Style = "AllCaps"
+	expected = "HELLO WORLD!"
+	result = text.String()
+	if expected != result {
+		t.Errorf("expected (font %q, style %q) %q, got %q for %T", text.Font, text.Style, expected, result, text)
+	}
+	text.Style = "Underline"
+	expected = "_Hello World!_"
+	result = text.String()
+	if expected != result {
+		t.Errorf("expected (font %q, style %q) %q, got %q for %T", text.Font, text.Style, expected, result, text)
+	}
+	text.Style = "Italic"
+	expected = "*Hello World!*"
+	result = text.String()
+	if expected != result {
+		t.Errorf("expected (font %q, style %q) %q, got %q for %T", text.Font, text.Style, expected, result, text)
+	}
+	text.Style = "Bold"
+	expected = "**Hello World!**"
+	result = text.String()
+	if expected != result {
+		t.Errorf("expected (font %q, style %q) %q, got %q for %T", text.Font, text.Style, expected, result, text)
+	}
+	text.Style = "Bold+Italic"
+	expected = "***Hello World!***"
+	result = text.String()
+	if expected != result {
+		t.Errorf("expected (font %q, style %q) %q, got %q for %T", text.Font, text.Style, expected, result, text)
+	}
+	text.Style = "Underline+Bold"
+	expected = "_**Hello World!**_"
+	result = text.String()
+	if expected != result {
+		t.Errorf("expected (font %q, style %q) %q, got %q for %T", text.Font, text.Style, expected, result, text)
+	}
+	text.Style = "Bold+Underline+AllCaps"
+	expected = "_**HELLO WORLD!**_"
+	result = text.String()
+	if expected != result {
+		t.Errorf("expected (font %q, style %q) %q, got %q for %T", text.Font, text.Style, expected, result, text)
+	}
+	text.Font = "Capitals"
+	text.Style = "Underline"
+	expected = "_HELLO WORLD!_"
+	result = text.String()
+	if expected != result {
+		t.Errorf("expected (font %q, style %q) %q, got %q for %T", text.Font, text.Style, expected, result, text)
+	}
+
 	paragraph := new(Paragraph)
 	paragraph.Text = append(paragraph.Text, text)
 	result = paragraph.String()
@@ -170,7 +220,7 @@ func TestToString(t *testing.T) {
 	doc := new(FinalDraft)
 	doc.TitlePage = titlePage
 	doc.Content = content
-	expected = fmt.Sprintf("%s\n%s", expected, expected)
+	expected = fmt.Sprintf("%s\n\n%s\n", expected, expected)
 	result = doc.String()
 	if expected != result {
 		t.Errorf("expected %q, got %q for %T", expected, result, doc)

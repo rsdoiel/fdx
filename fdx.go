@@ -39,6 +39,26 @@ import (
 const (
 	Version   = `v0.0.0-dev`
 	DocString = `<?xml version="1.0" encoding="UTF-8" standalone="no" ?>`
+
+	// Types used in ElementSettings and Paragraph elements
+	GeneralType       = "General"
+	SceneHeadingType  = "Scene Heading"
+	ActionType        = "Action"
+	CharacterType     = "Character"
+	DialogueType      = "Dialogue"
+	ParentheticalType = "Parenthetical"
+	TransitionType    = "Transition"
+	CastListType      = "Cast List"
+	ShotType          = "Shot"
+	SingingType       = "Singing"
+
+	// DynamicLabel types
+	PageNoType      = "Page #"
+	LastRevisedType = "Last Revised"
+
+	// Tabstop types
+	RightType = "Right"
+	LeftType  = "Left"
 )
 
 type FinalDraft struct {
@@ -508,8 +528,26 @@ func (paragraph *Paragraph) String() string {
 			//FIXME: Apply attribute formatting instructions here
 			src = append(src, s)
 		}
+		switch paragraph.Type {
+		case GeneralType:
+			src = append(src, "\n")
+		case SceneHeadingType:
+			src = append(src, "\n\n")
+		case ActionType:
+			src = append(src, "\n\n")
+		case CharacterType:
+			src = append(src, "\n")
+		case ParentheticalType:
+			src = append(src, "\n")
+		case DialogueType:
+			src = append(src, "\n\n")
+		case TransitionType:
+			src = append(src, "\n\n")
+		case ShotType:
+			src = append(src, "\n")
+		}
 		//FIXME: Make sure I am joining with the correct space characters
-		return strings.Join(src, "\n") + "\n"
+		return strings.Join(src, "")
 	}
 	return ""
 }

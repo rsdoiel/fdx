@@ -40,6 +40,17 @@ const (
 	Version   = `v0.0.0-dev`
 	DocString = `<?xml version="1.0" encoding="UTF-8" standalone="no" ?>`
 
+	// Style
+	UnderlineStyle = "Underline"
+	ItalicStyle    = "Italic"
+	BoldStyle      = "Bold"
+	AllCapsStyle   = "AllCaps"
+
+	// Alignments
+	CenterAlignment = "Center"
+	LeftAlignment   = "Left"
+	RightAlignment  = "Left"
+
 	// Types used in ElementSettings and Paragraph elements
 	GeneralType       = "General"
 	SceneHeadingType  = "Scene Heading"
@@ -59,6 +70,12 @@ const (
 	// Tabstop types
 	RightType = "Right"
 	LeftType  = "Left"
+)
+
+var (
+	// MaxLineWidth is the number of characters wide a line can be
+	// based on a monospace font.
+	MaxLineWidth = 80
 )
 
 type FinalDraft struct {
@@ -502,16 +519,16 @@ func (text *Text) String() string {
 	if text != nil {
 		src := text.InnerText
 		//FIXME: Apply attribute formatting instructions here
-		if strings.Contains(text.Style, "AllCaps") || strings.Contains(text.Font, "Capitals") {
+		if strings.Contains(text.Style, AllCapsStyle) || strings.Contains(text.Font, "Capitals") {
 			src = strings.ToUpper(src)
 		}
-		if strings.Contains(text.Style, "Italic") {
+		if strings.Contains(text.Style, ItalicStyle) {
 			src = "*" + src + "*"
 		}
-		if strings.Contains(text.Style, "Bold") {
+		if strings.Contains(text.Style, BoldStyle) {
 			src = "**" + src + "**"
 		}
-		if strings.Contains(text.Style, "Underline") {
+		if strings.Contains(text.Style, UnderlineStyle) {
 			src = "_" + src + "_"
 		}
 		return src
@@ -521,11 +538,34 @@ func (text *Text) String() string {
 
 // String (of Paragraph) returns plain text in Fountain format for a single paragraph
 func (paragraph *Paragraph) String() string {
-	if paragraph != nil && len(paragraph.Text) > 0 {
+	if paragraph != nil {
 		src := []string{}
+		if paragraph.StartsNewPage == "Yes" {
+			src = append(src, "\f")
+		}
 		for _, text := range paragraph.Text {
 			s := text.String()
-			//FIXME: Apply attribute formatting instructions here
+			switch paragraph.Type {
+			case SceneHeadingType:
+				s = strings.ToUpper(s)
+			case CharacterType:
+				s = strings.ToUpper(s)
+			case TransitionType:
+				s = strings.ToUpper(s)
+			case SingingType:
+				s = "~" + s + "~\n"
+			case ParentheticalType:
+				if strings.HasPrefix(s, "(") == false &&
+					strings.HasSuffix(s, ")") == false {
+					s = "(" + s + ")"
+				}
+			}
+			if len(s) > 0 {
+				switch paragraph.Alignment {
+				case CenterAlignment:
+					s = ">" + s + "<"
+				}
+			}
 			src = append(src, s)
 		}
 		switch paragraph.Type {
@@ -545,8 +585,9 @@ func (paragraph *Paragraph) String() string {
 			src = append(src, "\n\n")
 		case ShotType:
 			src = append(src, "\n")
+		default:
+			src = append(src, "\n")
 		}
-		//FIXME: Make sure I am joining with the correct space characters
 		return strings.Join(src, "")
 	}
 	return ""
@@ -569,7 +610,7 @@ func (c *Content) String() string {
 func (tp *TitlePage) String() string {
 	if tp != nil && tp.Content != nil && len(tp.Content.Paragraph) > 0 {
 		// Move through Title Page content and render the plain text.
-		return tp.Content.String()
+		return tp.Content.String() + "\n\n"
 	}
 	return ""
 }

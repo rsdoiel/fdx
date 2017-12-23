@@ -16,8 +16,8 @@
     <Paragraph Type="Dialogue">
       <Text>Writer's Block Again</Text>
     </Paragraph>
-    <Paragraph Type="Character">
-      <Text>DISOLVE TO:</Text>
+    <Paragraph Type="Transition">
+      <Text>DISSOLVE TO:</Text>
     </Paragraph>
   </Content>
   <ElementSettings Type="New Act">

@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<FinalDraft DocumentType="Script" Template="No" Version="1">
+  <Content>
+    <Paragraph Type="Scene Heading">
+      <Text>INT. STUDIO APARTMENT - NIGHT</Text>
+    </Paragraph>
+    <Paragraph Type="Action">
+      <Text>The AUTHOR sits at a desk.</Text>
+    </Paragraph>
+    <Paragraph Type="Character">
+      <Text>AUTHOR</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical">
+      <Text>(angished)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue">
+      <Text>Writer's Block Again</Text>
+    </Paragraph>
+    <Paragraph Type="Transition">
+      <Text>DISSOLVE TO:</Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading" StartsWithNewPage="Yes">
+      <Text>INT. STUDIO APARTMENT - DAY</Text>
+    </Paragraph>
+    <Paragraph Type="Action">
+      <Text>The author is sprawled on the couch.</Text>
+    </Paragraph>
+    <Paragraph Type="Character">
+      <Text>AUTHOR</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical">
+      <Text>(refreshed)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue">
+      <Text>Shall we try?</Text>
+    </Paragraph>
+    <Paragraph Type="Transition">
+      <Text>FADE TO BLACK</Text>
+    </Paragraph>
+  </Content>
+  <ElementSettings Type="New Act">
+    <FontSpec Style="Underline+AllCaps"/>
+    <ParagraphSpec Alignment="Center"/>
+  </ElementSettings>
+</FinalDraft>

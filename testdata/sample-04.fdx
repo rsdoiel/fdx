@@ -19,7 +19,7 @@
     <Paragraph Type="Transition">
       <Text>DISSOLVE TO:</Text>
     </Paragraph>
-    <Paragraph Type="Scene Heading" StartsWithNewPage="Yes">
+    <Paragraph Type="Scene Heading" StartsNewPage="Yes">
       <Text>INT. STUDIO APARTMENT - DAY</Text>
     </Paragraph>
     <Paragraph Type="Action">

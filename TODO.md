@@ -9,6 +9,7 @@
 
 ## Next
 
++ [ ] Add ParseFile() to fdx.go
 
 ## Someday, Maybe
 

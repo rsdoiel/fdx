@@ -541,7 +541,7 @@ func (paragraph *Paragraph) String() string {
 	if paragraph != nil {
 		src := []string{}
 		if paragraph.StartsNewPage == "Yes" {
-			src = append(src, "\f")
+			src = append(src, "===\n\n")
 		}
 		for _, text := range paragraph.Text {
 			s := text.String()

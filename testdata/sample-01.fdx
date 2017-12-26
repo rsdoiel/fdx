@@ -1,22 +1,25 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <FinalDraft DocumentType="Script" Template="No" Version="1">
   <Content>
-    <Paragraph Type="Scene Heading">
+    <Paragraph Type="Transition">
       <Text>FADE IN:</Text>
     </Paragraph>
+    <Paragraph Type="Scene Heading">
+      <Text>EXT. LIBRARY - DAY</Text>
+    </Paragraph>
     <Paragraph Type="Action">
-      <Text>A PROGRAMMER typing at on old laptop.</Text>
+      <Text>A PROGRAMMER typing at an old laptop</Text>
     </Paragraph>
     <Paragraph Type="Character">
       <Text>PROGRAMMER</Text>
     </Paragraph>
     <Paragraph Type="Parenthetical">
-      <Text>(excited)</Text>
+      <Text>(excited) </Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
       <Text>Eureka!</Text>
     </Paragraph>
-    <Paragraph Type="Character">
+    <Paragraph Type="Transition">
       <Text>FADE TO BLACK.</Text>
     </Paragraph>
   </Content>

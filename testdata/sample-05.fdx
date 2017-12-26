@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<FinalDraft DocumentType="Script" Template="No" Version="1">
+  <Content>
+    <Paragraph Type="Scene Heading">
+      <Text>EXT. APARTMENT - DAY</Text>
+    </Paragraph>
+    <Paragraph Type="Action">
+      <Text>AUTHOR wakes standing on the stoop in pajamas head against door.</Text>
+    </Paragraph>
+    <Paragraph Type="Character">
+      <Text>AUTHOR</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical">
+      <Text>(concern, to self)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue">
+      <Text>Snap, sleep walking again.</Text>
+    </Paragraph>
+    <Paragraph Type="Transition">
+      <Text>CUT TO:</Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading">
+      <Text>EXT. PARK - DAY</Text>
+    </Paragraph>
+    <Paragraph Type="Action">
+      <Text>Author is jogging, checking her fitness watch. Small DOG approaches and speaks to her in a human voice.</Text>
+    </Paragraph>
+    <Paragraph Type="Character">
+      <Text>DOG</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue">
+      <Text>It's not the watch or the jog. You haven't woken up yet.</Text>
+    </Paragraph>
+    <Paragraph Type="Transition">
+      <Text>FADE TO BLACK.</Text>
+    </Paragraph>
+    <Paragraph Type="Action">
+      <Text>                     THE END.</Text>
+    </Paragraph>
+  </Content>
+  <ElementSettings Type="New Act">
+    <FontSpec Style="Underline+AllCaps"/>
+    <ParagraphSpec Alignment="Center"/>
+  </ElementSettings>
+</FinalDraft>

@@ -45,6 +45,7 @@ const (
 	ItalicStyle    = "Italic"
 	BoldStyle      = "Bold"
 	AllCapsStyle   = "AllCaps"
+	Strikethrough  = "Strikethrough"
 
 	// Alignments
 	CenterAlignment = "Center"
@@ -530,6 +531,9 @@ func (text *Text) String() string {
 		}
 		if strings.Contains(text.Style, UnderlineStyle) {
 			src = "_" + src + "_"
+		}
+		if strings.Contains(text.Style, Strikethrough) {
+			src = "~~" + src + "~~"
 		}
 		return src
 	}

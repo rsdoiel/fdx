@@ -1,12 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <FinalDraft DocumentType="Script" Template="No" Version="1">
   <Content>
-    <Paragraph Type="Action">
+    <Paragraph Type="Transition">
       <Text>FADE IN:</Text>
     </Paragraph>
+    <Paragraph Type="Scene Heading">
+      <Text>EXT. INDUSTRIAL PARK - DAY</Text>
+    </Paragraph>
     <Paragraph Type="Action">
-      <Text>A low slung industrial building in an industrial center.
-The last car leaves the lot. Parking lot lights switch off.</Text>
+      <Text>A low slung industrial building in an industrial center. The last car leaves the lot. Parking lot lights switch off.</Text>
     </Paragraph>
     <Paragraph Type="Transition">
       <Text>CROSSFADE TO:</Text>
@@ -18,10 +20,10 @@ The last car leaves the lot. Parking lot lights switch off.</Text>
       <Text>A PROGRAMMER stares at the screen.</Text>
     </Paragraph>
     <Paragraph Type="Character">
-      <Text>PROGRAMMER</Text>
+      <Text>PROGRAMMER </Text>
     </Paragraph>
     <Paragraph Type="Parenthetical">
-      <Text>(drowsy)</Text>
+      <Text>(drowsy) </Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
       <Text>What algorithm is this?</Text>
@@ -44,11 +46,14 @@ The last car leaves the lot. Parking lot lights switch off.</Text>
     <Paragraph Type="Dialogue">
       <Text>This is what I remember.</Text>
     </Paragraph>
-    <Paragraph Type="Action">
+    <Paragraph Type="Transition">
       <Text>FADE TO BLACK.</Text>
     </Paragraph>
-    <Paragraph Type="Action">
-      <Text>                       THE END</Text>
+    <Paragraph Type="Dialogue">
+      <Text></Text>
+    </Paragraph>
+    <Paragraph Type="Character">
+      <Text>THE END</Text>
     </Paragraph>
   </Content>
   <ElementSettings Type="New Act">

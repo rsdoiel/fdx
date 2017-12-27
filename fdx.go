@@ -537,7 +537,7 @@ func (paragraph *Paragraph) String() string {
 			case TransitionType:
 				s = strings.ToUpper(s)
 			case SingingType:
-				s = "~" + s + "~"
+				s = "~" + s
 			case ParentheticalType:
 				if strings.HasPrefix(s, "(") == false &&
 					strings.HasSuffix(s, ")") == false {

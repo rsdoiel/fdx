@@ -50,7 +50,7 @@ const (
 	// Alignments
 	CenterAlignment = "Center"
 	LeftAlignment   = "Left"
-	RightAlignment  = "Left"
+	RightAlignment  = "Right"
 
 	// Types used in ElementSettings and Paragraph elements
 	GeneralType       = "General"

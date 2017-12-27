@@ -496,30 +496,10 @@ type SceneNumberOptions struct {
 	FontSpec           *FontSpec
 }
 
-// String (of FinalDraft) returns a plan text in Fountain format for FinalDraft
-func (doc *FinalDraft) String() string {
-	if doc != nil {
-		src := []string{}
-		if doc.TitlePage != nil {
-			s := doc.TitlePage.String()
-			// FIXME: Apply screen playwide settings (e.g. PageLayout, HeaderAndFooter, etc)
-			src = append(src, s)
-		}
-		if doc.Content != nil {
-			s := doc.Content.String()
-			// FIXME: Apply screen playwide settings (e.g. PageLayout, HeaderAndFooter, etc)
-			src = append(src, s)
-		}
-		return strings.Join(src, "\n")
-	}
-	return ""
-}
-
 // String (of Text) returns plain text in the Fountain format for a single text element
 func (text *Text) String() string {
 	if text != nil {
 		src := text.InnerText
-		//FIXME: Apply attribute formatting instructions here
 		if strings.Contains(text.Style, AllCapsStyle) || strings.Contains(text.Font, "Capitals") {
 			src = strings.ToUpper(src)
 		}
@@ -557,7 +537,7 @@ func (paragraph *Paragraph) String() string {
 			case TransitionType:
 				s = strings.ToUpper(s)
 			case SingingType:
-				s = "~" + s + "~\n"
+				s = "~" + s + "~"
 			case ParentheticalType:
 				if strings.HasPrefix(s, "(") == false &&
 					strings.HasSuffix(s, ")") == false {
@@ -570,27 +550,33 @@ func (paragraph *Paragraph) String() string {
 					s = ">" + s + "<"
 				}
 			}
-			src = append(src, s)
+			src = append(src, s, "\n")
 		}
 		switch paragraph.Type {
-		case GeneralType:
-			src = append(src, "\n")
+		/*
+			case GeneralType:
+				//src = append(src, "\n")
+		*/
 		case SceneHeadingType:
-			src = append(src, "\n\n")
+			src = append(src, "\n")
 		case ActionType:
-			src = append(src, "\n\n")
-		case CharacterType:
 			src = append(src, "\n")
-		case ParentheticalType:
-			src = append(src, "\n")
+			/*
+				case CharacterType:
+					//src = append(src, "\n")
+				case ParentheticalType:
+					//src = append(src, "\n")
+			*/
 		case DialogueType:
-			src = append(src, "\n\n")
+			src = append(src, "\n")
 		case TransitionType:
-			src = append(src, "\n\n")
-		case ShotType:
 			src = append(src, "\n")
-		default:
-			src = append(src, "\n")
+			/*
+				case ShotType:
+					//src = append(src, "\n")
+				default:
+					//src = append(src, "\n")
+			*/
 		}
 		return strings.Join(src, "")
 	}
@@ -614,10 +600,45 @@ func (c *Content) String() string {
 func (tp *TitlePage) String() string {
 	if tp != nil && tp.Content != nil && len(tp.Content.Paragraph) > 0 {
 		// Move through Title Page content and render the plain text.
-		return tp.Content.String() + "\n\n"
+		return tp.Content.String()
 	}
 	return ""
 }
+
+// String (of FinalDraft) returns a plan text in Fountain format for FinalDraft
+func (doc *FinalDraft) String() string {
+	if doc != nil {
+		src := []string{}
+		if doc.TitlePage != nil {
+			s := doc.TitlePage.String()
+			// FIXME: Apply screen playwide settings (e.g. PageLayout, HeaderAndFooter, etc)
+			src = append(src, s, "\n")
+		}
+		if doc.Content != nil {
+			s := doc.Content.String()
+			// FIXME: Apply screen playwide settings (e.g. PageLayout, HeaderAndFooter, etc)
+			src = append(src, s)
+		}
+		return strings.Join(src, "")
+	}
+	return ""
+}
+
+/*
+// String (of FinalDraft) returns a plain text in Fountain format
+func (doc *FinalDraft) String() string {
+	if doc != nil && doc.TitlePage != nil && doc.Content != nil {
+		return doc.TitlePage.String() + "\n\n" + doc.Content.String()
+	}
+	if doc != nil && doc.TitlePage != nil {
+		return doc.TitlePage.String() + "\n\n"
+	}
+	if doc != nil && doc.Content != nil {
+		return doc.Content.String()
+	}
+	return ""
+}
+*/
 
 // Parse takes []byte and returns a FinalDraft struct and error
 func Parse(src []byte) (*FinalDraft, error) {

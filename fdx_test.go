@@ -201,31 +201,31 @@ func TestToString(t *testing.T) {
 
 	paragraph := new(Paragraph)
 	paragraph.Text = append(paragraph.Text, text)
+	expected = expected + "\n"
 	result = paragraph.String()
-	if (expected + "\n") != result {
+	if expected != result {
 		t.Errorf("expected %q, got %q for %T", expected, result, paragraph)
 	}
 	content := new(Content)
 	content.Paragraph = append(content.Paragraph, paragraph)
 	result = content.String()
-	if (expected + "\n") != result {
+	if expected != result {
 		t.Errorf("expected %q, got %q for %T", expected, result, content)
 	}
 	titlePage := new(TitlePage)
 	titlePage.Content = content
 	result = titlePage.String()
-	if (expected + "\n") != result {
+	if expected != result {
 		t.Errorf("expected %q, got %q for %T", expected, result, titlePage)
 	}
 	doc := new(FinalDraft)
 	doc.TitlePage = titlePage
 	doc.Content = content
-	expected = fmt.Sprintf("%s\n\n%s\n", expected, expected)
+	expected = fmt.Sprintf("%s\n%s", expected, expected)
 	result = doc.String()
 	if expected != result {
 		t.Errorf("expected %q, got %q for %T", expected, result, doc)
 	}
-
 }
 
 func TestMain(m *testing.M) {

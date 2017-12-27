@@ -1,43 +1,13 @@
-
-
-
-
-
-
-
-
-
-
-
-Troubled Sleep
-
-
-
-
-
-
-
-Written By
-
-
-
-Jane Doe
-
-2018-01-01
-
-
-
-
-
-
-
-
+Title: Troubled Sleep
+Credit: Written by
+Author: Jane Doe
+Draft date: 2018-01-01
+Contact: 
 
 ACME Examples Production
-
 1234 5th Avenue
-
 Anytown, Planet Earth, 91350
+
 
 EXT. APARTMENT - DAY
 
@@ -59,6 +29,3 @@ It's not the watch or the jog. You haven't woken up yet.
 FADE TO BLACK.
 
 THE END.
-
-
-

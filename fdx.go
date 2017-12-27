@@ -646,3 +646,12 @@ func Parse(src []byte) (*FinalDraft, error) {
 	err := xml.Unmarshal(src, &document)
 	return document, err
 }
+
+// ParseFile takes a filename and returns a FinalDraft struct and error
+func ParseFile(fname string) (*FinalDraft, error) {
+	src, err := ioutil.ReadFile(fname)
+	if err != nil {
+		return nil, err
+	}
+	return Parse(src)
+}

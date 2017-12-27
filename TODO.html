@@ -13,19 +13,20 @@
 
 <h2>Bugs</h2>
 
-<ul>
-<li>[ ] Formatting needs to be pickup and respected from whole FinalDraft document (e.g. respect definitions, Layout, etc)</li>
-<li>[ ] Screen Headers and Footers can have Text, Dynamic, SceneProperties in any order, right now converting back to XML renders them in fixed order</li>
-<li>[ ] Left/Right alignment should be respected based based on Paragraph Type</li>
-</ul>
-
 <h2>Next</h2>
 
 <h2>Someday, Maybe</h2>
 
+<ul>
+<li>[ ] Left/Right alignment should be respected based based on Paragraph Type</li>
+<li>[ ] Plaintext formatting needs to be pickup and respected from whole FinalDraft document (e.g. respect definitions, Layout, etc)</li>
+<li>[ ] Screen Headers and Footers can have Text, Dynamic, SceneProperties in any order, right now converting back to XML renders them in fixed order because they are ignored when rendering and plaintext</li>
+</ul>
+
 <h2>Completed</h2>
 
 <ul>
+<li>[x] Add ParseFile() to fdx.go</li>
 <li>[x] String() Paragraph needs to handle trailing new lines based on Paragraph Type</li>
 <li>[x] write tests that validate the source FDX content in <em>testout</em> version</li>
 </ul>

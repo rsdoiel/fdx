@@ -12,7 +12,13 @@ run `go test` they will be found and included in the basic test process.
 
 ## Optional test FDX files
 
-+ [Big Fish](https://fountain.io/_downloads/Big%20Fish.fdx)
-+ [Brick & Stell](https://fountain.io/_downloads/Brick%20&%20Steel.fdx)
-+ [Birthday Card](https://fountain.io/_downloads/The%20Last%20Birthday%20Card.fdx)
++ [Big Fish](https://fountain.io/_downloads/Big%20Fish.fountain)
+    + [fdx](https://fountain.io/_downloads/Big%20Fish.fdx)
+    + [pdf](https://fountain.io/_downloads/Big%20Fish.pdf) 
++ [Brick & Stell](https://fountain.io/_downloads/Brick%20&%20Steel.fountain)
+    + [fdx](https://fountain.io/_downloads/Brick%20&%20Steel.fdx)
+    + [pdf](https://fountain.io/_downloads/Brick%20&%20Steel.pdf)
++ [Birthday Card](https://fountain.io/_downloads/The%20Last%20Birthday%20Card.fountain)
+    + [fdx](https://fountain.io/_downloads/The%20Last%20Birthday%20Card.fdx)
+    + [pdf](https://fountain.io/_downloads/The%20Last%20Birthday%20Card.pdf)
 

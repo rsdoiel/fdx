@@ -33,6 +33,7 @@ package fdx
 
 import (
 	"encoding/xml"
+	"io/ioutil"
 	"strings"
 )
 
@@ -105,22 +106,22 @@ type FinalDraft struct {
 }
 
 type Content struct {
-	XMLName   xml.Name `json:"-"`
-	Paragraph []*Paragraph
+	XMLName   xml.Name     `json:"-"`
+	Paragraph []*Paragraph `json:"paragraphs,omitempty"`
 }
 
 type Paragraph struct {
 	XMLName         xml.Name `json:"-"`
-	Type            string   `xml:",attr,omitempty"`
-	Number          string   `xml:",attr,omitempty"`
-	Alignment       string   `xml:",attr,omitempty"`
-	FirstIndent     string   `xml:",attr,omitempty"`
-	Leading         string   `xml:",attr,omitempty"`
-	LeftIndent      string   `xml:",attr,omitempty"`
-	RightIndent     string   `xml:",attr,omitempty"`
-	SpaceBefore     string   `xml:",attr,omitempty"`
-	Spacing         string   `xml:",attr,omitempty"`
-	StartsNewPage   string   `xml:",attr,omitempty"`
+	Type            string   `xml:",attr,omitempty" json:"type,omitempty"`
+	Number          string   `xml:",attr,omitempty" json:"number,omitempty"`
+	Alignment       string   `xml:",attr,omitempty" json:"alignment,omitempty"`
+	FirstIndent     string   `xml:",attr,omitempty" json:"first_indent,omitempty"`
+	Leading         string   `xml:",attr,omitempty" json:"leading,omitempty"`
+	LeftIndent      string   `xml:",attr,omitempty" json:"left_indent,omitempty"`
+	RightIndent     string   `xml:",attr,omitempty" json:"right_indent,omitempty"`
+	SpaceBefore     string   `xml:",attr,omitempty" json:"space_before,omitempty"`
+	Spacing         string   `xml:",attr,omitempty" json:"spacing,omitempty"`
+	StartsNewPage   string   `xml:",attr,omitempty" json:"starts_new_page,omitempty"`
 	SceneProperties []*SceneProperties
 	DynamicLabel    []*DynamicLabel
 	Text            []*Text
@@ -128,25 +129,25 @@ type Paragraph struct {
 
 type SceneProperties struct {
 	XMLName xml.Name `json:"-"`
-	Length  string   `xml:",attr,omitempty"`
-	Page    string   `xml:",attr,omitempty"`
-	Title   string   `xml:",attr,omitempty"`
+	Length  string   `xml:",attr,omitempty" json:"length,omitempty"`
+	Page    string   `xml:",attr,omitempty" json:"page,omitempty"`
+	Title   string   `xml:",attr,omitempty" json:"title,omitempty"`
 }
 
 type HeaderAndFooter struct {
 	XMLName         xml.Name `json:"-"`
-	FooterFirstPage string   `xml:",attr,omitempty"`
-	FooterVisible   string   `xml:",attr,omitempty"`
-	HeaderFirstPage string   `xml:",attr,omitempty"`
-	HeaderVisible   string   `xml:",attr,omitempty"`
-	StartingPage    string   `xml:",attr,omitempty"`
+	FooterFirstPage string   `xml:",attr,omitempty" json:"footer_first_page,omitempty"`
+	FooterVisible   string   `xml:",attr,omitempty" json:"footer_visible,omitempty"`
+	HeaderFirstPage string   `xml:",attr,omitempty" json:"header_first_page,omitempty"`
+	HeaderVisible   string   `xml:",attr,omitempty" json:"header_visible,omitempty"`
+	StartingPage    string   `xml:",attr,omitempty" json:"starting_page,omitempty"`
 	Header          Header
 	Footer          Footer
 }
 
 type Header struct {
-	XMLName   xml.Name `json:"-"`
-	Paragraph []Paragraph
+	XMLName   xml.Name    `json:"-"`
+	Paragraph []Paragraph `json:"paragraphs,omitempty"`
 }
 
 type DynamicLabel struct {
@@ -155,20 +156,20 @@ type DynamicLabel struct {
 }
 
 type Footer struct {
-	XMLName   xml.Name `json:"-"`
-	Paragraph []Paragraph
+	XMLName   xml.Name    `json:"-"`
+	Paragraph []Paragraph `json:"paragraphs,omitempty"`
 }
 
 type Text struct {
 	XMLName        xml.Name `json:"-"`
-	AdornmentStyle string   `xml:",attr,omitempty"`
-	Background     string   `xml:",attr,omitempty"`
-	Color          string   `xml:",attr,omitempty"`
-	Font           string   `xml:",attr,omitempty"`
-	RevisionID     string   `xml:",attr,omitempty"`
-	Size           string   `xml:",attr,omitempty"`
-	Style          string   `xml:",attr,omitempty"`
-	InnerText      string   `xml:",chardata"`
+	AdornmentStyle string   `xml:",attr,omitempty" json:"adornment_type,omitempty"`
+	Background     string   `xml:",attr,omitempty" json:"background,omitempty"`
+	Color          string   `xml:",attr,omitempty" json:"color,omitempty"`
+	Font           string   `xml:",attr,omitempty" json:"font,omitempty"`
+	RevisionID     string   `xml:",attr,omitempty" json:"revision_id,omitempty"`
+	Size           string   `xml:",attr,omitempty" json:"size,omitempty"`
+	Style          string   `xml:",attr,omitempty" json:"style,omitempty"`
+	InnerText      string   `xml:",chardata" json:"text,omitempty"`
 }
 
 type TitlePage struct {
@@ -179,28 +180,28 @@ type TitlePage struct {
 
 type Revisions struct {
 	XMLName        xml.Name `json:"-"`
-	ActiveSet      string   `xml:",attr,omitempty"`
-	Location       string   `xml:",attr,omitempty"`
-	RevisionMode   string   `xml:",attr,omitempty"`
-	RevisionsShown string   `xml:",attr,omitempty"`
-	ShowAllMarks   string   `xml:",attr,omitempty"`
-	ShowAllSets    string   `xml:",attr,omitempty"`
+	ActiveSet      string   `xml:",attr,omitempty" json:"active_set,omitempty"`
+	Location       string   `xml:",attr,omitempty" json:"location,omitempty"`
+	RevisionMode   string   `xml:",attr,omitempty" json:"revision_mode,omitempty"`
+	RevisionsShown string   `xml:",attr,omitempty" json:"revisions_shown,omitempty"`
+	ShowAllMarks   string   `xml:",attr,omitempty" json:"show_all_marks,omitempty"`
+	ShowAllSets    string   `xml:",attr,omitempty" json:"show_all_sets,omitempty"`
 	Revision       []Revision
 }
 
 type Revision struct {
 	XMLName      xml.Name `json:"-"`
-	Color        string   `xml:",attr,omitempty"`
-	FullRevision string   `xml:",attr,omitempty"`
-	ID           string   `xml:",attr,omitempty"`
-	Mark         string   `xml:",attr,omitempty"`
-	Name         string   `xml:",attr,omitempty"`
-	Style        string   `xml:",attr,omitempty"`
+	Color        string   `xml:",attr,omitempty" json:"color,omitempty"`
+	FullRevision string   `xml:",attr,omitempty" json:"full_revision,omitempty"`
+	ID           string   `xml:",attr,omitempty" json:"id,omitempty"`
+	Mark         string   `xml:",attr,omitempty" json:"mark,omitempty"`
+	Name         string   `xml:",attr,omitempty" json:"name,omitempty"`
+	Style        string   `xml:",attr,omitempty" json:"style,omitempty"`
 }
 
 type ElementSettings struct {
 	XMLName       xml.Name `json:"-"`
-	Type          string   `xml:",attr,omitempty"`
+	Type          string   `xml:",attr,omitempty" json:"type,omitempty"`
 	FontSpec      *FontSpec
 	ParagraphSpec *ParagraphSpec
 	Behavior      *Behavior
@@ -208,32 +209,32 @@ type ElementSettings struct {
 
 type FontSpec struct {
 	XMLName        xml.Name `json:"-"`
-	AdornmentStyle string   `xml:",attr,omitempty"`
-	Background     string   `xml:",attr,omitempty"`
-	Color          string   `xml:",attr,omitempty"`
-	Font           string   `xml:",attr,omitempty"`
-	RevisionID     string   `xml:",attr,omitempty"`
-	Size           string   `xml:",attr,omitempty"`
-	Style          string   `xml:",attr,omitempty"`
+	AdornmentStyle string   `xml:",attr,omitempty" json:"adornment_style,omitempty"`
+	Background     string   `xml:",attr,omitempty" json:"background,omitempty"`
+	Color          string   `xml:",attr,omitempty" json:"color,omitempty"`
+	Font           string   `xml:",attr,omitempty" json:"font,omitempty"`
+	RevisionID     string   `xml:",attr,omitempty" json:"revision_id,omitempty"`
+	Size           string   `xml:",attr,omitempty" json:"size,omitempty"`
+	Style          string   `xml:",attr,omitempty" json:"style,omitempty"`
 }
 
 type ParagraphSpec struct {
 	XMLName       xml.Name `json:"-"`
-	Alignment     string   `xml:",attr,omitempty"`
-	FirstIndent   string   `xml:",attr,omitempty"`
-	Leading       string   `xml:",attr,omitempty"`
-	LeftIndent    string   `xml:",attr,omitempty"`
-	RightIndent   string   `xml:",attr,omitempty"`
-	SpaceBefore   string   `xml:",attr,omitempty"`
-	Spacing       string   `xml:",attr,omitempty"`
-	StartsNewPage string   `xml:",attr,omitempty"`
+	Alignment     string   `xml:",attr,omitempty" json:"alignment,omitempty"`
+	FirstIndent   string   `xml:",attr,omitempty" json:"first_indent,omitempty"`
+	Leading       string   `xml:",attr,omitempty" json:"leading,omitempty"`
+	LeftIndent    string   `xml:",attr,omitempty" json:"left_indent,omitempty"`
+	RightIndent   string   `xml:",attr,omitempty" json:"right_indent,omitempty"`
+	SpaceBefore   string   `xml:",attr,omitempty" json:"space_before,omitempty"`
+	Spacing       string   `xml:",attr,omitempty" json:"spacing,omitempty"`
+	StartsNewPage string   `xml:",attr,omitempty" json:"starts_new_page,omitempty"`
 }
 
 type Behavior struct {
 	XMLName    xml.Name `json:"-"`
-	PaginateAs string   `xml:",attr,omitempty"`
-	ReturnKey  string   `xml:",attr,omitempty"`
-	Shortcut   string   `xml:",attr,omitempty"`
+	PaginateAs string   `xml:",attr,omitempty" json:"paginate_as,omitempty"`
+	ReturnKey  string   `xml:",attr,omitempty" json:"return_key,omitempty"`
+	Shortcut   string   `xml:",attr,omitempty" json:"shortcut,omitempty"`
 }
 
 type SpellCheckIgnoreLists struct {
@@ -253,59 +254,59 @@ type IgnoredWords struct {
 
 type Word struct {
 	XMLName   xml.Name `json:"-"`
-	InnerText string   `xml:",chardata"`
+	InnerText string   `xml:",chardata" json:"text,omitempty"`
 }
 
 type PageLayout struct {
 	XMLName                           xml.Name `json:"-"`
-	BackgroundColor                   string   `xml:",attr,omitempty"`
-	BottomMargin                      string   `xml:",attr,omitempty"`
-	BreakDialogueAndActionAtSentences string   `xml:",attr,omitempty"`
-	DocumentLeading                   string   `xml:",attr,omitempty"`
-	FooterMargin                      string   `xml:",attr,omitempty"`
-	ForegroundColor                   string   `xml:",attr,omitempty"`
-	HeaderMargin                      string   `xml:",attr,omitempty"`
-	InvisiblesColor                   string   `xml:",attr,omitempty"`
-	TopMargin                         string   `xml:",attr,omitempty"`
-	UsesSmartQuotes                   string   `xml:",attr,omitempty"`
+	BackgroundColor                   string   `xml:",attr,omitempty" json:"background_color,omitempty"`
+	BottomMargin                      string   `xml:",attr,omitempty" json:"bottom_margin,omitempty"`
+	BreakDialogueAndActionAtSentences string   `xml:",attr,omitempty" json:"break_dialogue_and_action_at_sentences,omitempty"`
+	DocumentLeading                   string   `xml:",attr,omitempty" json:"document_leading,omitempty"`
+	FooterMargin                      string   `xml:",attr,omitempty" json:"footer_margin,omitempty"`
+	ForegroundColor                   string   `xml:",attr,omitempty" json:"foreground_color,omitempty"`
+	HeaderMargin                      string   `xml:",attr,omitempty" json:"header_margin,omitempty"`
+	InvisiblesColor                   string   `xml:",attr,omitempty" json:"invisible_colors,omitempty"`
+	TopMargin                         string   `xml:",attr,omitempty" json:"top_margin,omitempty"`
+	UsesSmartQuotes                   string   `xml:",attr,omitempty" json:"uses_smart_quotes,omitempty"`
 	AutoCastList                      *AutoCastList
 }
 
 type AutoCastList struct {
 	XMLName               xml.Name `json:"-"`
-	AddParentheses        string   `xml:",attr,omitempty"`
-	AutomaticallyGenerate string   `xml:",attr,omitempty"`
-	CastListElement       string   `xml:",attr,omitempty"`
+	AddParentheses        string   `xml:",attr,omitempty" json:"add_parentheses,omitempty"`
+	AutomaticallyGenerate string   `xml:",attr,omitempty" json:"automatically_generate,omitempty"`
+	CastListElement       string   `xml:",attr,omitempty" json:"cast_list_element,omitempty"`
 }
 
 type WindowState struct {
 	XMLName xml.Name `json:"-"`
-	Height  string   `xml:",attr,omitempty"`
-	Left    string   `xml:",attr,omitempty"`
-	Mode    string   `xml:",attr,omitempty"`
-	Top     string   `xml:",attr,omitempty"`
-	Width   string   `xml:",attr,omitempty"`
+	Height  string   `xml:",attr,omitempty" json:"height,omitempty"`
+	Left    string   `xml:",attr,omitempty" json:"left,omitempty"`
+	Mode    string   `xml:",attr,omitempty" json:"mode,omitempty"`
+	Top     string   `xml:",attr,omitempty" json:"top,omitempty"`
+	Width   string   `xml:",attr,omitempty" json:"width,omitempty"`
 }
 
 type TextState struct {
 	XMLName        xml.Name `json:"-"`
-	Scaling        string   `xml:",attr,omitempty"`
-	Selection      string   `xml:",attr,omitempty"`
-	ShowInvisibles string   `xml:",attr,omitempty"`
+	Scaling        string   `xml:",attr,omitempty" json:"scaling,omitempty"`
+	Selection      string   `xml:",attr,omitempty" json:"selection,omitempty"`
+	ShowInvisibles string   `xml:",attr,omitempty" json:"show_invisibles,omitempty"`
 }
 
 type ScriptNoteDefinitions struct {
 	XMLName              xml.Name `json:"-"`
-	Active               string   `xml:",attr,omitempty"`
+	Active               string   `xml:",attr,omitempty" json:"active,omitempty"`
 	ScriptNoteDefinition []*ScriptNoteDefinition
 }
 
 type ScriptNoteDefinition struct {
 	XMLName xml.Name `json:"-"`
-	Color   string   `xml:",attr,omitempty"`
-	ID      string   `xml:",attr,omitempty"`
-	Marker  string   `xml:",attr,omitempty"`
-	Name    string   `xml:",attr,omitempty"`
+	Color   string   `xml:",attr,omitempty" json:"color,omitempty"`
+	ID      string   `xml:",attr,omitempty" json:"id,omitempty"`
+	Marker  string   `xml:",attr,omitempty" json:"marker,omitempty"`
+	Name    string   `xml:",attr,omitempty" json:"name,omitempty"`
 }
 
 type SmartType struct {
@@ -325,7 +326,7 @@ type Characters struct {
 
 type Character struct {
 	XMLName   xml.Name `json:"-"`
-	InnerText string   `xml:",chardata"`
+	InnerText string   `xml:",chardata" json:"text,omitempty"`
 }
 
 type Extensions struct {
@@ -335,7 +336,7 @@ type Extensions struct {
 
 type Extension struct {
 	XMLName   xml.Name `json:"-"`
-	InnerText string   `xml:",chardata"`
+	InnerText string   `xml:",chardata" json:"text,omitempty"`
 }
 
 type SceneIntros struct {
@@ -345,7 +346,7 @@ type SceneIntros struct {
 
 type SceneIntro struct {
 	XMLName   xml.Name `json:"-"`
-	InnerText string   `xml:",chardata"`
+	InnerText string   `xml:",chardata" json:"text,omitempty"`
 }
 
 type Locations struct {
@@ -355,18 +356,18 @@ type Locations struct {
 
 type Location struct {
 	XMLName   xml.Name `json:"-"`
-	InnerText string   `xml:",chardata"`
+	InnerText string   `xml:",chardata" json:"text,omitempty"`
 }
 
 type TimesOfDay struct {
 	XMLName   xml.Name `json:"-"`
-	Separator string   `xml:",attr,omitempty"`
+	Separator string   `xml:",attr,omitempty" json:"times_of_day,omitempty"`
 	TimeOfDay []*TimeOfDay
 }
 
 type TimeOfDay struct {
 	XMLName   xml.Name `json:"-"`
-	InnerText string   `xml:",chardata"`
+	InnerText string   `xml:",chardata" json:"text,omitempty"`
 }
 
 type Transitions struct {
@@ -376,7 +377,7 @@ type Transitions struct {
 
 type Transition struct {
 	XMLName   xml.Name `json:"-"`
-	InnerText string   `xml:",chardata"`
+	InnerText string   `xml:",chardata" json:"text,omitempty"`
 }
 
 type MoresAndContinueds struct {
@@ -388,19 +389,19 @@ type MoresAndContinueds struct {
 
 type DialogueBreaks struct {
 	XMLNAme        xml.Name `json:"-"`
-	BottomOfPage   string   `xml:",attr,omitempty"`
-	DialogueBottom string   `xml:",attr,omitempty"`
-	DialogueTop    string   `xml:",attr,omitempty"`
-	TopOfNext      string   `xml:",attr,omitempty"`
+	BottomOfPage   string   `xml:",attr,omitempty" json:"bottom_of_page,omitempty"`
+	DialogueBottom string   `xml:",attr,omitempty" json:"dialogue_bottom,omitempty"`
+	DialogueTop    string   `xml:",attr,omitempty" json:"dialogue_top,omitempty"`
+	TopOfNext      string   `xml:",attr,omitempty" json:"top_of_next,omitempty"`
 }
 
 type SceneBreaks struct {
 	XMLName           xml.Name `json:"-"`
-	ContinuedNumber   string   `xml:",attr,omitempty"`
-	SceneBottom       string   `xml:",attr,omitempty"`
-	SceneBottomOfPage string   `xml:",attr,omitempty"`
-	SceneTop          string   `xml:",attr,omitempty"`
-	SceneTopOfNext    string   `xml:",attr,omitempty"`
+	ContinuedNumber   string   `xml:",attr,omitempty" json:"continued_number,omitempty"`
+	SceneBottom       string   `xml:",attr,omitempty" json:"scene_bottom,omitempty"`
+	SceneBottomOfPage string   `xml:",attr,omitempty" json:"scene_bottom_of_page,omitempty"`
+	SceneTop          string   `xml:",attr,omitempty" json:"scene_top,omitempty"`
+	SceneTopOfNext    string   `xml:",attr,omitempty" json:"scene_top_of_next,omitempty"`
 }
 
 type LockedPages struct {
@@ -414,27 +415,27 @@ type Macros struct {
 
 type Macro struct {
 	XMLName    xml.Name `json:"-"`
-	Element    string   `xml:",attr,omitempty"`
-	Name       string   `xml:",attr,omitempty"`
-	Shortcut   string   `xml:",attr,omitempty"`
-	Text       string   `xml:",attr,omitempty"`
-	Transition string   `xml:",attr,omitempty"`
+	Element    string   `xml:",attr,omitempty" json:"element,omitempty"`
+	Name       string   `xml:",attr,omitempty" json:"name,omitempty"`
+	Shortcut   string   `xml:",attr,omitempty" json:"shortcut,omitempty"`
+	Text       string   `xml:",attr,omitempty" json:"text,omitempty"`
+	Transition string   `xml:",attr,omitempty" json:"transition,omitempty"`
 	Alias      []*Alias
 }
 
 type Alias struct {
 	XMLName      xml.Name `json:"-"`
-	Confirm      string   `xml:",attr,omitempty"`
-	MatchCase    string   `xml:",attr,omitempty"`
-	SmartReplace string   `xml:",attr,omitempty"`
-	Text         string   `xml:",attr,omitempty"`
-	WordOnly     string   `xml:",attr,omitempty"`
+	Confirm      string   `xml:",attr,omitempty" json:"confirm,omitempty"`
+	MatchCase    string   `xml:",attr,omitempty" json:"match_case,omitempty"`
+	SmartReplace string   `xml:",attr,omitempty" json:"smart_replace,omitempty"`
+	Text         string   `xml:",attr,omitempty" json:"text,omitempty"`
+	WordOnly     string   `xml:",attr,omitempty" json:"word_only,omitempty"`
 	ActivateIn   []*ActivateIn
 }
 
 type ActivateIn struct {
 	XMLName xml.Name `json:"-"`
-	Element string   `xml:",attr,omitempty"`
+	Element string   `xml:",attr,omitempty" json:"element,omitempty"`
 }
 
 type Actors struct {
@@ -444,11 +445,11 @@ type Actors struct {
 
 type Actor struct {
 	XMLName  xml.Name `json:"-"`
-	MacVoice string   `xml:",attr,omitempty"`
-	Name     string   `xml:",attr,omitempty"`
-	Pitch    string   `xml:",attr,omitempty"`
-	Speed    string   `xml:",attr,omitempty"`
-	WinVoice string   `xml:",attr,omitempty"`
+	MacVoice string   `xml:",attr,omitempty" json:"mac_voice,omitempty"`
+	Name     string   `xml:",attr,omitempty" json:"name,omitempty"`
+	Pitch    string   `xml:",attr,omitempty" json:"pitch,omitempty"`
+	Speed    string   `xml:",attr,omitempty" json:"speed,omitempty"`
+	WinVoice string   `xml:",attr,omitempty" json:"win_voice,omitempty"`
 }
 
 type Cast struct {
@@ -464,35 +465,35 @@ type Narrator struct {
 
 type Element struct {
 	XMLName xml.Name `json:"-"`
-	Type    string   `xml:",attr,omitempty"`
+	Type    string   `xml:",attr,omitempty" json:"type,omitempty"`
 }
 
 type Member struct {
 	XMLName   xml.Name `json:"-"`
-	Actor     string   `xml:",attr,omitempty"`
-	Character string   `xml:",attr,omitempty"`
+	Actor     string   `xml:",attr,omitempty" json:"actor,omitempty"`
+	Character string   `xml:",attr,omitempty" json:"character,omitempty"`
 }
 
 type SplitState struct {
 	XMLName          xml.Name `json:"-"`
-	ActivePanel      string   `xml:",attr,omitempty"`
-	SplitMode        string   `xml:",attr,omitempty"`
-	SplitterPosition string   `xml:",attr,omitempty"`
+	ActivePanel      string   `xml:",attr,omitempty" json:"active_panel,omitempty"`
+	SplitMode        string   `xml:",attr,omitempty" json:"split_mode,omitempty"`
+	SplitterPosition string   `xml:",attr,omitempty" json:"splitter_position,omitempty"`
 	ScriptPanel      *ScriptPanel
 }
 
 type ScriptPanel struct {
 	XMLName     xml.Name `json:"-"`
-	DisplayMode string   `xml:",attr,omitempty"`
+	DisplayMode string   `xml:",attr,omitempty" json:"display_mode,omitempty"`
 	FontSpec    *FontSpec
 }
 
 type SceneNumberOptions struct {
 	XMLName            xml.Name `json:"-"`
-	LeftLocation       string   `xml:",attr,omitempty"`
-	RightLocation      string   `xml:",attr,omitempty"`
-	ShowNumbersOnLeft  string   `xml:",attr,omitempty"`
-	ShowNumbersOnRight string   `xml:",attr,omitempty"`
+	LeftLocation       string   `xml:",attr,omitempty" json:"left_location,omitempty"`
+	RightLocation      string   `xml:",attr,omitempty" json:"right_location,omitempty"`
+	ShowNumbersOnLeft  string   `xml:",attr,omitempty" json:"show_numbers_on_left,omitempty"`
+	ShowNumbersOnRight string   `xml:",attr,omitempty" json:"show_numbers_on_right,omitempty"`
 	FontSpec           *FontSpec
 }
 

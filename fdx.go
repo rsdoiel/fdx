@@ -32,6 +32,7 @@
 package fdx
 
 import (
+	"bytes"
 	"encoding/xml"
 	"io/ioutil"
 	"strings"
@@ -497,6 +498,14 @@ type SceneNumberOptions struct {
 	FontSpec           *FontSpec
 }
 
+// NewFinalDraft returns a new FinalDraft struct
+func NewFinalDraft() *FinalDraft {
+	document := new(FinalDraft)
+	document.DocumentType = "Script"
+	document.Version = "1"
+	return document
+}
+
 // String (of Text) returns plain text in the Fountain format for a single text element
 func (text *Text) String() string {
 	if text != nil {
@@ -655,4 +664,41 @@ func ParseFile(fname string) (*FinalDraft, error) {
 		return nil, err
 	}
 	return Parse(src)
+}
+
+// CleanupSelfClosingElements changes something like <styles></styles> to <styles/>
+func CleanupSelfClosingElements(src []byte) []byte {
+	selfClosing := []string{
+		"SceneProperties",
+		"Member",
+		"FontSpec",
+		"DynamicLabel",
+		"IgnoredRanges",
+		"AutoCastList",
+		"WindowState",
+		"TextState",
+		"ParagraphSpec",
+		"Behavior",
+		"ScriptNoteDefinition",
+		"DialogueBreaks",
+		"SceneBreaks",
+		"LockedPages",
+		"Revision",
+		"ActivateIn",
+		"Actor",
+		"Element",
+	}
+	for _, elem := range selfClosing {
+		src = bytes.Replace(src, []byte("></"+elem+">"), []byte("/>"), -1)
+	}
+	return src
+}
+
+// ToXML takes an FinalDraft struct and renders the XML
+func (document *FinalDraft) ToXML() ([]byte, error) {
+	src, err := xml.MarshalIndent(document, " ", "    ")
+	if err != nil {
+		return nil, err
+	}
+	return CleanupSelfClosingElements(src), nil
 }

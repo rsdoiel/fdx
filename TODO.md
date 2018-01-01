@@ -5,6 +5,9 @@
 
 ## Next
 
++ [ ] Review XML output from ToXML() after a FromFountain() call, see where I need to add mapping for Text elements and embedded styling
++ [ ] validate that I am producing fdx files that Final Draft, FadeIn and Trelby can read
+
 ## Someday, Maybe
 
 + [ ] Left/Right alignment should be respected based based on Paragraph Type

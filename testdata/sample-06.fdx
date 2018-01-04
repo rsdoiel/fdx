@@ -2,31 +2,87 @@
 <FinalDraft DocumentType="Script" Template="No" Version="3">
 
   <Content>
-    <Paragraph Type="Action">
-      <Text>FADE IN:</Text>
-    </Paragraph>
     <Paragraph Type="Scene Heading">
       <SceneProperties Length="2/8" Page="1" Title="">
         <SceneArcBeats>
-          <CharacterArcBeat Name="PROGRAMMER"></CharacterArcBeat>
+          <CharacterArcBeat Name="AUTHOR"></CharacterArcBeat>
         </SceneArcBeats>
       </SceneProperties>
-      <Text>EXT. LIBRARY - DAY</Text>
+      <Text>INT. STUDIO APARTMENT - NIGHT</Text>
     </Paragraph>
     <Paragraph Type="Action">
-      <Text>A PROGRAMMER typing at an old laptop</Text>
+      <Text>The AUTHOR sits at a desk.</Text>
     </Paragraph>
     <Paragraph Type="Character">
-      <Text>PROGRAMMER</Text>
+      <Text>AUTHOR</Text>
     </Paragraph>
     <Paragraph Type="Parenthetical">
-      <Text>(excited)</Text>
+      <Text>(anguished)</Text>
     </Paragraph>
     <Paragraph Type="Dialogue">
-      <Text>Eureka!</Text>
+      <Text>Writers block again!</Text>
+    </Paragraph>
+    <Paragraph Type="Transition">
+      <Text>DISSOLVES TO:</Text>
+    </Paragraph>
+    <Paragraph Type="Scene Heading">
+      <SceneProperties Length="3/8" Page="1" Title="">
+        <SceneArcBeats>
+          <CharacterArcBeat Name="AUTHOR"></CharacterArcBeat>
+          <CharacterArcBeat Name="DOG"></CharacterArcBeat>
+        </SceneArcBeats>
+      </SceneProperties>
+      <Text>EXT. PARK - DAY</Text>
+    </Paragraph>
+    <Paragraph Type="Action">
+      <Text>Author is jogging. DOG runs up to her and speaks in a human voice.</Text>
+    </Paragraph>
+    <Paragraph Type="Character">
+      <Text>DOG</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue">
+      <Text>Bark! Bark! Roof! Your not blocked. You're trying to write the story from the wrong character's viewpoint.</Text>
+    </Paragraph>
+    <Paragraph Type="Character">
+      <Text>AUTHOR</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical">
+      <Text>(disbelief)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue">
+      <Text>But you spoke?</Text>
+    </Paragraph>
+    <Paragraph Type="Character">
+      <Text>DOG</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue">
+      <Text>That goes without saying, better run along before you loose your cardio moment.</Text>
+    </Paragraph>
+    <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.25" RightIndent="7.25" SpaceBefore="24" Spacing="1" StartsNewPage="Yes" Type="Scene Heading">
+      <SceneProperties Length="2/8" Page="2" Title="">
+        <SceneArcBeats>
+          <CharacterArcBeat Name="AUTHOR"></CharacterArcBeat>
+        </SceneArcBeats>
+      </SceneProperties>
+      <Text>INT. STUDIO APARTMENT - NEXT DAY</Text>
+    </Paragraph>
+    <Paragraph Type="Action">
+      <Text>The author is sprawled on the couch.</Text>
+    </Paragraph>
+    <Paragraph Type="Character">
+      <Text>AUTHOR</Text>
+    </Paragraph>
+    <Paragraph Type="Parenthetical">
+      <Text>(refreshed)</Text>
+    </Paragraph>
+    <Paragraph Type="Dialogue">
+      <Text>Shall we try?</Text>
     </Paragraph>
     <Paragraph Type="Transition">
       <Text>FADE TO BLACK.</Text>
+    </Paragraph>
+    <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.25" RightIndent="7.25" SpaceBefore="12" Spacing="1" StartsNewPage="No" Type="Action">
+      <Text>THE END.</Text>
     </Paragraph>
     <Paragraph Type="General">
       <Text></Text>
@@ -194,7 +250,7 @@
         <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""></Text>
       </Paragraph>
       <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.25" RightIndent="7.25" SpaceBefore="0" Spacing="1" StartsNewPage="No">
-        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="Underline">TITLE</Text>
+        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="Underline">SAMPLE 06</Text>
       </Paragraph>
       <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.25" RightIndent="7.25" SpaceBefore="0" Spacing="1" StartsNewPage="No">
         <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""></Text>
@@ -212,7 +268,7 @@
         <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""></Text>
       </Paragraph>
       <Paragraph Alignment="Center" FirstIndent="0.00" Leading="Regular" LeftIndent="1.25" RightIndent="7.25" SpaceBefore="0" Spacing="1" StartsNewPage="No">
-        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">Author's Name</Text>
+        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">Jane Doe</Text>
       </Paragraph>
       <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.25" RightIndent="7.25" SpaceBefore="0" Spacing="1" StartsNewPage="No">
         <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""></Text>
@@ -281,15 +337,17 @@
         <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""></Text>
       </Paragraph>
       <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.25" RightIndent="7.25" SpaceBefore="0" Spacing="1" StartsNewPage="No">
-        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">Draft
-information</Text>
+        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">2018-01-01</Text>
       </Paragraph>
       <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.25" RightIndent="7.25" SpaceBefore="0" Spacing="1" StartsNewPage="No">
         <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style=""></Text>
       </Paragraph>
       <Paragraph Alignment="Left" FirstIndent="0.00" Leading="Regular" LeftIndent="1.25" RightIndent="7.25" SpaceBefore="0" Spacing="1" StartsNewPage="No">
-        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">Contact
-information</Text>
+        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">ACME Examples Production
+1234 5th Avenue
+</Text>
+        <Text AdornmentStyle="-1" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">Anytown</Text>
+        <Text AdornmentStyle="0" Background="#FFFFFFFFFFFF" Color="#000000000000" Font="Courier Final Draft" RevisionID="0" Size="12" Style="">, Planet Earth, 012345-1234</Text>
       </Paragraph>
     </Content>
     <TextState Scaling="100" Selection="0,0" ShowInvisibles="No"/>
@@ -299,7 +357,8 @@ information</Text>
 
   <SmartType>
     <Characters>
-      <Character>PROGRAMMER</Character>
+      <Character>AUTHOR</Character>
+      <Character>DOG</Character>
     </Characters>
     <Extensions>
       <Extension>(V.O.)</Extension>
@@ -313,7 +372,8 @@ information</Text>
       <SceneIntro>INT./EXT.</SceneIntro>
     </SceneIntros>
     <Locations>
-      <Location>LIBRARY</Location>
+      <Location>STUDIO APARTMENT</Location>
+      <Location>PARK</Location>
     </Locations>
     <TimesOfDay Separator="">
       <TimeOfDay>DAY</TimeOfDay>
@@ -626,7 +686,8 @@ information</Text>
       <Element Type="Character"/>
       <Element Type="Dialogue"/>
     </Narrator>
-    <Member Actor="Man 1" Character="PROGRAMMER"/>
+    <Member Actor="Man 1" Character="AUTHOR"/>
+    <Member Actor="Man 1" Character="DOG"/>
   </Cast>
 
   <SceneNumberOptions LeftLocation="0.75" NumberScheme="1A" RightLocation="7.38" ShowNumbersOnLeft="Yes" ShowNumbersOnRight="Yes">
@@ -638,7 +699,8 @@ information</Text>
   </CastList>
 
   <CharacterHighlighting>
-    <Character Color="#FFFFFFFFFFFF" Name="PROGRAMMER" Visible="No"/>
+    <Character Color="#FFFFFFFFFFFF" Name="AUTHOR" Visible="No"/>
+    <Character Color="#FFFFFFFFFFFF" Name="DOG" Visible="No"/>
   </CharacterHighlighting>
 
   <CharacterNavigatorPreferences IsSortAscending="Yes" SortColumn=""/>
@@ -650,8 +712,8 @@ information</Text>
   <ListItems/>
 
   <DisplayBoards>
-    <DisplayBoard Height="55" ScrollOrigin="0,0" Type="StoryMap" Width="2032" ZoomLevel="100.000"/>
     <DisplayBoard Height="10000" ScrollOrigin="0,0" Type="Beat" Width="24000" ZoomLevel="100.000"/>
+    <DisplayBoard Height="55" ScrollOrigin="0,0" Type="StoryMap" Width="2032" ZoomLevel="100.000"/>
   </DisplayBoards>
 
 </FinalDraft>

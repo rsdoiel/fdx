@@ -10,6 +10,7 @@
 
 ## Someday, Maybe
 
++ [ ] Write and fdx2html using [scrippets](https://fountain.io/scrippets) approach
 + [ ] Left/Right alignment should be respected based based on Paragraph Type
 + [ ] Plaintext formatting needs to be pickup and respected from whole FinalDraft document (e.g. respect definitions, Layout, etc)
 + [ ] Screen Headers and Footers can have Text, Dynamic, SceneProperties in any order, right now converting back to XML renders them in fixed order because they are ignored when rendering and plaintext

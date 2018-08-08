@@ -31,14 +31,15 @@ Or alternatively
 `
 
 	// Standard Options
-	showHelp             bool
-	showLicense          bool
-	showVersion          bool
-	generateMarkdownDocs bool
-	newLine              bool
-	quiet                bool
-	inputFName           string
-	outputFName          string
+	showHelp         bool
+	showLicense      bool
+	showVersion      bool
+	generateMarkdown bool
+	generateManPage  bool
+	newLine          bool
+	quiet            bool
+	inputFName       string
+	outputFName      string
 )
 
 func main() {
@@ -52,7 +53,8 @@ func main() {
 	app.BoolVar(&showHelp, "h,help", false, "display help")
 	app.BoolVar(&showLicense, "l,license", false, "display license")
 	app.BoolVar(&showVersion, "v,version", false, "display version")
-	app.BoolVar(&generateMarkdownDocs, "generate-markdown-docs", false, "generate Markdown documentation")
+	app.BoolVar(&generateMarkdown, "generate-markdown", false, "generate Markdown documentation")
+	app.BoolVar(&generateManPage, "generate-manpage", false, "generate man page")
 	app.BoolVar(&newLine, "nl,newline", true, "add a trailing newline")
 	app.BoolVar(&quiet, "quiet", false, "suppress error messages")
 	app.StringVar(&inputFName, "i,input", "", "set the input filename")
@@ -73,8 +75,12 @@ func main() {
 	defer cli.CloseFile(outputFName, app.Out)
 
 	// Process options
-	if generateMarkdownDocs {
-		app.GenerateMarkdownDocs(app.Out)
+	if generateMarkdown {
+		app.GenerateMarkdown(app.Out)
+		os.Exit(0)
+	}
+	if generateManPage {
+		app.GenerateManPage(app.Out)
 		os.Exit(0)
 	}
 	if showHelp {

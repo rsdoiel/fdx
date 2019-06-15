@@ -74,7 +74,6 @@ distribute_docs:
 	mkdir -p dist
 	cp -v README.md dist/
 	cp -v LICENSE dist/
-	cp -v INSTALL.md dist/
 
 release: distribute_docs dist/linux-amd64 dist/windows-amd64 dist/macosx-amd64 dist/raspbian-arm7 dist/linux-arm64
 

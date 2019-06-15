@@ -22,14 +22,10 @@
     "keywords": [
         "Github",
         "text markup",
-        "golang",
-        "python",
-        "timesheet"
+        "screen play"
     ],
     "maintainer": "https://orcid.org/0000-0003-0900-6903",
     "programmingLanguage": [
-        "Go",
-        "Python",
-        "Julia"
+        "Go"
     ]
 }

@@ -1,0 +1,35 @@
+{
+    "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+    "@type": "SoftwareSourceCode",
+    "description": "A library and command line program for working with fdx XML files used by Screen Writing software.",
+    "name": "fdx",
+    "codeRepository": "https://github.com/rsdoiel/fdx",
+    "issueTracker": "https://github.com/rsdoiel/fdx/issues",
+    "license": "https://rsdoiel.github.io/fdx/license.html",
+    "version": "0.0.7",
+    "author": [
+        {
+            "@type": "Person",
+            "givenName": "Robert",
+            "familyName": "Doiel",
+            "affiliation": "Caltech Library",
+            "email": "rsdoiel@gmail.com",
+            "@id": "https://orcid.org/0000-0003-0900-6903"
+        }
+    ],
+    "developmentStatus": "active",
+    "downloadUrl": "https://github.com/rsdoiel/fdx/archive/v0.0.1.zip",
+    "keywords": [
+        "Github",
+        "text markup",
+        "golang",
+        "python",
+        "timesheet"
+    ],
+    "maintainer": "https://orcid.org/0000-0003-0900-6903",
+    "programmingLanguage": [
+        "Go",
+        "Python",
+        "Julia"
+    ]
+}

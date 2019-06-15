@@ -5,7 +5,7 @@
 //
 // BSD 2-Clause License
 //
-// Copyright (c) 2017, R. S. Doiel
+// Copyright (c) 2019, R. S. Doiel
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,7 @@ import (
 )
 
 const (
-	Version   = `v0.0.0-dev`
+	Version   = `v0.0.1`
 	DocString = `<?xml version="1.0" encoding="UTF-8" standalone="no" ?>`
 
 	// Style

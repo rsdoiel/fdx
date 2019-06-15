@@ -39,7 +39,7 @@ dist/linux-amd64:
 	mkdir -p dist/bin
 	env GOOS=linux GOARCH=amd64 go build -o dist/bin/fdx2txt cmd/fdx2txt/fdx2txt.go
 	env GOOS=linux GOARCH=amd64 go build -o dist/bin/txt2fdx cmd/txt2fdx/txt2fdx.go
-	cd dist && zip -r $(PROJECT)-$(VERSION)-linix-amd64.zip README.md LICENSE INSTSALL.md bin/*
+	cd dist && zip -r $(PROJECT)-$(VERSION)-linux-amd64.zip README.md LICENSE INSTSALL.md bin/*
 	rm -fR dist/bin
 
 dist/windows-amd64:
@@ -51,22 +51,22 @@ dist/windows-amd64:
 
 dist/macosx-amd64:
 	mkdir -p dist/bin
-	env GOOS=darwin GOARCH=amd64 go build -o dist/bin/fdx2txt.exe cmd/fdx2txt/fdx2txt.go
-	env GOOS=darwin GOARCH=amd64 go build -o dist/bin/txt2fdx.exe cmd/txt2fdx/txt2fdx.go
+	env GOOS=darwin GOARCH=amd64 go build -o dist/bin/fdx2txt cmd/fdx2txt/fdx2txt.go
+	env GOOS=darwin GOARCH=amd64 go build -o dist/bin/txt2fdx cmd/txt2fdx/txt2fdx.go
 	cd dist && zip -r $(PROJECT)-$(VERSION)-macosx-amd64.zip README.md LICENSE INSTSALL.md bin/*
 	rm -fR dist/bin
 
 dist/raspbian-arm7:
 	mkdir -p dist/bin
-	env GOOS=linux GOARCH=arm GOARM=7 go build -o dist/bin/fdx2txt.exe cmd/fdx2txt/fdx2txt.go
-	env GOOS=linux GOARCH=arm GOARM=7 go build -o dist/bin/txt2fdx.exe cmd/txt2fdx/txt2fdx.go
+	env GOOS=linux GOARCH=arm GOARM=7 go build -o dist/bin/fdx2txt cmd/fdx2txt/fdx2txt.go
+	env GOOS=linux GOARCH=arm GOARM=7 go build -o dist/bin/txt2fdx cmd/txt2fdx/txt2fdx.go
 	cd dist && zip -r $(PROJECT)-$(VERSION)-raspbian-arm7.zip README.md LICENSE INSTSALL.md bin/*
 	rm -fR dist/bin
 
 dist/linux-arm64:
 	mkdir -p dist/bin
-	env GOOS=linux GOARCH=arm64 go build -o dist/bin/fdx2txt.exe cmd/fdx2txt/fdx2txt.go
-	env GOOS=linux GOARCH=arm64 go build -o dist/bin/txt2fdx.exe cmd/txt2fdx/txt2fdx.go
+	env GOOS=linux GOARCH=arm64 go build -o dist/bin/fdx2txt cmd/fdx2txt/fdx2txt.go
+	env GOOS=linux GOARCH=arm64 go build -o dist/bin/txt2fdx cmd/txt2fdx/txt2fdx.go
 	cd dist && zip -r $(PROJECT)-$(VERSION)-linux-arm64.zip README.md LICENSE INSTSALL.md bin/*
 	rm -fR dist/bin
 

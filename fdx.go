@@ -696,7 +696,7 @@ func CleanupSelfClosingElements(src []byte) []byte {
 
 // ToXML takes an FinalDraft struct and renders the XML
 func (document *FinalDraft) ToXML() ([]byte, error) {
-	src, err := xml.MarshalIndent(document, " ", "    ")
+	src, err := xml.MarshalIndent(document, "", "    ")
 	if err != nil {
 		return nil, err
 	}

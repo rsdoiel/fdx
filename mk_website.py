@@ -50,11 +50,13 @@ def frontmatter(input_filename):
         if err != '':
             print("{} error: {}".format(' '.join(cmd[0:3]), err))
         out = proc.stdout.read().strip().decode('utf-8')
+        if not isinstance(out, str):
+            out = out.encode('utf-8')
         if (out.startswith("{") and out.endswith("}")) or (out.startswith("[") and out.endswith("]")):
             try:
-                result = json.loads(out.encode('utf-8'))
+                result = json.loads(out) #.encode('utf-8'))
             except Exception as e:
-                print("Warning {} has invalid metadata".format(input_filename))
+                print("Warning {} has invalid metadata {}".format(input_filename, e))
                 sys.exit(1)
             return result
         elif out != "":

@@ -4,6 +4,14 @@
 *.so
 *.dylib
 
+# Ignore test data files retrieved from Fountain website.
+testdata/Big%20Fish.fountain
+testdata/Big%20Fish.pdf
+testdata/Brick%20&%20Steel.fountain
+testdata/Brick%20&%20Steel.pdf
+testdata/The%20Last%20Birthday%20Card.fountain
+testdata/The%20Last%20Birthday%20Card.pdf
+
 # Test binary, build with `go test -c`
 *.test
 

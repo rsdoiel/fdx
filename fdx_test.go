@@ -91,17 +91,21 @@ func TestTitlePageToString(t *testing.T) {
 		"sample-02.fdx",
 	}
 	for _, fname := range noTitlePages {
-		src, err := ioutil.ReadFile(path.Join("testdata", fname))
+		fullName := path.Join("testdata", fname)
+		src, err := ioutil.ReadFile(fullName)
 		if err != nil {
 			t.Errorf("%s", err)
 		} else {
-			screenplay := new(FinalDraft)
+			screenplay := &FinalDraft{}
 			if err := xml.Unmarshal(src, &screenplay); err != nil {
-				t.Errorf("Can't Unmarshal %s, %s", fname, err)
+				t.Errorf("Can't Unmarshal %s, %s", fullName, err)
 			} else {
 				if screenplay.TitlePage != nil {
 					page := screenplay.TitlePage.String()
-					t.Errorf("was expecting an nil TitlePage, got %q\n", page)
+					if len(page) > 0 {
+						t.Errorf("was expecting an nil TitlePage in %q, got %q\n", fullName, page)
+						//fmt.Printf("DEBUG src %q\n\n%s\n", fullName, src)
+					}
 				}
 			}
 		}

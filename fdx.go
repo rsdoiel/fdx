@@ -609,7 +609,7 @@ func (c *Content) String() string {
 
 // String (of TitlePage) returns a plain text in Fountain format (unfielded) for TitlePage
 func (tp *TitlePage) String() string {
-	if tp != nil && tp.Content != nil && len(tp.Content.Paragraph) > 0 {
+	if tp != nil && tp.Content != nil {
 		// Move through Title Page content and render the plain text.
 		return tp.Content.String()
 	}

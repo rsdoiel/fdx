@@ -8,7 +8,7 @@ authors:
 abstract: A library and command line program for working with fdx XML files used by Screen Writing software.
 repository-code: "https://github.com/rsdoiel/fdx"
 type: software
-version: 0.0.3
+version: 0.0.4
 license-url: "https://rsdoiel.github.io/fdx/license.html"
 keywords:
   - Github

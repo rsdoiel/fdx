@@ -33,7 +33,7 @@ endif
 
 DIST_FOLDERS = bin/*
 
-build: version.go $(PROGRAMS) CITATION.cff about.md
+build: version.go $(PROGRAMS) CITATION.cff about.md man
 
 version.go: .FORCE
 	@echo "package $(PROJECT)" >version.go

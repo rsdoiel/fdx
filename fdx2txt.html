@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="EN">
+  <title>R. S. Doiel, Software Engineer/Analyst - fdx2txt(1) fdx2txt user manual</title>
+
+  <link rel="stylesheet" type="text/css"  href="/printfonts/print.css" media="print" />
+  <link rel="stylesheet" type="text/css"  href="/webfonts/fonts.css" media="screen" />
+  <link rel="stylesheet" type="text/css"  href="/css/site.css" media="screen" />
+  <link title="RSS feed for rsdoiel's blog" rel="alternate" type="application/rss+xml" href="https://rsdoiel.github.io/rss.xml" />
+  <link title="markdown source for page" rel="alternative" type="application/markdown" href="docs/fdx2txt.md">
+</head>
+<body>
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="./">README</a></li>
+<li><a href="user-manual.html">User Manual</a></li>
+<li><a href="license.html">LICENSE</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="https://github.com/rsdoiel/pdtk">GitHub</a></li>
+</ul>
+</nav>
+
+<section>
+<!--  <h1>fdx2txt(1) fdx2txt user manual</h1> -->
+
+<h1 id="name">NAME</h1>
+<p>fdx2txt</p>
+<h1 id="synopsis">SYNOPSIS</h1>
+<p>fdx2txt <a href="#options">OPTIONS</a></p>
+<h1 id="description">DESCRIPTION</h1>
+<p>fdx2txt is a command line program that reads an fdx file and returns plain text</p>
+<h2 id="options">OPTIONS</h2>
+<dl>
+<dt>-help</dt>
+<dd>display help
+</dd>
+<dt>-i, -input</dt>
+<dd>set the input filename
+</dd>
+<dt>-l, -license</dt>
+<dd>display license
+</dd>
+<dt>-nl, -newline</dt>
+<dd>add a trailing newline
+</dd>
+<dt>-o, -output</dt>
+<dd>set the output filename
+</dd>
+<dt>-quiet</dt>
+<dd>suppress error messages
+</dd>
+<dt>-v, -version</dt>
+<dd>display version
+</dd>
+</dl>
+<h1 id="examples">EXAMPLES</h1>
+<p>Cervert <em>screenplay.fdx</em> into <em>screenplay.txt</em>.</p>
+<pre class="shell"><code>    fdx2txt -i screenplay.fdx -o screenplay.txt</code></pre>
+<p>Or alternatively</p>
+<pre class="shell"><code>    cat screenplay.fdx | fdx2txt &gt; screenplay.txt</code></pre>
+</section>
+
+<footer>
+</footer>
+
+</body>
+</html>

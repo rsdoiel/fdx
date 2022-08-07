@@ -1,89 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>…</title>
-    <link href="/css/site.css" rel="stylesheet" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="EN">
+  <title>R. S. Doiel, Software Engineer/Analyst - TODO</title>
+
+  <link rel="stylesheet" type="text/css"  href="/printfonts/print.css" media="print" />
+  <link rel="stylesheet" type="text/css"  href="/webfonts/fonts.css" media="screen" />
+  <link rel="stylesheet" type="text/css"  href="/css/site.css" media="screen" />
+  <link title="RSS feed for rsdoiel's blog" rel="alternate" type="application/rss+xml" href="https://rsdoiel.github.io/rss.xml" />
+  <link title="markdown source for page" rel="alternative" type="application/markdown" href="TODO.md">
 </head>
 <body>
-<header>
-…
-</header>
-<section>
-<h1 id="action-items">
-Action Items
-</h1>
-<h2 id="bugs">
-Bugs
-</h2>
-<h2 id="next">
-Next
-</h2>
-<ul class="task-list">
-<li>
-<input type="checkbox" disabled="" /> Review XML output from ToXML() after a FromFountain() call, see where I need to add mapping for Text elements and embedded styling
-</li>
-<li>
-<input type="checkbox" disabled="" /> validate that I am producing fdx files that Final Draft, FadeIn and Trelby can read
-</li>
-</ul>
-<h2 id="someday-maybe">
-Someday, Maybe
-</h2>
-<ul class="task-list">
-<li>
-<input type="checkbox" disabled="" /> Write and fdx2html using <a href="https://fountain.io/scrippets">scrippets</a> approach
-</li>
-<li>
-<input type="checkbox" disabled="" /> Left/Right alignment should be respected based based on Paragraph Type
-</li>
-<li>
-<input type="checkbox" disabled="" /> Plaintext formatting needs to be pickup and respected from whole FinalDraft document (e.g. respect definitions, Layout, etc)
-</li>
-<li>
-<input type="checkbox" disabled="" /> Screen Headers and Footers can have Text, Dynamic, SceneProperties in any order, right now converting back to XML renders them in fixed order because they are ignored when rendering and plaintext
-</li>
-</ul>
-<h2 id="completed">
-Completed
-</h2>
-<ul class="task-list">
-<li>
-<input type="checkbox" disabled="" checked="" /> Add ParseFile() to fdx.go
-</li>
-<li>
-<input type="checkbox" disabled="" checked="" /> String() Paragraph needs to handle trailing new lines based on Paragraph Type
-</li>
-<li>
-<input type="checkbox" disabled="" checked="" /> write tests that validate the source FDX content in <em>testout</em> version
-</li>
-</ul>
-</section>
 <nav>
 <ul>
-<li>
-<a href="/">Home</a>
-</li>
-<li>
-<a href="./">README</a>
-</li>
-<li>
-<a href="license.html">LICENSE</a>
-</li>
-<li>
-<a href="docs/">Documentation</a>
-</li>
-<li>
-<a href="testdata.html">Test Data</a>
-</li>
-<li>
-<a href="https://github.com/rsdoiel/fdx">Github</a>
-</li>
+<li><a href="/">Home</a></li>
+<li><a href="./">README</a></li>
+<li><a href="user-manual.html">User Manual</a></li>
+<li><a href="license.html">LICENSE</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="https://github.com/rsdoiel/pdtk">GitHub</a></li>
 </ul>
 </nav>
+
+<section>
+<!--  <h1>TODO</h1> -->
+
+<h1 id="action-items">Action Items</h1>
+<h2 id="bugs">Bugs</h2>
+<h2 id="next">Next</h2>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+Review XML output from ToXML() after a FromFountain() call, see where I need to add mapping for Text elements and embedded styling</li>
+<li><input type="checkbox" disabled="" />
+validate that I am producing fdx files that Final Draft, FadeIn and Trelby can read</li>
+</ul>
+<h2 id="someday-maybe">Someday, Maybe</h2>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+Write and fdx2html using <a href="https://fountain.io/scrippets">scrippets</a> approach</li>
+<li><input type="checkbox" disabled="" />
+Left/Right alignment should be respected based based on Paragraph Type</li>
+<li><input type="checkbox" disabled="" />
+Plaintext formatting needs to be pickup and respected from whole FinalDraft document (e.g. respect definitions, Layout, etc)</li>
+<li><input type="checkbox" disabled="" />
+Screen Headers and Footers can have Text, Dynamic, SceneProperties in any order, right now converting back to XML renders them in fixed order because they are ignored when rendering and plaintext</li>
+</ul>
+<h2 id="completed">Completed</h2>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" checked="" />
+Add ParseFile() to fdx.go</li>
+<li><input type="checkbox" disabled="" checked="" />
+String() Paragraph needs to handle trailing new lines based on Paragraph Type</li>
+<li><input type="checkbox" disabled="" checked="" />
+write tests that validate the source FDX content in <em>testout</em> version</li>
+</ul>
+</section>
+
 <footer>
-copyright (c) 2021 all rights reserved.
-Released under the BSD 2-Clause license
-See: http://opensource.org/licenses/BSD-2-Clause
 </footer>
+
 </body>
 </html>

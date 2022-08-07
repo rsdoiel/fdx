@@ -1,37 +1,56 @@
+% txt2fdx(1) txt2fdx user manual
+% R. S. Doiel
+% August 7, 2022
 
-# USAGE
+# NAME
 
-	txt2fdx [OPTIONS]
+txt2fdx
 
-## SYNOPSIS
+# SYNOPSIS
+
+txt2fdx [OPTIONS]
+
+# DESCRIPTION
 
 txt2fdx is a command line program that reads a plain text file file
 and returns a fdx file.
 
+# OPTIONS
 
-## OPTIONS
+-help
+: display help
 
-```
-    -generate-markdown-docs   generate Markdown documentation
-    -h, -help                 display help
-    -i, -input                set the input filename
-    -l, -license              display license
-    -nl, -newline             add a trailing newline
-    -o, -output               set the output filename
-    -quiet                    suppress error messages
-    -v, -version              display version
-```
+-i, -input
+: set the input filename
+
+-l, -license
+: display license
+
+-nl, -newline
+: add a trailing newline
+
+-o, -output
+: set the output filename
+
+-quiet
+: suppress error messages
+
+-v, -version
+: display version
 
 
-## EXAMPLES
+# EXAMPLES
 
 Convert *screenplay.txt* into *screenplay.fdx*.
 
+~~~shell
     txt2fdx -i screenplay.txt -o screenplay.fdx
+~~~
 
 Or alternatively
 
+~~~shell
     cat screenplay.txt | txt2fdx > screenplay.fdx
+~~~
 
 
-txt2fdx v0.0.0-dev

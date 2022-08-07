@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="EN">
+  <title>R. S. Doiel, Software Engineer/Analyst - txt2fdx(1) txt2fdx user manual</title>
+
+  <link rel="stylesheet" type="text/css"  href="/printfonts/print.css" media="print" />
+  <link rel="stylesheet" type="text/css"  href="/webfonts/fonts.css" media="screen" />
+  <link rel="stylesheet" type="text/css"  href="/css/site.css" media="screen" />
+  <link title="RSS feed for rsdoiel's blog" rel="alternate" type="application/rss+xml" href="https://rsdoiel.github.io/rss.xml" />
+  <link title="markdown source for page" rel="alternative" type="application/markdown" href="docs/txt2fdx.md">
+</head>
+<body>
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="./">README</a></li>
+<li><a href="user-manual.html">User Manual</a></li>
+<li><a href="license.html">LICENSE</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="https://github.com/rsdoiel/pdtk">GitHub</a></li>
+</ul>
+</nav>
+
+<section>
+<!--  <h1>txt2fdx(1) txt2fdx user manual</h1> -->
+
+<h1 id="name">NAME</h1>
+<p>txt2fdx</p>
+<h1 id="synopsis">SYNOPSIS</h1>
+<p>txt2fdx <a href="#options">OPTIONS</a></p>
+<h1 id="description">DESCRIPTION</h1>
+<p>txt2fdx is a command line program that reads a plain text file file and returns a fdx file.</p>
+<h1 id="options">OPTIONS</h1>
+<dl>
+<dt>-help</dt>
+<dd>display help
+</dd>
+<dt>-i, -input</dt>
+<dd>set the input filename
+</dd>
+<dt>-l, -license</dt>
+<dd>display license
+</dd>
+<dt>-nl, -newline</dt>
+<dd>add a trailing newline
+</dd>
+<dt>-o, -output</dt>
+<dd>set the output filename
+</dd>
+<dt>-quiet</dt>
+<dd>suppress error messages
+</dd>
+<dt>-v, -version</dt>
+<dd>display version
+</dd>
+</dl>
+<h1 id="examples">EXAMPLES</h1>
+<p>Convert <em>screenplay.txt</em> into <em>screenplay.fdx</em>.</p>
+<pre class="shell"><code>    txt2fdx -i screenplay.txt -o screenplay.fdx</code></pre>
+<p>Or alternatively</p>
+<pre class="shell"><code>    cat screenplay.txt | txt2fdx &gt; screenplay.fdx</code></pre>
+</section>
+
+<footer>
+</footer>
+
+</body>
+</html>

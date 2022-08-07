@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: fdx
+authors:
+  - family-names: Doiel
+    given-names: Robert
+    orcid: https://orcid.org/0000-0003-0900-6903
+abstract: A library and command line program for working with fdx XML files used by Screen Writing software.
+repository-code: "https://github.com/rsdoiel/fdx"
+type: software
+version: 0.0.3
+license-url: "https://rsdoiel.github.io/fdx/license.html"
+keywords:
+  - Github
+  - text markup
+  - screen play
+date-released: 2022-08-07

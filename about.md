@@ -5,7 +5,7 @@ title: fdx
 About this software
 ===================
 
-fdx 0.0.3
+fdx 0.0.4
 ----------------
 
 ### Authors

@@ -63,7 +63,7 @@ install: build man .FORCE
 	@echo "Make sure $(PREFIX)/bin is in your PATH"
 	@echo ""
 	@if [ ! -d $(PREFIX)/man/man1 ]; then mkdir -p $(PREFIX)/man/man1; fi
-	-for MAN_PAGE in $(MD_PAGES); do @cp -v man/man1/$$MAN_PAGE.1 $(PREFIX)/man/man1/
+	@for MAN_PAGE in $(MAN_PAGES); do cp -v man/man1/$$MAN_PAGE.1 $(PREFIX)/man/man1/;done
 	@echo ""
 	@echo "Make sure $(PREFIX)/man is in your MANPATH"
 	@echo ""

@@ -147,7 +147,7 @@ save:
 	if [ "$(msg)" != "" ]; then git commit -am "$(msg)"; else git commit -am "Quick Save"; fi
 	git push origin $(BRANCH)
 
-website: about.md
+website: README.md about.md
 	make -f website.mak
 
 publish: build website

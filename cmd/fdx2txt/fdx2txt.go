@@ -151,7 +151,7 @@ func main() {
 		os.Exit(0)
 	}
 	if showVersion {
-		fmt.Fprintln(out, "%s %s $s", appName, version, releaseHash)
+		fmt.Fprintf(out, "%s %s $s", appName, version, releaseHash)
 		os.Exit(0)
 	}
 

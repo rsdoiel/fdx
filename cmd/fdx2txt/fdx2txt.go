@@ -90,7 +90,7 @@ func fmtHelp(src string, appName string, version string, releaseDate string, rel
 	}
 	for varname, val := range m {
 		if strings.Contains(src, varname) {
-			varname = strings.ReplaceAll(src, varname, val)
+			src = strings.ReplaceAll(src, varname, val)
 		}
 	}
 	return src

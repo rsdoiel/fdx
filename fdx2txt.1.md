@@ -1,18 +1,18 @@
-%{app_name}(1) | version {version} {release_hash}
+%fdx2txt(1) | version 1.0.0 fea8587
 % R. S. Doiel
-% {release_date} 
+% 2023-05-19 
 
 # NAME
 
-{app_name}
+fdx2txt
 
 # SYNOPSIS
 
-{app_name} [OPTIONS]
+fdx2txt [OPTIONS]
 
 # DESCRIPTION
 
-{app_name} is a command line program that reads an fdx file
+fdx2txt is a command line program that reads an fdx file
 and returns plain text
 
 # OPTIONS
@@ -41,7 +41,7 @@ and returns plain text
 Convert *screenplay.fdx* into *screenplay.txt*.
 
 ~~~
-    {app_name} -i screenplay.fdx -o screenplay.txt
+    fdx2txt -i screenplay.fdx -o screenplay.txt
 ~~~
 
 Or alternatively

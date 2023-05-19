@@ -14,18 +14,18 @@
 . ftr VB CB
 . ftr VBI CBI
 .\}
-.TH "{app_name}" "1" "{release_date}" "" "{version} {release_hash}"
+.TH "txt2fdx" "1" "2023-05-19" "" "1.0.0 11557e3"
 .hy
 .SH NAME
 .PP
-{app_name}
+txt2fdx
 .SH SYNOPSIS
 .PP
-{app_name} OPTIONS
+txt2fdx OPTIONS
 .SH DESCRIPTION
 .PP
-{app_name} is a command line program that reads a plain text file file
-and returns a fdx file.
+txt2fdx is a command line program that reads a plain text file file and
+returns a fdx file.
 .SH OPTIONS
 .TP
 -help
@@ -51,7 +51,7 @@ Convert \f[I]screenplay.txt\f[R] into \f[I]screenplay.fdx\f[R].
 .IP
 .nf
 \f[C]
-    {app_name} -i screenplay.txt -o screenplay.fdx
+    txt2fdx -i screenplay.txt -o screenplay.fdx
 \f[R]
 .fi
 .PP
@@ -59,7 +59,7 @@ Or alternatively
 .IP
 .nf
 \f[C]
-    cat screenplay.txt | {app_name} > screenplay.fdx
+    cat screenplay.txt | txt2fdx > screenplay.fdx
 \f[R]
 .fi
 .SH AUTHORS

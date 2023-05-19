@@ -1,18 +1,18 @@
-%{app_name}(1) | {version} {release_hash}
+%txt2fdx(1) | 1.0.0 11557e3
 % R. S. Doiel
-% {release_date}
+% 2023-05-19
 
 # NAME
 
-{app_name} 
+txt2fdx 
 
 # SYNOPSIS
 
-{app_name} [OPTIONS]
+txt2fdx [OPTIONS]
 
 # DESCRIPTION
 
-{app_name} is a command line program that reads a plain text file file
+txt2fdx is a command line program that reads a plain text file file
 and returns a fdx file.
 
 # OPTIONS
@@ -40,13 +40,13 @@ and returns a fdx file.
 Convert *screenplay.txt* into *screenplay.fdx*.
 
 ~~~
-	{app_name} -i screenplay.txt -o screenplay.fdx
+	txt2fdx -i screenplay.txt -o screenplay.fdx
 ~~~
 
 Or alternatively
 
 ~~~
-    cat screenplay.txt | {app_name} > screenplay.fdx
+    cat screenplay.txt | txt2fdx > screenplay.fdx
 ~~~
 
 

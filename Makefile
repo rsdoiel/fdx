@@ -3,7 +3,7 @@
 #
 PROJECT = fdx
 
-GIT_ORG_OR_PERSON = rsdoiel
+GIT_GROUP = rsdoiel
 
 RELEASE_DATE=$(shell date +'%Y-%m-%d')
 
@@ -84,7 +84,7 @@ about.md: .FORCE
 	@if [ -f _codemeta.json ]; then rm _codemeta.json; fi
 
 installer.sh: .FORCE
-	@echo '' | pandoc --metadata title="Installer" --metadata-file codemeta.json --template codemeta-installer.tmpl >installer.sh
+	@echo '' | pandoc --metadata title="Installer" --metadata git_org_or_person="$(GIT_GROUP)" --metadata-file codemeta.json --template codemeta-installer.tmpl >installer.sh
 	@chmod 775 installer.sh
 	@git add -f installer.sh
 

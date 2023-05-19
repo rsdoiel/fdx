@@ -2,7 +2,18 @@
 Installation
 ------------
 
-fdx is highly experimental. At this time you must install it from source code. It is probably broken and certainly will contain many bugs.
+fdx is a go package and programs for working with [Final Draft](https://www.finaldraft.com/)'s XML files. It is experimental. See the project's GitHub repository for [releases](https://github.com/rsdoiel/fdx/releases/). 
+
+Quick install with curl
+-----------------------
+
+If you are using macOS or Linux you maybe able to install fdx using the following curl command.
+
+~~~shell
+curl https://rsdoiel.github.io/fdx/installer.sh | sh
+~~~
+
+
 
 
 Install from source

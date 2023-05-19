@@ -4,112 +4,166 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"os"
-
-	// Caltech Library Packages
-	"github.com/caltechlibrary/cli"
+	"path"
+	"strings"
 
 	// My packages
 	"github.com/rsdoiel/fdx"
 )
 
 var (
-	description = `fdx2txt is a command line program that reads an fdx file
+	helpText = `%{app_name}(1) | version {version} {release_hash}
+% R. S. Doiel
+% {release_date} 
+
+# NAME
+
+{app_name}
+
+# SYNOPSIS
+
+{app_name} [OPTIONS]
+
+# DESCRIPTION
+
+{app_name} is a command line program that reads an fdx file
 and returns plain text
-`
 
-	examples = `Cervert *screenplay.fdx* into *screenplay.txt*.
+# OPTIONS
 
-    fdx2txt -i screenplay.fdx -o screenplay.txt
+-help
+: display help
+
+-license
+: display license
+
+-version
+: display version
+
+
+# EXAMPLES
+
+Convert *screenplay.fdx* into *screenplay.txt*.
+
+~~~
+    {app_name} -i screenplay.fdx -o screenplay.txt
+~~~
 
 Or alternatively
 
+~~~
     cat screenplay.fdx | fdx2txt > screenplay.txt
+~~~
+
 `
 
 	// Standard Options
 	showHelp         bool
 	showLicense      bool
 	showVersion      bool
-	generateMarkdown bool
-	generateManPage  bool
 	newLine          bool
 	quiet            bool
 	inputFName       string
 	outputFName      string
 )
 
-func main() {
-	app := cli.NewCli(fdx.Version)
 
-	// Add Help
-	app.AddHelp("description", []byte(description))
-	app.AddHelp("examples", []byte(examples))
+func fmtHelp(src string, appName string, version string, releaseDate string, releaseHash string) string {
+	m := map[string]string{
+		"{app_name}": appName,
+		"{version}": version,
+		"{release_date}": releaseDate,
+		"{release_hash}": releaseHash,
+	}
+	for varname, val := range m {
+		if strings.Contains(src, varname) {
+			varname = strings.ReplaceAll(src, varname, val)
+		}
+	}
+	return src
+}
+
+
+
+func main() {
+	appName := path.Base(os.Args[0])
+	version := fdx.Version
+	// NOTE: This is the date that version.go was generated.
+	releaseDate := fdx.ReleaseDate
+	releaseHash := fdx.ReleaseHash
 
 	// Standard Options
-	app.BoolVar(&showHelp, "h,help", false, "display help")
-	app.BoolVar(&showLicense, "l,license", false, "display license")
-	app.BoolVar(&showVersion, "v,version", false, "display version")
-	app.BoolVar(&generateMarkdown, "generate-markdown", false, "generate Markdown documentation")
-	app.BoolVar(&generateManPage, "generate-manpage", false, "generate man page")
-	app.BoolVar(&newLine, "nl,newline", false, "add a trailing newline")
-	app.BoolVar(&quiet, "quiet", false, "suppress error messages")
-	app.StringVar(&inputFName, "i,input", "", "set the input filename")
-	app.StringVar(&outputFName, "o,output", "", "set the output filename")
+	flag.BoolVar(&showHelp, "help", false, "display help")
+	flag.BoolVar(&showLicense, "license", false, "display license")
+	flag.BoolVar(&showVersion, "version", false, "display version")
+	flag.BoolVar(&newLine, "newline", false, "add a trailing newline")
+	flag.BoolVar(&quiet, "quiet", false, "suppress error messages")
+	flag.StringVar(&inputFName, "i", "", "set the input filename")
+	flag.StringVar(&outputFName, "o", "", "set the output filename")
 
 	// Parse environment and options
-	app.Parse()
-	args := app.Args()
+	flag.Parse()
+	//args := flag.Args()
 
 	// Setup IO
 	var err error
-	app.Eout = os.Stderr
-	app.In, err = cli.Open(inputFName, os.Stdin)
-	cli.ExitOnError(app.Eout, err, quiet)
-	defer cli.CloseFile(inputFName, app.In)
-	app.Out, err = cli.Create(outputFName, os.Stdout)
-	cli.ExitOnError(app.Eout, err, quiet)
-	defer cli.CloseFile(outputFName, app.Out)
+	in  := os.Stdin
+	out := os.Stdout
+	eout := os.Stderr
+
+	if inputFName != "" {
+		in, err = os.Open(inputFName)
+		if err != nil {
+			fmt.Fprintf(eout, "%s\n", err)
+			os.Exit(1)
+		}
+		defer in.Close()
+	}
+	if outputFName != "" {
+		out, err = os.Create(outputFName)
+		if err != nil {
+			fmt.Fprintf(eout, "%s\n", err)
+			os.Exit(1)
+		}
+		defer out.Close()
+	}
 
 	// Process options
-	if generateMarkdown {
-		app.GenerateMarkdown(app.Out)
-		os.Exit(0)
-	}
-	if generateManPage {
-		app.GenerateManPage(app.Out)
-		os.Exit(0)
-	}
 	if showHelp {
-		if len(args) > 0 {
-			fmt.Fprintln(app.Out, app.Help(args...))
-		} else {
-			app.Usage(app.Out)
-		}
+		fmt.Fprintf(out, "%s\n", fmtHelp(helpText, appName, version, releaseDate, releaseHash))
 		os.Exit(0)
 	}
 	if showLicense {
-		fmt.Fprintln(app.Out, app.License())
+		fmt.Fprintf(out, "%s\n", fdx.LicenseText)
 		os.Exit(0)
 	}
 	if showVersion {
-		fmt.Fprintln(app.Out, app.Version())
+		fmt.Fprintln(out, "%s %s $s", appName, version, releaseHash)
 		os.Exit(0)
 	}
 
 	// ReadAll of input
-	src, err := ioutil.ReadAll(app.In)
-	cli.ExitOnError(app.Eout, err, quiet)
+	src, err := ioutil.ReadAll(in)
+	if err != nil {
+		fmt.Fprintf(eout, "%s\n", err)
+		os.Exit(1)
+	}
+
 	// Parse input
 	screenplay, err := fdx.Parse(src)
-	cli.OnError(app.Eout, err, quiet)
+	if err != nil {
+		fmt.Fprintf(eout, "%s\n", err)
+		os.Exit(1)
+	}
 
 	//and then render as a string
 	if newLine {
-		fmt.Fprintf(app.Out, "%s\n", screenplay.String())
+		fmt.Fprintf(out, "%s\n", screenplay.String())
 	} else {
-		fmt.Fprintf(app.Out, "%s", screenplay.String())
+		fmt.Fprintf(out, "%s", screenplay.String())
 	}
 }

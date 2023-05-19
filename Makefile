@@ -114,6 +114,9 @@ uninstall: .FORCE
 	-for MAN_PAGE in $(MD_PAGES); do if [ -f $(PREFIX)/man/man1/$$MAN_PAGE.1]; then rm $(PREFIX)/man/man1/$$MAN_PAGE.1; fi
 
 
+hash: .FORCE
+	git log --pretty=format:'%h' -n 1
+
 check: .FORCE
 	for FNAME in $(shell ls -1 *.go); do go fmt $$FNAME; done
 	go vet *.go
@@ -196,6 +199,6 @@ distribute_docs:
 	@cp -vR man dist/
 	@for DNAME in $(DOCS); do cp -vR $$DNAME dist/; done
 
-release: build installer.sh save distribute_docs dist/Linux-x86_64 dist/Linux-aarch64 dist/macOS-x86_64 dist/macOS-arm64 dist/Windows-x86_64 dist/Windows-arm64 dist/Raspberry_Pi_OS-arm7
+release: save build distribute_docs dist/Linux-x86_64 dist/Linux-aarch64 dist/macOS-x86_64 dist/macOS-arm64 dist/Windows-x86_64 dist/Windows-arm64 dist/Raspberry_Pi_OS-arm7
 
 .FORCE:

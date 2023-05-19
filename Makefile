@@ -3,6 +3,8 @@
 #
 PROJECT = fdx
 
+GIT_ORG_OR_PERSON = rsdoiel
+
 RELEASE_DATE=$(shell date +'%Y-%m-%d')
 
 RELEASE_HASH=$(shell git log --pretty=format:'%h' -n 1)

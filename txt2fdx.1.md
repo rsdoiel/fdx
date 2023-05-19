@@ -32,6 +32,9 @@ and returns a fdx file.
 -o
 : write output to filename
 
+-newline
+: add a trailing newline
+
 # EXAMPLES
 
 Convert *screenplay.txt* into *screenplay.fdx*.

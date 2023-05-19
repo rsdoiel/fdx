@@ -45,6 +45,15 @@ and returns plain text
 : display version
 
 
+-i
+: read input from file
+
+-o
+: write output to file
+
+-newline
+: add a trailing newline 
+
 # EXAMPLES
 
 Convert *screenplay.fdx* into *screenplay.txt*.

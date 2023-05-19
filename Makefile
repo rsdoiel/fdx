@@ -13,11 +13,13 @@ MAN_PAGES = $(shell ls -1 *.1.md | sed -E 's/\.1.md/.1/g')
 
 HTML_PAGES = $(shell find . -type f | grep -E '\.html')
 
-PACKAGE = $(shell ls -1 *.go)
-
 VERSION = $(shell grep '"version":' codemeta.json | cut -d\"  -f 4)
 
 BRANCH = $(shell git branch | grep '* ' | cut -d\  -f 2)
+
+PACKAGE = $(shell ls -1 *.go | grep -v 'version.go')
+
+SUBPACKAGES = $(shell ls -1 */*.go)
 
 OS = $(shell uname)
 
@@ -32,6 +34,8 @@ EXT =
 ifeq ($(OS), Windows)
 	EXT = .exe
 endif
+
+DIST_FOLDERS = bin/*
 
 build: version.go $(PROGRAMS) man CITATION.cff about.md installer.sh
 
@@ -56,12 +60,13 @@ version.go: .FORCE
 	@git add version.go
 	@if [ -f bin/codemeta ]; then ./bin/codemeta; fi
 
-man: $(MAN_PAGES)
 
 $(PROGRAMS): $(PACKAGE)
 	@mkdir -p bin
 	go build -o "bin/$@$(EXT)" cmd/$@/*.go
 	@./bin/$@ -help >$@.1.md
+
+man: $(MAN_PAGES)
 
 $(MAN_PAGES): .FORCE
 	mkdir -p man/man1
@@ -82,11 +87,45 @@ installer.sh: .FORCE
 	@git add -f installer.sh
 
 
-test: .FORCE 
-	go test
+clean-website:
+	make -f website.mak clean
 
 website: clean-website .FORCE
 	make -f website.mak
+
+
+# NOTE: on macOS you must use "mv" instead of "cp" to avoid problems
+install: build man .FORCE
+	@if [ ! -d $(PREFIX)/bin ]; then mkdir -p $(PREFIX)/bin; fi
+	@echo "Installing programs in $(PREFIX)/bin"
+	@for FNAME in $(PROGRAMS); do if [ -f ./bin/$$FNAME ]; then mv -v ./bin/$$FNAME $(PREFIX)/bin/$$FNAME; fi; done
+	@echo ""
+	@echo "Make sure $(PREFIX)/bin is in your PATH"
+	@echo ""
+	@if [ ! -d $(PREFIX)/man/man1 ]; then mkdir -p $(PREFIX)/man/man1; fi
+	@for MAN_PAGE in $(MAN_PAGES); do cp -v man/man1/$$MAN_PAGE.1 $(PREFIX)/man/man1/;done
+	@echo ""
+	@echo "Make sure $(PREFIX)/man is in your MANPATH"
+	@echo ""
+
+uninstall: .FORCE
+	@echo "Removing programs in $(PREFIX)/bin"
+	-for FNAME in $(PROGRAMS); do if [ -f $(PREFIX)/bin/$$FNAME ]; then rm -v $(PREFIX)/bin/$$FNAME; fi; done
+	-for MAN_PAGE in $(MD_PAGES); do if [ -f $(PREFIX)/man/man1/$$MAN_PAGE.1]; then rm $(PREFIX)/man/man1/$$MAN_PAGE.1; fi
+
+
+check: .FORCE
+	for FNAME in $(shell ls -1 *.go); do go fmt $$FNAME; done
+	go vet *.go
+
+test: clean build
+	go test
+
+clean: 
+	-if [ -d bin ]; then rm -fR bin; fi
+	-if [ -d dist ]; then rm -fR dist; fi
+	-if [ -d testout ]; then rm -fR testout; fi
+	-for MAN_PAGE in $(MAN_PAGES); do if [ -f man/man1/$$MAN_PAGE.1 ]; then rm man/man1/$$MAN_PAGE.1; fi;done
 
 status:
 	git status
@@ -101,32 +140,6 @@ refresh:
 
 publish: build website save .FORCE
 	./publish.bash
-
-clean:
-	@if [ -f version.go ]; then rm version.go; fi
-	@if [ -d bin ]; then rm -fR bin; fi
-	@if [ -d dist ]; then rm -fR dist; fi
-	@if [ -d man ]; then rm -fR man; fi
-	@if [ -d testout ]; then rm -fR testout; fi
-
-clean-website:
-	@for FNAME in $(HTML_PAGES); do if [ -f "$${FNAME}" ]; then rm "$${FNAME}"; fi; done
-
-install: build
-	@echo "Installing programs in $(PREFIX)/bin"
-	@for FNAME in $(PROGRAMS); do if [ -f "./bin/$${FNAME}$(EXT)" ]; then mv -v "./bin/$${FNAME}$(EXT)" "$(PREFIX)/bin/$${FNAME}$(EXT)"; fi; done
-	@echo ""
-	@echo "Make sure $(PREFIX)/bin is in your PATH"
-	@echo "Installing man page in $(PREFIX)/man"
-	@for FNAME in $(MAN_PAGES); do if [ -f "./man/man1/$${FNAME}" ]; then cp -v "./man/man1/$${FNAME}" "$(PREFIX)/man/man1/$${FNAME}"; fi; done
-	@echo ""
-	@echo "Make sure $(PREFIX)/man is in your MANPATH"
-
-uninstall: .FORCE
-	@echo "Removing programs in $(PREFIX)/bin"
-	@for FNAME in $(PROGRAMS); do if [ -f "$(PREFIX)/bin/$${FNAME}$(EXT)" ]; then rm -v "$(PREFIX)/bin/$${FNAME}$(EXT)"; fi; done
-	@echo "Removing man pages in $(PREFIX)/man"
-	@for FNAME in $(MAN_PAGES); do if [ -f "$(PREFIX)/man/man1/$${FNAME}" ]; then rm -v "$(PREFIX)/man/man1/$${FNAME}"; fi; done
 
 
 dist/Linux-x86_64: $(PROGRAMS)
@@ -184,6 +197,5 @@ distribute_docs:
 	@for DNAME in $(DOCS); do cp -vR $$DNAME dist/; done
 
 release: build installer.sh save distribute_docs dist/Linux-x86_64 dist/Linux-aarch64 dist/macOS-x86_64 dist/macOS-arm64 dist/Windows-x86_64 dist/Windows-arm64 dist/Raspberry_Pi_OS-arm7
-
 
 .FORCE:

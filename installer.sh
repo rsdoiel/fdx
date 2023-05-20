@@ -71,13 +71,15 @@ unzip "$HOME/Downloads/$ZIPFILE" "bin/*"
 #
 mkdir -p "$HOME/bin"
 EXPLAIN_OS_POLICY="yes"
-find bin -type f | while read -r APP; do
+find bin -type f >.binfiles.tmp
+while read -r APP; do
 	V=$("./$APP" --version)
-	if [ "$V" = ""  ]; then 
+	if [ "$V" = ""  ]; then
 		EXPLAIN_OS_POLICY="yes"
 	fi
 	mv "$APP" "$HOME/bin/"
-done
+done <.binfiles.tmp
+rm .binfiles.tmp
 
 #
 # Make sure $HOME/bin is in the path

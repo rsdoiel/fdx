@@ -42,25 +42,33 @@ DIST_FOLDERS = bin/*
 build: version.go $(PROGRAMS) man CITATION.cff about.md installer.sh
 
 version.go: .FORCE
-	@echo "package $(PROJECT)" >version.go
-	@echo '' >>version.go
-	@echo 'const (' >>version.go
-	@echo  '    // Version number of release'>>version.go
-	@echo '    Version = "$(VERSION)"' >>version.go
-	@echo '' >>version.go
-	@echo  '    // ReleaseDate, the date version.go was generated'>>version.go
-	@echo '    ReleaseDate = "$(RELEASE_DATE)"' >>version.go
-	@echo '' >>version.go
-	@echo  '    // ReleaseHash, the Git hash when version.go was generated'>>version.go
-	@echo '    ReleaseHash = "$(RELEASE_HASH)"' >>version.go
-	@echo '' >>version.go
-	@echo '    LicenseText = `' >>version.go
-	@cat LICENSE >>version.go
-	@echo '`' >>version.go
-	@echo ')' >>version.go
-	@echo '' >>version.go
-	@git add version.go
-	@if [ -f bin/codemeta ]; then ./bin/codemeta; fi
+	echo '' | pandoc --from t2t --to plain \
+		--metadata-file codemeta.json \
+		--metadata package=$(PROJECT) \
+		--metadata version=$(VERSION) \
+		--metadata release_date=$(RELEASE_DATE) \
+		--metadata release_hash=$(RELEASE_HASH) \
+		--template codemeta-version-go.tmpl \
+		LICENSE >version.go
+##	@echo "package $(PROJECT)" >version.go
+##	@echo '' >>version.go
+##	@echo 'const (' >>version.go
+##	@echo  '    // Version number of release'>>version.go
+##	@echo '    Version = "$(VERSION)"' >>version.go
+##	@echo '' >>version.go
+##	@echo  '    // ReleaseDate, the date version.go was generated'>>version.go
+##	@echo '    ReleaseDate = "$(RELEASE_DATE)"' >>version.go
+##	@echo '' >>version.go
+##	@echo  '    // ReleaseHash, the Git hash when version.go was generated'>>version.go
+##	@echo '    ReleaseHash = "$(RELEASE_HASH)"' >>version.go
+##	@echo '' >>version.go
+##	@echo '    LicenseText = `' >>version.go
+##	@cat LICENSE >>version.go
+##	@echo '`' >>version.go
+##	@echo ')' >>version.go
+##	@echo '' >>version.go
+##	@git add version.go
+##	@if [ -f bin/codemeta ]; then ./bin/codemeta; fi
 
 
 $(PROGRAMS): $(PACKAGE)

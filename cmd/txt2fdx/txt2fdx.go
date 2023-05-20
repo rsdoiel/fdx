@@ -9,7 +9,6 @@ import (
 	"io/ioutil"
 	"os"
 	"path"
-	"strings"
 
 	// My packages
 	"github.com/rsdoiel/fdx"
@@ -81,28 +80,13 @@ Or alternatively
 )
 
 
-func fmtHelp(src string, appName string, version string, releaseDate string, releaseHash string) string {
-	m := map[string]string{
-		"{app_name}": appName,
-		"{version}": version,
-		"{release_date}": releaseDate,
-		"{release_hash}": releaseHash,
-	}
-	for varname, val := range m {
-		if strings.Contains(src, varname) {
-			src = strings.ReplaceAll(src, varname, val)
-		}
-	}
-	return src
-}
-
-
 func main() {
 	appName := path.Base(os.Args[0])
 	// NOTE: The following are set when version.go is generated
 	version := fdx.Version
 	releaseDate := fdx.ReleaseDate
 	releaseHash := fdx.ReleaseHash
+	fmtHelp := fdx.FmtHelp
 
 	// Standard Options
 	flag.BoolVar(&showHelp, "help", false, "display help")

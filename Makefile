@@ -121,7 +121,7 @@ install: build man .FORCE
 uninstall: .FORCE
 	@echo "Removing programs in $(PREFIX)/bin"
 	-for FNAME in $(PROGRAMS); do if [ -f $(PREFIX)/bin/$$FNAME ]; then rm -v $(PREFIX)/bin/$$FNAME; fi; done
-	-for MAN_PAGE in $(MD_PAGES); do if [ -f $(PREFIX)/man/man1/$$MAN_PAGE.1]; then rm $(PREFIX)/man/man1/$$MAN_PAGE.1; fi
+	-for MAN_PAGE in $(MD_PAGES); do if [ -f $(PREFIX)/man/man1/$$MAN_PAGE.1]; then rm $(PREFIX)/man/man1/$$MAN_PAGE.1; fi; done
 
 
 hash: .FORCE

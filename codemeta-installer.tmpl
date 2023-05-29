@@ -84,18 +84,16 @@ rm .binfiles.tmp
 #
 # Make sure $$HOME/bin is in the path
 #
-DIR_IN_PATH='no'
-for P in $$PATH; do
-  if [ "$$P" = "$$HOME/bin" ]; then
-	 DIR_IN_PATH='yes'
-  fi
-done
-if [ "$$DIR_IN_PATH" = "no" ]; then
+case :$$PATH: in
+	*:$$HOME/bin:*) 
+	;;
+	*)
 	# shellcheck disable=SC2016
 	echo 'export PATH="$$HOME/bin:$$PATH"' >>"$$HOME/.bashrc"
 	# shellcheck disable=SC2016
 	echo 'export PATH="$$HOME/bin:$$PATH"' >>"$$HOME/.zshrc"
-fi
+    ;;	
+esac
 rm -fR "$$HOME/.$$PACKAGE/installer"
 cd "$$START" || exit 1
 

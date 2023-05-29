@@ -94,8 +94,6 @@ case :$PATH: in
 	echo 'export PATH="$HOME/bin:$PATH"' >>"$HOME/.zshrc"
     ;;	
 esac
-rm -fR "$HOME/.$PACKAGE/installer"
-cd "$START" || exit 1
 
 # shellcheck disable=SC2031
 if [ "$EXPLAIN_OS_POLICY" = "no" ]; then
@@ -122,7 +120,7 @@ fi
 #
 EXPLAIN_MAN_PATH="no"
 for SECTION in 1 2 3 4 5 6 7; do
-    if [ -f "man/man${SECTION}" ]; then
+    if [ -d "man/man${SECTION}" ]; then
         EXPLAIN_MAN_PATH="yes"
         mkdir -p "$HOME/man/man${SECTION}"
         find "man/man${SECTION}" -type f | while read -r MAN; do
@@ -143,3 +141,6 @@ if [ "$EXPLAIN_MAN_PATH" = "yes" ]; then
 EOT
 
 fi
+
+rm -fR "$HOME/.$PACKAGE/installer"
+cd "$START" || exit 1

@@ -1,6 +1,6 @@
-%fdx2txt(1) | version 1.0.0 555000b
+%fdx2txt(1) | version 1.0.0 c1618d0
 % R. S. Doiel
-% 2023-05-29 
+% 2023-06-05 
 
 # NAME
 

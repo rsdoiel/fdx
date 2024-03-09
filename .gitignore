@@ -5,12 +5,12 @@
 *.dylib
 
 # Ignore test data files retrieved from Fountain website.
-testdata/Big%20Fish.fountain
-testdata/Big%20Fish.pdf
-testdata/Brick%20&%20Steel.fountain
-testdata/Brick%20&%20Steel.pdf
-testdata/The%20Last%20Birthday%20Card.fountain
-testdata/The%20Last%20Birthday%20Card.pdf
+testdata/Big-Fish.fountain
+testdata/Big-Fish.pdf
+testdata/Brick-&-Steel.fountain
+testdata/Brick-&-Steel.pdf
+testdata/The-Last-Birthday-Card.fountain
+testdata/The-Last-Birthday-Card.pdf
 
 # Test binary, build with `go test -c`
 *.test
@@ -24,9 +24,9 @@ testdata/The%20Last%20Birthday%20Card.pdf
 # Project ignores
 *.trelby
 testout/
-testdata/Big%20Fish.fdx
-testdata/Brick%20&%20Steel.fdx
-testdata/The%20Last%20Birthday%20Card.fdx
+testdata/Big-Fish.fdx
+testdata/Brick-&-Steel.fdx
+testdata/The-Last-Birthday-Card.fdx
 bin/
 dist/
 man/

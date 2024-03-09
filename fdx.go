@@ -222,7 +222,7 @@ type ParagraphSpec struct {
 	FirstIndent   string   `xml:",attr,omitempty" json:"first_indent,omitempty" yaml:"first_indent,omitempty"`
 	Leading       string   `xml:",attr,omitempty" json:"leading,omitempty" yaml:"leading,omitempty"`
 	LeftIndent    string   `xml:",attr,omitempty" json:"left_indent,omitempty" yaml:"left_indent,omitempty"`
-	RightIndent   string   `xml:",attr,omitempty" json:"right_indent,omitempty" yaml:"right_indent,omitempty`
+	RightIndent   string   `xml:",attr,omitempty" json:"right_indent,omitempty" yaml:"right_indent,omitempty"`
 	SpaceBefore   string   `xml:",attr,omitempty" json:"space_before,omitempty" yaml:"space_before,omitempty"`
 	Spacing       string   `xml:",attr,omitempty" json:"spacing,omitempty" yaml:"spacing,omitempty"`
 	StartsNewPage string   `xml:",attr,omitempty" json:"starts_new_page,omitempty" yaml:"starts_new_page,omitempty"`
@@ -236,7 +236,7 @@ type Behavior struct {
 }
 
 type SpellCheckIgnoreLists struct {
-	XMLName       xml.Name `json:"-" yaml"-"`
+	XMLName       xml.Name `json:"-" yaml:"-"`
 	IgnoredRanges *IgnoredRanges
 	IgnoredWords  []*IgnoredWords
 }
@@ -259,7 +259,7 @@ type PageLayout struct {
 	XMLName                           xml.Name `json:"-" yaml:"-"`
 	BackgroundColor                   string   `xml:",attr,omitempty" json:"background_color,omitempty" yaml:"background_color,omitempty"`
 	BottomMargin                      string   `xml:",attr,omitempty" json:"bottom_margin,omitempty" yaml:"bottom_margin,omitempty"`
-	BreakDialogueAndActionAtSentences string   `xml:",attr,omitempty" json:"break_dialogue_and_action_at_sentences,omitempty" yaml:"break_dialogue_and_action_at_sentences,omitempty`
+	BreakDialogueAndActionAtSentences string   `xml:",attr,omitempty" json:"break_dialogue_and_action_at_sentences,omitempty" yaml:"break_dialogue_and_action_at_sentences,omitempty"`
 	DocumentLeading                   string   `xml:",attr,omitempty" json:"document_leading,omitempty" yaml:"document_leading,omitempty"`
 	FooterMargin                      string   `xml:",attr,omitempty" json:"footer_margin,omitempty" yaml:"footer_margin,omitempty"`
 	ForegroundColor                   string   `xml:",attr,omitempty" json:"foreground_color,omitempty" yaml:"foreground_color,omitempty"`
@@ -388,7 +388,7 @@ type MoresAndContinueds struct {
 type DialogueBreaks struct {
 	XMLNAme        xml.Name `json:"-" yaml:"-"`
 	BottomOfPage   string   `xml:",attr,omitempty" json:"bottom_of_page,omitempty" yaml:"bottom_of_page,omitempty"`
-	DialogueBottom string   `xml:",attr,omitempty" json:"dialogue_bottom,omitempty" yaml:"dialogue_bottom,omitempty`
+	DialogueBottom string   `xml:",attr,omitempty" json:"dialogue_bottom,omitempty" yaml:"dialogue_bottom,omitempty"`
 	DialogueTop    string   `xml:",attr,omitempty" json:"dialogue_top,omitempty" yaml:"dialogue_top,omitempty"`
 	TopOfNext      string   `xml:",attr,omitempty" json:"top_of_next,omitempty" yaml:"top_of_next,omitempty"`
 }
@@ -445,9 +445,9 @@ type Actor struct {
 	XMLName  xml.Name `json:"-" yaml:"-"`
 	MacVoice string   `xml:",attr,omitempty" json:"mac_voice,omitempty" yaml:"mac_voice,omitempty"`
 	Name     string   `xml:",attr,omitempty" json:"name,omitempty" yaml:"name,omitempty"`
-	Pitch    string   `xml:",attr,omitempty" json:"pitch,omitempty" yaml:"pitch,omitempty'`
+	Pitch    string   `xml:",attr,omitempty" json:"pitch,omitempty" yaml:"pitch,omitempty"`
 	Speed    string   `xml:",attr,omitempty" json:"speed,omitempty" yaml:"speed,omitempty"`
-	WinVoice string   `xml:",attr,omitempty" json:"win_voice,omitempty" yaml:"win_voice,omitempty`
+	WinVoice string   `xml:",attr,omitempty" json:"win_voice,omitempty" yaml:"win_voice,omitempty"`
 }
 
 type Cast struct {

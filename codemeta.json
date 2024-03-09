@@ -6,8 +6,11 @@
     "codeRepository": "https://github.com/rsdoiel/fdx",
     "issueTracker": "https://github.com/rsdoiel/fdx/issues",
     "license": "https://rsdoiel.github.io/fdx/LICENSE",
-    "version": "1.0.0",
+    "version": "1.0.1",
+    "dateCreated": "2017-12-07",
     "dateRelease": "2023-05-19",
+    "dateModified": "2024-03-09",
+    "releaseNotes": "Updated compiler to go 1.22, add tagging for YAML",
     "author": [
         {
             "@type": "Person",
@@ -19,12 +22,12 @@
     ],
     "developmentStatus": "inactive",
     "keywords": [
-        "Github",
+        "GitHub",
         "text markup",
         "screen play"
     ],
     "maintainer": "https://orcid.org/0000-0003-0900-6903",
     "programmingLanguage": [
-        "Go"
+        "Go >= 1.22"
     ]
 }

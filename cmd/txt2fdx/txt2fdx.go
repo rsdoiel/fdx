@@ -1,6 +1,4 @@
-//
 // txt2fdx converts a plain text file into a fdx file.
-//
 package main
 
 import (
@@ -70,15 +68,14 @@ Or alternatively
 `
 
 	// Standard Options
-	showHelp         bool
-	showLicense      bool
-	showVersion      bool
-	newLine          bool
-	quiet            bool
-	inputFName       string
-	outputFName      string
+	showHelp    bool
+	showLicense bool
+	showVersion bool
+	newLine     bool
+	quiet       bool
+	inputFName  string
+	outputFName string
 )
-
 
 func main() {
 	appName := path.Base(os.Args[0])
@@ -145,7 +142,7 @@ func main() {
 		fmt.Fprintf(eout, "%s\n", err)
 		os.Exit(1)
 	}
-	
+
 	// Parse input
 	screenplay, err := fountain.Parse(src)
 	if err != nil {

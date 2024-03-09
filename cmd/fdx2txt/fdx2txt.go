@@ -1,6 +1,4 @@
-//
 // fdx2txt converts a fdx file into plain text suitable to read from the console.
-//
 package main
 
 import (
@@ -70,15 +68,14 @@ Or alternatively
 `
 
 	// Standard Options
-	showHelp         bool
-	showLicense      bool
-	showVersion      bool
-	newLine          bool
-	quiet            bool
-	inputFName       string
-	outputFName      string
+	showHelp    bool
+	showLicense bool
+	showVersion bool
+	newLine     bool
+	quiet       bool
+	inputFName  string
+	outputFName string
 )
-
 
 func main() {
 	appName := path.Base(os.Args[0])
@@ -103,7 +100,7 @@ func main() {
 
 	// Setup IO
 	var err error
-	in  := os.Stdin
+	in := os.Stdin
 	out := os.Stdout
 	eout := os.Stderr
 

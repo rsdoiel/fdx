@@ -1,3 +1,6 @@
-github.com/caltechlibrary/cli v0.0.16/go.mod h1:BVT+6d/QqcN4UApWR3ufjkkKj2O6+48B4G6iUpP8m38=
-github.com/rsdoiel/fountain v1.0.0 h1:R+27gs7DVHOYr64CxpoYoVX6O/yZ5xszj8yw6OWWa+k=
-github.com/rsdoiel/fountain v1.0.0/go.mod h1:gSQk57Zm16sVyy42VzHYBWeeHqsuFny3n7ewuJssq+w=
+github.com/rsdoiel/fountain v1.0.1 h1:m5JZbnasFendZbYzoTsOsJ/gcup7VNTUjJGTANshQck=
+github.com/rsdoiel/fountain v1.0.1/go.mod h1:Sd3MZuWObP+tssyGIuUUfl3+nslvRVndkEEpBVsWAJU=
+gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 h1:yhCVgyC4o1eVCa2tZl7eS0r+SDo693bJlVdllGtEeKM=
+gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
+gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
+gopkg.in/yaml.v3 v3.0.1/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=

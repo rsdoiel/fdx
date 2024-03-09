@@ -561,28 +561,28 @@ func (paragraph *Paragraph) String() string {
 		}
 		switch paragraph.Type {
 		/*
-			case GeneralType:
-				//src = append(src, "\n")
+		   case GeneralType:
+		       //src = append(src, "\n")
 		*/
 		case SceneHeadingType:
 			src = append(src, "\n")
 		case ActionType:
 			src = append(src, "\n")
 			/*
-				case CharacterType:
-					//src = append(src, "\n")
-				case ParentheticalType:
-					//src = append(src, "\n")
+			   case CharacterType:
+			       //src = append(src, "\n")
+			   case ParentheticalType:
+			       //src = append(src, "\n")
 			*/
 		case DialogueType:
 			src = append(src, "\n")
 		case TransitionType:
 			src = append(src, "\n")
 			/*
-				case ShotType:
-					//src = append(src, "\n")
-				default:
-					//src = append(src, "\n")
+			   case ShotType:
+			       //src = append(src, "\n")
+			   default:
+			       //src = append(src, "\n")
 			*/
 		}
 		return strings.Join(src, "")
@@ -634,16 +634,16 @@ func (doc *FinalDraft) String() string {
 /*
 // String (of FinalDraft) returns a plain text in Fountain format
 func (doc *FinalDraft) String() string {
-	if doc != nil && doc.TitlePage != nil && doc.Content != nil {
-		return doc.TitlePage.String() + "\n\n" + doc.Content.String()
-	}
-	if doc != nil && doc.TitlePage != nil {
-		return doc.TitlePage.String() + "\n\n"
-	}
-	if doc != nil && doc.Content != nil {
-		return doc.Content.String()
-	}
-	return ""
+    if doc != nil && doc.TitlePage != nil && doc.Content != nil {
+        return doc.TitlePage.String() + "\n\n" + doc.Content.String()
+    }
+    if doc != nil && doc.TitlePage != nil {
+        return doc.TitlePage.String() + "\n\n"
+    }
+    if doc != nil && doc.Content != nil {
+        return doc.Content.String()
+    }
+    return ""
 }
 */
 

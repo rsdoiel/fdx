@@ -30,6 +30,7 @@
 package fdx
 
 import (
+	"bytes"
 	"encoding/xml"
 	"fmt"
 	"io/ioutil"
@@ -55,9 +56,10 @@ func testFdxFile(t *testing.T, fname string) {
 	}
 	fdx := new(FinalDraft)
 	if err := xml.Unmarshal(src, &fdx); err != nil {
-		t.Errorf("%s", err)
+		t.Errorf("%s %s", fname, err)
 	} else {
 		os.RemoveAll(path.Join("testout", path.Base(fname)))
+		os.MkdirAll("testout", 0775)
 		if src2, err := xml.MarshalIndent(fdx, " ", "    "); err != nil {
 			t.Errorf("%s", err)
 		} else {
@@ -70,9 +72,9 @@ func testFdxFile(t *testing.T, fname string) {
 
 func TestConversion(t *testing.T) {
 	fileList := []string{
-		"Big%20Fish.fdx",
-		"Brick%20&%20Steel.fdx",
-		"The%20Last%20Birthday%20Card.fdx",
+		"Big-Fish.fdx",
+		"Brick-&-Steel.fdx",
+		"The-Last-Birthday-Card.fdx",
 		"sample-01.fdx",
 		"sample-02.fdx",
 		"sample-03.fdx",
@@ -110,9 +112,9 @@ func TestTitlePageToString(t *testing.T) {
 	}
 
 	haveTitlePages := map[string][]string{
-		"Big%20Fish.fdx":                   []string{"BIG FISH", "This is a Southern story, full of lies and fabrications, "},
-		"Brick%20&%20Steel.fdx":            []string{"BRICK AND STEEL"},
-		"The%20Last%20Birthday%20Card.fdx": []string{"THE LAST BIRTHDAY CARD"},
+		"Big-Fish.fdx":                   []string{"BIG FISH", "This is a Southern story, full of lies and fabrications, "},
+		"Brick-&-Steel.fdx":            []string{"BRICK AND STEEL"},
+		"The-Last-Birthday-Card.fdx": []string{"THE LAST BIRTHDAY CARD"},
 		"sample-03.fdx":                    []string{"SAMPLE 03"},
 	}
 	for fname, textTerms := range haveTitlePages {
@@ -125,7 +127,9 @@ func TestTitlePageToString(t *testing.T) {
 			}
 		} else {
 			screenplay := new(FinalDraft)
-			if err := xml.Unmarshal(src, &screenplay); err != nil {
+			decoder := xml.NewDecoder(bytes.NewReader(src))
+			decoder.Strict = false
+			if err := decoder.Decode(&screenplay); err != nil {
 				t.Errorf("Can't Unmarshal %s, %s", fname, err)
 			} else {
 				if screenplay.TitlePage == nil {

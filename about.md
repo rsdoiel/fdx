@@ -10,16 +10,16 @@ authors:
     orcid: "https://orcid.org/0000-0003-0900-6903"
 
 repository-code: "https://github.com/rsdoiel/fdx"
-version: 1.0.0
+version: 1.0.1
 license-url: "https://rsdoiel.github.io/fdx/LICENSE"
-keywords: [ "Github", "text markup", "screen play" ]
+keywords: [ "GitHub", "text markup", "screen play" ]
 
 ---
 
 About this software
 ===================
 
-## fdx 1.0.0
+## fdx 1.0.1
 
 ### Authors
 
@@ -39,6 +39,6 @@ A Go package and command line programs for working with fdx XML files used by Sc
 
 ### Programming languages
 
-- Go
+- Go &gt;= 1.22
 
 

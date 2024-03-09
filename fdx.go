@@ -79,10 +79,10 @@ var (
 )
 
 type FinalDraft struct {
-	XMLName               xml.Name `json:"-"`
-	DocumentType          string   `xml:",attr,omitempty" json:"type,omitempty"`
-	Template              string   `xml:",attr" json:"template,omitempty"`
-	Version               string   `xml:",attr" json:"version,omitempty"`
+	XMLName               xml.Name `json:"-" yaml:"-"`
+	DocumentType          string   `xml:",attr,omitempty" json:"type,omitempty" yaml:"type,omitempty"`
+	Template              string   `xml:",attr" json:"template,omitempty" yaml:"template,omitempty"`
+	Version               string   `xml:",attr" json:"version,omitempty" yaml:"version,omitempty"`
 	Content               *Content
 	TitlePage             *TitlePage
 	ElementSettings       []*ElementSettings
@@ -99,216 +99,216 @@ type FinalDraft struct {
 	SplitState            *SplitState
 	Macros                *Macros
 	Actors                *Actors
-	Cast                  *Cast `xml:"Cast,omitempty"`
+	Cast                  *Cast `xml:"Cast,omitempty" json:"cast,omitempty" yaml:"cast,omitempty"`
 	SceneNumberOptions    *SceneNumberOptions
 }
 
 type Content struct {
-	XMLName   xml.Name     `json:"-"`
-	Paragraph []*Paragraph `json:"paragraphs,omitempty"`
+	XMLName   xml.Name     `json:"-" yaml:"-"`
+	Paragraph []*Paragraph `json:"paragraphs,omitempty" yaml:"paragraphs,omitempty"`
 }
 
 type Paragraph struct {
-	XMLName         xml.Name `json:"-"`
-	Type            string   `xml:",attr,omitempty" json:"type,omitempty"`
-	Number          string   `xml:",attr,omitempty" json:"number,omitempty"`
-	Alignment       string   `xml:",attr,omitempty" json:"alignment,omitempty"`
-	FirstIndent     string   `xml:",attr,omitempty" json:"first_indent,omitempty"`
-	Leading         string   `xml:",attr,omitempty" json:"leading,omitempty"`
-	LeftIndent      string   `xml:",attr,omitempty" json:"left_indent,omitempty"`
-	RightIndent     string   `xml:",attr,omitempty" json:"right_indent,omitempty"`
-	SpaceBefore     string   `xml:",attr,omitempty" json:"space_before,omitempty"`
-	Spacing         string   `xml:",attr,omitempty" json:"spacing,omitempty"`
-	StartsNewPage   string   `xml:",attr,omitempty" json:"starts_new_page,omitempty"`
+	XMLName         xml.Name `json:"-" yaml:"-"`
+	Type            string   `xml:",attr,omitempty" json:"type,omitempty" yaml:"type,omitempty"`
+	Number          string   `xml:",attr,omitempty" json:"number,omitempty" yaml:"number,omitempty"`
+	Alignment       string   `xml:",attr,omitempty" json:"alignment,omitempty" yaml:"alignment,emitempty"`
+	FirstIndent     string   `xml:",attr,omitempty" json:"first_indent,omitempty" yaml:"first_indent,omitempty"`
+	Leading         string   `xml:",attr,omitempty" json:"leading,omitempty" yaml:"leading,omitempty"`
+	LeftIndent      string   `xml:",attr,omitempty" json:"left_indent,omitempty" yaml:"left_indent,omitempty"`
+	RightIndent     string   `xml:",attr,omitempty" json:"right_indent,omitempty" yaml:"right_indent,omitempty"`
+	SpaceBefore     string   `xml:",attr,omitempty" json:"space_before,omitempty" yaml:"space_before,omitempty"`
+	Spacing         string   `xml:",attr,omitempty" json:"spacing,omitempty" yaml:"spacing,omitempty"`
+	StartsNewPage   string   `xml:",attr,omitempty" json:"starts_new_page,omitempty" yaml:"starts_new_page,omitempty"`
 	SceneProperties []*SceneProperties
 	DynamicLabel    []*DynamicLabel
 	Text            []*Text
 }
 
 type SceneProperties struct {
-	XMLName xml.Name `json:"-"`
-	Length  string   `xml:",attr,omitempty" json:"length,omitempty"`
-	Page    string   `xml:",attr,omitempty" json:"page,omitempty"`
-	Title   string   `xml:",attr,omitempty" json:"title,omitempty"`
+	XMLName xml.Name `json:"-" yaml:"-"`
+	Length  string   `xml:",attr,omitempty" json:"length,omitempty" yaml:"length,omitempty"`
+	Page    string   `xml:",attr,omitempty" json:"page,omitempty" yaml:"page,omitempty"`
+	Title   string   `xml:",attr,omitempty" json:"title,omitempty" yaml:"title,omitempty"`
 }
 
 type HeaderAndFooter struct {
-	XMLName         xml.Name `json:"-"`
-	FooterFirstPage string   `xml:",attr,omitempty" json:"footer_first_page,omitempty"`
-	FooterVisible   string   `xml:",attr,omitempty" json:"footer_visible,omitempty"`
-	HeaderFirstPage string   `xml:",attr,omitempty" json:"header_first_page,omitempty"`
-	HeaderVisible   string   `xml:",attr,omitempty" json:"header_visible,omitempty"`
-	StartingPage    string   `xml:",attr,omitempty" json:"starting_page,omitempty"`
+	XMLName         xml.Name `json:"-" yaml:"-"`
+	FooterFirstPage string   `xml:",attr,omitempty" json:"footer_first_page,omitempty" yaml:"footer_first_page,omitempty"`
+	FooterVisible   string   `xml:",attr,omitempty" json:"footer_visible,omitempty" yaml:"footer_visible,omitempty"`
+	HeaderFirstPage string   `xml:",attr,omitempty" json:"header_first_page,omitempty" yaml:"header_first_page,omitempty"`
+	HeaderVisible   string   `xml:",attr,omitempty" json:"header_visible,omitempty" yaml:"header_visible,omitempty"`
+	StartingPage    string   `xml:",attr,omitempty" json:"starting_page,omitempty" yaml:"starting_page,omitempty"`
 	Header          Header
 	Footer          Footer
 }
 
 type Header struct {
-	XMLName   xml.Name    `json:"-"`
-	Paragraph []Paragraph `json:"paragraphs,omitempty"`
+	XMLName   xml.Name    `json:"-" yaml:"-"`
+	Paragraph []Paragraph `json:"paragraphs,omitempty" yaml:"paragraphs,omitempty"`
 }
 
 type DynamicLabel struct {
-	XMLName xml.Name `json:"-"`
-	Type    string   `xml:",attr,omitempty"`
+	XMLName xml.Name `json:"-" yaml:"-"`
+	Type    string   `xml:",attr,omitempty" json:"type,omitempty" yaml:"type,omitempty"`
 }
 
 type Footer struct {
-	XMLName   xml.Name    `json:"-"`
-	Paragraph []Paragraph `json:"paragraphs,omitempty"`
+	XMLName   xml.Name    `json:"-" yaml:"-"`
+	Paragraph []Paragraph `json:"paragraphs,omitempty" yaml:"paragraphs,omitempty"`
 }
 
 type Text struct {
-	XMLName        xml.Name `json:"-"`
-	AdornmentStyle string   `xml:",attr,omitempty" json:"adornment_type,omitempty"`
-	Background     string   `xml:",attr,omitempty" json:"background,omitempty"`
-	Color          string   `xml:",attr,omitempty" json:"color,omitempty"`
-	Font           string   `xml:",attr,omitempty" json:"font,omitempty"`
-	RevisionID     string   `xml:",attr,omitempty" json:"revision_id,omitempty"`
-	Size           string   `xml:",attr,omitempty" json:"size,omitempty"`
-	Style          string   `xml:",attr,omitempty" json:"style,omitempty"`
-	InnerText      string   `xml:",chardata" json:"text,omitempty"`
+	XMLName        xml.Name `json:"-" yaml:"-"`
+	AdornmentStyle string   `xml:",attr,omitempty" json:"adornment_type,omitempty" yaml:"adornment_type,omitempty"`
+	Background     string   `xml:",attr,omitempty" json:"background,omitempty" yaml:"background,omitempty"`
+	Color          string   `xml:",attr,omitempty" json:"color,omitempty" yaml:"color,omitempty"`
+	Font           string   `xml:",attr,omitempty" json:"font,omitempty" yaml:"font,omitempty"`
+	RevisionID     string   `xml:",attr,omitempty" json:"revision_id,omitempty" yaml:"revision_id,omitempty"`
+	Size           string   `xml:",attr,omitempty" json:"size,omitempty" yaml:"size,omitempty"`
+	Style          string   `xml:",attr,omitempty" json:"style,omitempty" yaml:"style,omitempty"`
+	InnerText      string   `xml:",chardata" json:"text,omitempty" yaml:"text,omitempty"`
 }
 
 type TitlePage struct {
-	XMLName         xml.Name `json:"-"`
+	XMLName         xml.Name `json:"-" yaml:"-"`
 	HeaderAndFooter *HeaderAndFooter
 	Content         *Content
 }
 
 type Revisions struct {
-	XMLName        xml.Name `json:"-"`
-	ActiveSet      string   `xml:",attr,omitempty" json:"active_set,omitempty"`
-	Location       string   `xml:",attr,omitempty" json:"location,omitempty"`
-	RevisionMode   string   `xml:",attr,omitempty" json:"revision_mode,omitempty"`
-	RevisionsShown string   `xml:",attr,omitempty" json:"revisions_shown,omitempty"`
-	ShowAllMarks   string   `xml:",attr,omitempty" json:"show_all_marks,omitempty"`
-	ShowAllSets    string   `xml:",attr,omitempty" json:"show_all_sets,omitempty"`
+	XMLName        xml.Name `json:"-" yaml:"-"`
+	ActiveSet      string   `xml:",attr,omitempty" json:"active_set,omitempty" yaml:"active_set,omitempty"`
+	Location       string   `xml:",attr,omitempty" json:"location,omitempty" yaml:"location,omitempty"`
+	RevisionMode   string   `xml:",attr,omitempty" json:"revision_mode,omitempty" yaml:"revision_mode,omitempty"`
+	RevisionsShown string   `xml:",attr,omitempty" json:"revisions_shown,omitempty" yaml:"revisions_shown,omitempty"`
+	ShowAllMarks   string   `xml:",attr,omitempty" json:"show_all_marks,omitempty" yaml:"show_all_marks,omitempty"`
+	ShowAllSets    string   `xml:",attr,omitempty" json:"show_all_sets,omitempty" yaml:"show_all_sets,omitempty"`
 	Revision       []Revision
 }
 
 type Revision struct {
-	XMLName      xml.Name `json:"-"`
-	Color        string   `xml:",attr,omitempty" json:"color,omitempty"`
-	FullRevision string   `xml:",attr,omitempty" json:"full_revision,omitempty"`
-	ID           string   `xml:",attr,omitempty" json:"id,omitempty"`
-	Mark         string   `xml:",attr,omitempty" json:"mark,omitempty"`
-	Name         string   `xml:",attr,omitempty" json:"name,omitempty"`
-	Style        string   `xml:",attr,omitempty" json:"style,omitempty"`
+	XMLName      xml.Name `json:"-" yaml:"-"`
+	Color        string   `xml:",attr,omitempty" json:"color,omitempty" yaml:"color,omitempty"`
+	FullRevision string   `xml:",attr,omitempty" json:"full_revision,omitempty" yaml:"full_revision,omitempty"`
+	ID           string   `xml:",attr,omitempty" json:"id,omitempty" yaml:"id,omitempty"`
+	Mark         string   `xml:",attr,omitempty" json:"mark,omitempty" yaml:"mark,omitempty"`
+	Name         string   `xml:",attr,omitempty" json:"name,omitempty" yaml:"name,omitempty"`
+	Style        string   `xml:",attr,omitempty" json:"style,omitempty" yaml:"style,omitempty"`
 }
 
 type ElementSettings struct {
-	XMLName       xml.Name `json:"-"`
-	Type          string   `xml:",attr,omitempty" json:"type,omitempty"`
+	XMLName       xml.Name `json:"-" yaml:"-"`
+	Type          string   `xml:",attr,omitempty" json:"type,omitempty" yaml:"type,omitempty"`
 	FontSpec      *FontSpec
 	ParagraphSpec *ParagraphSpec
 	Behavior      *Behavior
 }
 
 type FontSpec struct {
-	XMLName        xml.Name `json:"-"`
-	AdornmentStyle string   `xml:",attr,omitempty" json:"adornment_style,omitempty"`
-	Background     string   `xml:",attr,omitempty" json:"background,omitempty"`
-	Color          string   `xml:",attr,omitempty" json:"color,omitempty"`
-	Font           string   `xml:",attr,omitempty" json:"font,omitempty"`
-	RevisionID     string   `xml:",attr,omitempty" json:"revision_id,omitempty"`
-	Size           string   `xml:",attr,omitempty" json:"size,omitempty"`
-	Style          string   `xml:",attr,omitempty" json:"style,omitempty"`
+	XMLName        xml.Name `json:"-" yaml:"-"`
+	AdornmentStyle string   `xml:",attr,omitempty" json:"adornment_style,omitempty" yaml:"adornment_type,omitempty"`
+	Background     string   `xml:",attr,omitempty" json:"background,omitempty" yaml:"background,omitempty"`
+	Color          string   `xml:",attr,omitempty" json:"color,omitempty" yaml:"color,omitempty"`
+	Font           string   `xml:",attr,omitempty" json:"font,omitempty" yaml:"font,omitempty"`
+	RevisionID     string   `xml:",attr,omitempty" json:"revision_id,omitempty" yaml:"revision_id,omitempty"`
+	Size           string   `xml:",attr,omitempty" json:"size,omitempty" yaml:"size,omitempty"`
+	Style          string   `xml:",attr,omitempty" json:"style,omitempty" yaml:"style,omitempty"`
 }
 
 type ParagraphSpec struct {
 	XMLName       xml.Name `json:"-"`
-	Alignment     string   `xml:",attr,omitempty" json:"alignment,omitempty"`
-	FirstIndent   string   `xml:",attr,omitempty" json:"first_indent,omitempty"`
-	Leading       string   `xml:",attr,omitempty" json:"leading,omitempty"`
-	LeftIndent    string   `xml:",attr,omitempty" json:"left_indent,omitempty"`
-	RightIndent   string   `xml:",attr,omitempty" json:"right_indent,omitempty"`
-	SpaceBefore   string   `xml:",attr,omitempty" json:"space_before,omitempty"`
-	Spacing       string   `xml:",attr,omitempty" json:"spacing,omitempty"`
-	StartsNewPage string   `xml:",attr,omitempty" json:"starts_new_page,omitempty"`
+	Alignment     string   `xml:",attr,omitempty" json:"alignment,omitempty" yaml:"alignment,omitempty"`
+	FirstIndent   string   `xml:",attr,omitempty" json:"first_indent,omitempty" yaml:"first_indent,omitempty"`
+	Leading       string   `xml:",attr,omitempty" json:"leading,omitempty" yaml:"leading,omitempty"`
+	LeftIndent    string   `xml:",attr,omitempty" json:"left_indent,omitempty" yaml:"left_indent,omitempty"`
+	RightIndent   string   `xml:",attr,omitempty" json:"right_indent,omitempty" yaml:"right_indent,omitempty`
+	SpaceBefore   string   `xml:",attr,omitempty" json:"space_before,omitempty" yaml:"space_before,omitempty"`
+	Spacing       string   `xml:",attr,omitempty" json:"spacing,omitempty" yaml:"spacing,omitempty"`
+	StartsNewPage string   `xml:",attr,omitempty" json:"starts_new_page,omitempty" yaml:"starts_new_page,omitempty"`
 }
 
 type Behavior struct {
-	XMLName    xml.Name `json:"-"`
-	PaginateAs string   `xml:",attr,omitempty" json:"paginate_as,omitempty"`
-	ReturnKey  string   `xml:",attr,omitempty" json:"return_key,omitempty"`
-	Shortcut   string   `xml:",attr,omitempty" json:"shortcut,omitempty"`
+	XMLName    xml.Name `json:"-" yaml:"-"`
+	PaginateAs string   `xml:",attr,omitempty" json:"paginate_as,omitempty" yaml:"paginate_as,omitempty"`
+	ReturnKey  string   `xml:",attr,omitempty" json:"return_key,omitempty" yaml:"return_key,omitempty"`
+	Shortcut   string   `xml:",attr,omitempty" json:"shortcut,omitempty" yaml:"shortcut,omitempty"`
 }
 
 type SpellCheckIgnoreLists struct {
-	XMLName       xml.Name `json:"-"`
+	XMLName       xml.Name `json:"-" yaml"-"`
 	IgnoredRanges *IgnoredRanges
 	IgnoredWords  []*IgnoredWords
 }
 
 type IgnoredRanges struct {
-	XMLName xml.Name `json:"-"`
+	XMLName xml.Name `json:"-" yaml:"-"`
 }
 
 type IgnoredWords struct {
-	XMLName xml.Name `json:"-"`
+	XMLName xml.Name `json:"-" yaml:"-"`
 	Word    []*Word
 }
 
 type Word struct {
-	XMLName   xml.Name `json:"-"`
-	InnerText string   `xml:",chardata" json:"text,omitempty"`
+	XMLName   xml.Name `json:"-" yaml:"-"`
+	InnerText string   `xml:",chardata" json:"text,omitempty" yaml:"text,omitempty"`
 }
 
 type PageLayout struct {
-	XMLName                           xml.Name `json:"-"`
-	BackgroundColor                   string   `xml:",attr,omitempty" json:"background_color,omitempty"`
-	BottomMargin                      string   `xml:",attr,omitempty" json:"bottom_margin,omitempty"`
-	BreakDialogueAndActionAtSentences string   `xml:",attr,omitempty" json:"break_dialogue_and_action_at_sentences,omitempty"`
-	DocumentLeading                   string   `xml:",attr,omitempty" json:"document_leading,omitempty"`
-	FooterMargin                      string   `xml:",attr,omitempty" json:"footer_margin,omitempty"`
-	ForegroundColor                   string   `xml:",attr,omitempty" json:"foreground_color,omitempty"`
-	HeaderMargin                      string   `xml:",attr,omitempty" json:"header_margin,omitempty"`
-	InvisiblesColor                   string   `xml:",attr,omitempty" json:"invisible_colors,omitempty"`
-	TopMargin                         string   `xml:",attr,omitempty" json:"top_margin,omitempty"`
-	UsesSmartQuotes                   string   `xml:",attr,omitempty" json:"uses_smart_quotes,omitempty"`
+	XMLName                           xml.Name `json:"-" yaml:"-"`
+	BackgroundColor                   string   `xml:",attr,omitempty" json:"background_color,omitempty" yaml:"background_color,omitempty"`
+	BottomMargin                      string   `xml:",attr,omitempty" json:"bottom_margin,omitempty" yaml:"bottom_margin,omitempty"`
+	BreakDialogueAndActionAtSentences string   `xml:",attr,omitempty" json:"break_dialogue_and_action_at_sentences,omitempty" yaml:"break_dialogue_and_action_at_sentences,omitempty`
+	DocumentLeading                   string   `xml:",attr,omitempty" json:"document_leading,omitempty" yaml:"document_leading,omitempty"`
+	FooterMargin                      string   `xml:",attr,omitempty" json:"footer_margin,omitempty" yaml:"footer_margin,omitempty"`
+	ForegroundColor                   string   `xml:",attr,omitempty" json:"foreground_color,omitempty" yaml:"foreground_color,omitempty"`
+	HeaderMargin                      string   `xml:",attr,omitempty" json:"header_margin,omitempty" yaml:"header_margin,omitempty"`
+	InvisiblesColor                   string   `xml:",attr,omitempty" json:"invisible_colors,omitempty" yaml:"invisible_colors,omitempty"`
+	TopMargin                         string   `xml:",attr,omitempty" json:"top_margin,omitempty" yaml:"top_margin,omitempty"`
+	UsesSmartQuotes                   string   `xml:",attr,omitempty" json:"uses_smart_quotes,omitempty" yaml:"uses_smart_quotes,omitempty"`
 	AutoCastList                      *AutoCastList
 }
 
 type AutoCastList struct {
-	XMLName               xml.Name `json:"-"`
-	AddParentheses        string   `xml:",attr,omitempty" json:"add_parentheses,omitempty"`
-	AutomaticallyGenerate string   `xml:",attr,omitempty" json:"automatically_generate,omitempty"`
-	CastListElement       string   `xml:",attr,omitempty" json:"cast_list_element,omitempty"`
+	XMLName               xml.Name `json:"-" yaml:"-"`
+	AddParentheses        string   `xml:",attr,omitempty" json:"add_parentheses,omitempty" yaml:"add_parentheses,omitempty"`
+	AutomaticallyGenerate string   `xml:",attr,omitempty" json:"automatically_generate,omitempty" yaml:"automatically_generate,omitempty"`
+	CastListElement       string   `xml:",attr,omitempty" json:"cast_list_element,omitempty" yaml:"cast_list_element,omitempty"`
 }
 
 type WindowState struct {
-	XMLName xml.Name `json:"-"`
-	Height  string   `xml:",attr,omitempty" json:"height,omitempty"`
-	Left    string   `xml:",attr,omitempty" json:"left,omitempty"`
-	Mode    string   `xml:",attr,omitempty" json:"mode,omitempty"`
-	Top     string   `xml:",attr,omitempty" json:"top,omitempty"`
-	Width   string   `xml:",attr,omitempty" json:"width,omitempty"`
+	XMLName xml.Name `json:"-" yaml:"-"`
+	Height  string   `xml:",attr,omitempty" json:"height,omitempty" yaml:"height,omitempty"`
+	Left    string   `xml:",attr,omitempty" json:"left,omitempty" yaml:"left,omitempty"`
+	Mode    string   `xml:",attr,omitempty" json:"mode,omitempty" yaml:"mode,omitempty"`
+	Top     string   `xml:",attr,omitempty" json:"top,omitempty" yaml:"top,omitempty"`
+	Width   string   `xml:",attr,omitempty" json:"width,omitempty" yaml:"width,omitempty"`
 }
 
 type TextState struct {
-	XMLName        xml.Name `json:"-"`
-	Scaling        string   `xml:",attr,omitempty" json:"scaling,omitempty"`
-	Selection      string   `xml:",attr,omitempty" json:"selection,omitempty"`
-	ShowInvisibles string   `xml:",attr,omitempty" json:"show_invisibles,omitempty"`
+	XMLName        xml.Name `json:"-" yaml:"-"`
+	Scaling        string   `xml:",attr,omitempty" json:"scaling,omitempty" yaml:"scaling,omitempty"`
+	Selection      string   `xml:",attr,omitempty" json:"selection,omitempty" yaml:"selection,omitempty"`
+	ShowInvisibles string   `xml:",attr,omitempty" json:"show_invisibles,omitempty" yaml:"show_invisibles,omitempty"`
 }
 
 type ScriptNoteDefinitions struct {
-	XMLName              xml.Name `json:"-"`
-	Active               string   `xml:",attr,omitempty" json:"active,omitempty"`
+	XMLName              xml.Name `json:"-" yaml:"-"`
+	Active               string   `xml:",attr,omitempty" json:"active,omitempty" yaml:"active,omitempty"`
 	ScriptNoteDefinition []*ScriptNoteDefinition
 }
 
 type ScriptNoteDefinition struct {
-	XMLName xml.Name `json:"-"`
-	Color   string   `xml:",attr,omitempty" json:"color,omitempty"`
-	ID      string   `xml:",attr,omitempty" json:"id,omitempty"`
-	Marker  string   `xml:",attr,omitempty" json:"marker,omitempty"`
-	Name    string   `xml:",attr,omitempty" json:"name,omitempty"`
+	XMLName xml.Name `json:"-" yaml:"-"`
+	Color   string   `xml:",attr,omitempty" json:"color,omitempty" yaml:"color,omitempty"`
+	ID      string   `xml:",attr,omitempty" json:"id,omitempty" yaml:"id,omitempty"`
+	Marker  string   `xml:",attr,omitempty" json:"marker,omitempty" yaml:"marker,omitempty"`
+	Name    string   `xml:",attr,omitempty" json:"name,omitempty" yaml:"name,omitempty"`
 }
 
 type SmartType struct {
-	XMLName     xml.Name `json:"-"`
+	XMLName     xml.Name `json:"-" yaml:"-"`
 	Characters  *Characters
 	Extensions  *Extensions
 	SceneIntros *SceneIntros
@@ -318,180 +318,180 @@ type SmartType struct {
 }
 
 type Characters struct {
-	XMLName   xml.Name `json:"-"`
+	XMLName   xml.Name `json:"-" yaml:"-"`
 	Character []*Character
 }
 
 type Character struct {
-	XMLName   xml.Name `json:"-"`
-	InnerText string   `xml:",chardata" json:"text,omitempty"`
+	XMLName   xml.Name `json:"-" yaml:"-"`
+	InnerText string   `xml:",chardata" json:"text,omitempty" yaml:"text,omitempty"`
 }
 
 type Extensions struct {
-	XMLName   xml.Name `json:"-"`
+	XMLName   xml.Name `json:"-" yaml:"-"`
 	Extension []*Extension
 }
 
 type Extension struct {
-	XMLName   xml.Name `json:"-"`
-	InnerText string   `xml:",chardata" json:"text,omitempty"`
+	XMLName   xml.Name `json:"-" yaml:"-"`
+	InnerText string   `xml:",chardata" json:"text,omitempty" yaml:"text,omitempty"`
 }
 
 type SceneIntros struct {
-	XMLName    xml.Name `json:"-"`
+	XMLName    xml.Name `json:"-" yaml:"-"`
 	SceneIntro []*SceneIntro
 }
 
 type SceneIntro struct {
-	XMLName   xml.Name `json:"-"`
-	InnerText string   `xml:",chardata" json:"text,omitempty"`
+	XMLName   xml.Name `json:"-" yaml:"-"`
+	InnerText string   `xml:",chardata" json:"text,omitempty" yaml:"text,omitempty"`
 }
 
 type Locations struct {
-	XMLName  xml.Name `json:"-"`
+	XMLName  xml.Name `json:"-" yaml:"-"`
 	Location []*Location
 }
 
 type Location struct {
-	XMLName   xml.Name `json:"-"`
-	InnerText string   `xml:",chardata" json:"text,omitempty"`
+	XMLName   xml.Name `json:"-" yaml:"-"`
+	InnerText string   `xml:",chardata" json:"text,omitempty" yaml:"text,omitempty"`
 }
 
 type TimesOfDay struct {
-	XMLName   xml.Name `json:"-"`
-	Separator string   `xml:",attr,omitempty" json:"times_of_day,omitempty"`
+	XMLName   xml.Name `json:"-" yaml:"-"`
+	Separator string   `xml:",attr,omitempty" json:"times_of_day,omitempty" yaml:"times_of_day,omitempty"`
 	TimeOfDay []*TimeOfDay
 }
 
 type TimeOfDay struct {
-	XMLName   xml.Name `json:"-"`
-	InnerText string   `xml:",chardata" json:"text,omitempty"`
+	XMLName   xml.Name `json:"-" yaml:"-"`
+	InnerText string   `xml:",chardata" json:"text,omitempty" yaml:"text,omitempty"`
 }
 
 type Transitions struct {
-	XMLName    xml.Name `json:"-"`
+	XMLName    xml.Name `json:"-" yaml:"-"`
 	Transition []*Transition
 }
 
 type Transition struct {
-	XMLName   xml.Name `json:"-"`
-	InnerText string   `xml:",chardata" json:"text,omitempty"`
+	XMLName   xml.Name `json:"-" yaml:"-"`
+	InnerText string   `xml:",chardata" json:"text,omitempty" yaml:"text,omitempty"`
 }
 
 type MoresAndContinueds struct {
-	XMLName        xml.Name `json:"-"`
+	XMLName        xml.Name `json:"-" yaml:"-"`
 	FontSpec       *FontSpec
 	DialogueBreaks *DialogueBreaks
 	SceneBreaks    *SceneBreaks
 }
 
 type DialogueBreaks struct {
-	XMLNAme        xml.Name `json:"-"`
-	BottomOfPage   string   `xml:",attr,omitempty" json:"bottom_of_page,omitempty"`
-	DialogueBottom string   `xml:",attr,omitempty" json:"dialogue_bottom,omitempty"`
-	DialogueTop    string   `xml:",attr,omitempty" json:"dialogue_top,omitempty"`
-	TopOfNext      string   `xml:",attr,omitempty" json:"top_of_next,omitempty"`
+	XMLNAme        xml.Name `json:"-" yaml:"-"`
+	BottomOfPage   string   `xml:",attr,omitempty" json:"bottom_of_page,omitempty" yaml:"bottom_of_page,omitempty"`
+	DialogueBottom string   `xml:",attr,omitempty" json:"dialogue_bottom,omitempty" yaml:"dialogue_bottom,omitempty`
+	DialogueTop    string   `xml:",attr,omitempty" json:"dialogue_top,omitempty" yaml:"dialogue_top,omitempty"`
+	TopOfNext      string   `xml:",attr,omitempty" json:"top_of_next,omitempty" yaml:"top_of_next,omitempty"`
 }
 
 type SceneBreaks struct {
-	XMLName           xml.Name `json:"-"`
-	ContinuedNumber   string   `xml:",attr,omitempty" json:"continued_number,omitempty"`
-	SceneBottom       string   `xml:",attr,omitempty" json:"scene_bottom,omitempty"`
-	SceneBottomOfPage string   `xml:",attr,omitempty" json:"scene_bottom_of_page,omitempty"`
-	SceneTop          string   `xml:",attr,omitempty" json:"scene_top,omitempty"`
-	SceneTopOfNext    string   `xml:",attr,omitempty" json:"scene_top_of_next,omitempty"`
+	XMLName           xml.Name `json:"-" yaml:"-"`
+	ContinuedNumber   string   `xml:",attr,omitempty" json:"continued_number,omitempty" yaml:"continued_number,omitempty"`
+	SceneBottom       string   `xml:",attr,omitempty" json:"scene_bottom,omitempty" yaml:"scene_buttom,omitempty"`
+	SceneBottomOfPage string   `xml:",attr,omitempty" json:"scene_bottom_of_page,omitempty" yaml:"scene_bottom_of_page,omitempty"`
+	SceneTop          string   `xml:",attr,omitempty" json:"scene_top,omitempty" yaml:"scene_top,omitempty"`
+	SceneTopOfNext    string   `xml:",attr,omitempty" json:"scene_top_of_next,omitempty" yaml:"scene_top_of_next,omitempty"`
 }
 
 type LockedPages struct {
-	XMLName xml.Name `json:"-"`
+	XMLName xml.Name `json:"-" yaml:"-"`
 }
 
 type Macros struct {
-	XMLName xml.Name `json:"-"`
+	XMLName xml.Name `json:"-" yaml:"-"`
 	Macro   []*Macro
 }
 
 type Macro struct {
-	XMLName    xml.Name `json:"-"`
-	Element    string   `xml:",attr,omitempty" json:"element,omitempty"`
-	Name       string   `xml:",attr,omitempty" json:"name,omitempty"`
-	Shortcut   string   `xml:",attr,omitempty" json:"shortcut,omitempty"`
-	Text       string   `xml:",attr,omitempty" json:"text,omitempty"`
-	Transition string   `xml:",attr,omitempty" json:"transition,omitempty"`
+	XMLName    xml.Name `json:"-" yaml:"-"`
+	Element    string   `xml:",attr,omitempty" json:"element,omitempty" yaml:"element,omitempty"`
+	Name       string   `xml:",attr,omitempty" json:"name,omitempty" yaml:"name,omitempty"`
+	Shortcut   string   `xml:",attr,omitempty" json:"shortcut,omitempty" yaml:"shortcut,omitempty"`
+	Text       string   `xml:",attr,omitempty" json:"text,omitempty" yaml:"text,omitempty"`
+	Transition string   `xml:",attr,omitempty" json:"transition,omitempty" yaml:"transition,omitempty"`
 	Alias      []*Alias
 }
 
 type Alias struct {
-	XMLName      xml.Name `json:"-"`
-	Confirm      string   `xml:",attr,omitempty" json:"confirm,omitempty"`
-	MatchCase    string   `xml:",attr,omitempty" json:"match_case,omitempty"`
-	SmartReplace string   `xml:",attr,omitempty" json:"smart_replace,omitempty"`
-	Text         string   `xml:",attr,omitempty" json:"text,omitempty"`
-	WordOnly     string   `xml:",attr,omitempty" json:"word_only,omitempty"`
+	XMLName      xml.Name `json:"-" yaml:"-"`
+	Confirm      string   `xml:",attr,omitempty" json:"confirm,omitempty" yaml:"confirm,omitempty"`
+	MatchCase    string   `xml:",attr,omitempty" json:"match_case,omitempty" yaml:"match_case,omitempty"`
+	SmartReplace string   `xml:",attr,omitempty" json:"smart_replace,omitempty" yaml:"smart_replace,omitempty"`
+	Text         string   `xml:",attr,omitempty" json:"text,omitempty" yaml:"text,omitempty"`
+	WordOnly     string   `xml:",attr,omitempty" json:"word_only,omitempty" yaml:"word_only,omitempty"`
 	ActivateIn   []*ActivateIn
 }
 
 type ActivateIn struct {
-	XMLName xml.Name `json:"-"`
-	Element string   `xml:",attr,omitempty" json:"element,omitempty"`
+	XMLName xml.Name `json:"-" yaml:"-"`
+	Element string   `xml:",attr,omitempty" json:"element,omitempty" yaml:"element,omitempty"`
 }
 
 type Actors struct {
-	XMLName xml.Name `json:"-"`
+	XMLName xml.Name `json:"-" yaml:"-"`
 	Actor   []*Actor
 }
 
 type Actor struct {
-	XMLName  xml.Name `json:"-"`
-	MacVoice string   `xml:",attr,omitempty" json:"mac_voice,omitempty"`
-	Name     string   `xml:",attr,omitempty" json:"name,omitempty"`
-	Pitch    string   `xml:",attr,omitempty" json:"pitch,omitempty"`
-	Speed    string   `xml:",attr,omitempty" json:"speed,omitempty"`
-	WinVoice string   `xml:",attr,omitempty" json:"win_voice,omitempty"`
+	XMLName  xml.Name `json:"-" yaml:"-"`
+	MacVoice string   `xml:",attr,omitempty" json:"mac_voice,omitempty" yaml:"mac_voice,omitempty"`
+	Name     string   `xml:",attr,omitempty" json:"name,omitempty" yaml:"name,omitempty"`
+	Pitch    string   `xml:",attr,omitempty" json:"pitch,omitempty" yaml:"pitch,omitempty'`
+	Speed    string   `xml:",attr,omitempty" json:"speed,omitempty" yaml:"speed,omitempty"`
+	WinVoice string   `xml:",attr,omitempty" json:"win_voice,omitempty" yaml:"win_voice,omitempty`
 }
 
 type Cast struct {
-	XMLName  xml.Name `json:"-"`
+	XMLName  xml.Name `json:"-" yaml:"-"`
 	Narrator *Narrator
 	Member   []*Member
 }
 
 type Narrator struct {
-	XMLName xml.Name `json:"-"`
+	XMLName xml.Name `json:"-" yaml:"-"`
 	Element []*Element
 }
 
 type Element struct {
-	XMLName xml.Name `json:"-"`
-	Type    string   `xml:",attr,omitempty" json:"type,omitempty"`
+	XMLName xml.Name `json:"-" yaml:"-"`
+	Type    string   `xml:",attr,omitempty" json:"type,omitempty" yaml:"type,omitempty"`
 }
 
 type Member struct {
-	XMLName   xml.Name `json:"-"`
-	Actor     string   `xml:",attr,omitempty" json:"actor,omitempty"`
-	Character string   `xml:",attr,omitempty" json:"character,omitempty"`
+	XMLName   xml.Name `json:"-" yaml:"-"`
+	Actor     string   `xml:",attr,omitempty" json:"actor,omitempty" yaml:"actor,omitempty"`
+	Character string   `xml:",attr,omitempty" json:"character,omitempty" yaml:"character,omitempty"`
 }
 
 type SplitState struct {
-	XMLName          xml.Name `json:"-"`
-	ActivePanel      string   `xml:",attr,omitempty" json:"active_panel,omitempty"`
-	SplitMode        string   `xml:",attr,omitempty" json:"split_mode,omitempty"`
-	SplitterPosition string   `xml:",attr,omitempty" json:"splitter_position,omitempty"`
+	XMLName          xml.Name `json:"-" yaml:"-"`
+	ActivePanel      string   `xml:",attr,omitempty" json:"active_panel,omitempty" yaml:"active_panel,omitempty"`
+	SplitMode        string   `xml:",attr,omitempty" json:"split_mode,omitempty" yaml:"split_mode,omitempty"`
+	SplitterPosition string   `xml:",attr,omitempty" json:"splitter_position,omitempty" yaml:"splitter_position,omitempty"`
 	ScriptPanel      *ScriptPanel
 }
 
 type ScriptPanel struct {
-	XMLName     xml.Name `json:"-"`
-	DisplayMode string   `xml:",attr,omitempty" json:"display_mode,omitempty"`
+	XMLName     xml.Name `json:"-" yaml:"-"`
+	DisplayMode string   `xml:",attr,omitempty" json:"display_mode,omitempty" yaml:"display_mode,omitempty"`
 	FontSpec    *FontSpec
 }
 
 type SceneNumberOptions struct {
-	XMLName            xml.Name `json:"-"`
-	LeftLocation       string   `xml:",attr,omitempty" json:"left_location,omitempty"`
-	RightLocation      string   `xml:",attr,omitempty" json:"right_location,omitempty"`
-	ShowNumbersOnLeft  string   `xml:",attr,omitempty" json:"show_numbers_on_left,omitempty"`
-	ShowNumbersOnRight string   `xml:",attr,omitempty" json:"show_numbers_on_right,omitempty"`
+	XMLName            xml.Name `json:"-" yaml:"-"`
+	LeftLocation       string   `xml:",attr,omitempty" json:"left_location,omitempty" yaml:"left_location,omitempty"`
+	RightLocation      string   `xml:",attr,omitempty" json:"right_location,omitempty" yaml:"right_location,omitempty"`
+	ShowNumbersOnLeft  string   `xml:",attr,omitempty" json:"show_numbers_on_left,omitempty" yaml:"show_numbers_on_left,omitempty"`
+	ShowNumbersOnRight string   `xml:",attr,omitempty" json:"show_numbers_on_right,omitempty" yaml:"show_numbers_on_right,omitempty"`
 	FontSpec           *FontSpec
 }
 

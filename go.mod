@@ -1,8 +1,5 @@
 module github.com/rsdoiel/fdx
 
-go 1.16
+go 1.22.0
 
-require (
-	github.com/caltechlibrary/cli v0.0.16
-	github.com/rsdoiel/fountain v0.0.3
-)
+require github.com/rsdoiel/fountain v1.0.0

@@ -4,7 +4,7 @@
 # Set the package name and version to install
 #
 PACKAGE="fdx"
-VERSION="1.0.0"
+VERSION="1.0.1"
 GIT_GROUP="rsdoiel"
 RELEASE="https://github.com/$GIT_GROUP/$PACKAGE/releases/tag/v$VERSION"
 

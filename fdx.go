@@ -112,7 +112,7 @@ type Paragraph struct {
 	XMLName         xml.Name `json:"-" yaml:"-"`
 	Type            string   `xml:",attr,omitempty" json:"type,omitempty" yaml:"type,omitempty"`
 	Number          string   `xml:",attr,omitempty" json:"number,omitempty" yaml:"number,omitempty"`
-	Alignment       string   `xml:",attr,omitempty" json:"alignment,omitempty" yaml:"alignment,emitempty"`
+	Alignment       string   `xml:",attr,omitempty" json:"alignment,omitempty" yaml:"alignment,omitempty"`
 	FirstIndent     string   `xml:",attr,omitempty" json:"first_indent,omitempty" yaml:"first_indent,omitempty"`
 	Leading         string   `xml:",attr,omitempty" json:"leading,omitempty" yaml:"leading,omitempty"`
 	LeftIndent      string   `xml:",attr,omitempty" json:"left_indent,omitempty" yaml:"left_indent,omitempty"`

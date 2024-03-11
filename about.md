@@ -3,14 +3,15 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 type: software
 title: "fdx"
-abstract: "A Go package and command line programs for working with fdx XML files used by Screen Writing software."
+abstract: "A Go package and command line programs for working with fdx
+XML files used by Screen Writing software."
 authors:
   - family-names: Doiel
     given-names: Robert
     orcid: "https://orcid.org/0000-0003-0900-6903"
 
 repository-code: "https://github.com/rsdoiel/fdx"
-version: 1.0.1
+version: 1.0.2
 license-url: "https://rsdoiel.github.io/fdx/LICENSE"
 keywords: [ "GitHub", "text markup", "screen play" ]
 
@@ -19,7 +20,7 @@ keywords: [ "GitHub", "text markup", "screen play" ]
 About this software
 ===================
 
-## fdx 1.0.1
+## fdx 1.0.2
 
 ### Authors
 
@@ -30,7 +31,8 @@ About this software
 
 -  
 
-A Go package and command line programs for working with fdx XML files used by Screen Writing software.
+A Go package and command line programs for working with fdx XML files
+used by Screen Writing software.
 
 - License: <https://rsdoiel.github.io/fdx/LICENSE>
 - GitHub: <https://github.com/rsdoiel/fdx>

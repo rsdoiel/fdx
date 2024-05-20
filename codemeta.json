@@ -5,7 +5,7 @@
     "name": "fdx",
     "codeRepository": "https://github.com/rsdoiel/fdx",
     "issueTracker": "https://github.com/rsdoiel/fdx/issues",
-    "license": "https://rsdoiel.github.io/fdx/LICENSE",
+    "license": "https://spdx.org/licenses/AGPL-3.0-or-later",
     "version": "1.0.3",
     "dateCreated": "2017-12-07",
     "dateRelease": "2023-05-19",

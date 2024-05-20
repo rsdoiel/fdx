@@ -6,11 +6,11 @@
     "codeRepository": "https://github.com/rsdoiel/fdx",
     "issueTracker": "https://github.com/rsdoiel/fdx/issues",
     "license": "https://rsdoiel.github.io/fdx/LICENSE",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "dateCreated": "2017-12-07",
     "dateRelease": "2023-05-19",
-    "dateModified": "2024-03-11",
-    "releaseNotes": "Updated compiler to go 1.22, add tagging for YAML, fixed typo in mapping",
+    "dateModified": "2024-05-20",
+    "releaseNotes": "Updated compiler to go 1.22, add tagging for YAML, fixed typo in mapping, changed license to GNU AFFERO GENERAL PUBLIC LICENSE",
     "author": [
         {
             "@type": "Person",

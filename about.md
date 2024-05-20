@@ -11,7 +11,7 @@ authors:
     orcid: "https://orcid.org/0000-0003-0900-6903"
 
 repository-code: "https://github.com/rsdoiel/fdx"
-version: 1.0.2
+version: 1.0.3
 license-url: "https://rsdoiel.github.io/fdx/LICENSE"
 keywords: [ "GitHub", "text markup", "screen play" ]
 
@@ -20,7 +20,7 @@ keywords: [ "GitHub", "text markup", "screen play" ]
 About this software
 ===================
 
-## fdx 1.0.2
+## fdx 1.0.3
 
 ### Authors
 

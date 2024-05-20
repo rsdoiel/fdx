@@ -1,4 +1,4 @@
-%fdx2txt(1) | version 1.0.3 cf91847
+%fdx2txt(1) | version 1.0.3 605c7d6
 % R. S. Doiel
 % 2024-05-20 
 

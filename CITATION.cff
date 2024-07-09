@@ -16,5 +16,5 @@ maintainers:
 
 repository-code: "https://github.com/rsdoiel/fdx"
 version: 1.0.3
-license-url: "https://rsdoiel.github.io/fdx/LICENSE"
+license-url: "https://spdx.org/licenses/AGPL-3.0-or-later"
 keywords: [ "GitHub", "text markup", "screen play" ]

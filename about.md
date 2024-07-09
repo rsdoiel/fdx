@@ -12,7 +12,7 @@ authors:
 
 repository-code: "https://github.com/rsdoiel/fdx"
 version: 1.0.3
-license-url: "https://rsdoiel.github.io/fdx/LICENSE"
+license-url: "https://spdx.org/licenses/AGPL-3.0-or-later"
 keywords: [ "GitHub", "text markup", "screen play" ]
 
 ---
@@ -34,7 +34,7 @@ About this software
 A Go package and command line programs for working with fdx XML files
 used by Screen Writing software.
 
-- License: <https://rsdoiel.github.io/fdx/LICENSE>
+- License: <https://spdx.org/licenses/AGPL-3.0-or-later>
 - GitHub: <https://github.com/rsdoiel/fdx>
 - Issues: <https://github.com/rsdoiel/fdx/issues>
 

@@ -19,6 +19,7 @@
 
 ## Someday, Maybe
 
+- [ ] Compile to WASM module then wrap for TypeScript
 - [ ] Add fdx2json, json2fdx
 - [ ] Add fdx2yaml, yaml2fdx
 - [ ] Write and fdx2html using [scrippets](https://fountain.io/scrippets) approach

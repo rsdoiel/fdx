@@ -1,5 +1,5 @@
-github.com/rsdoiel/fountain v1.0.1 h1:m5JZbnasFendZbYzoTsOsJ/gcup7VNTUjJGTANshQck=
-github.com/rsdoiel/fountain v1.0.1/go.mod h1:Sd3MZuWObP+tssyGIuUUfl3+nslvRVndkEEpBVsWAJU=
+github.com/rsdoiel/fountain v1.0.3 h1:N5oz6MP/J5KAh5Dc7yPsnrT4TEiZz5TK8UXjR5BJnXM=
+github.com/rsdoiel/fountain v1.0.3/go.mod h1:qsWthDn7KviYlng5KTKOnGRHQSWojbxkv7Boq9roPYk=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 h1:yhCVgyC4o1eVCa2tZl7eS0r+SDo693bJlVdllGtEeKM=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
 gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=

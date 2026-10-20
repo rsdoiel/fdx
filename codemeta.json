@@ -7,7 +7,7 @@
   "issueTracker": "https://github.com/rsdoiel/fdx/issues",
   "license": "https://www.gnu.org/licenses/agpl-3.0.txt",
   "version": "1.0.4",
-  "developmentStatus": "inactive",
+  "developmentStatus": "active",
   "releaseNotes": "Scene numbers now survive a Fountain to FDX round trip. A Fountain heading ending #12A# becomes a Scene Heading with the FDX Number attribute set to 12A and the text without the marker; a Number on a Scene Heading is written back to Fountain as #12A#. Numbered headings therefore no longer carry the number in their text in FDX output. Requires fountain v1.0.3; the go directive is now 1.26.4.",
   "dateCreated": "2017-12-07",
   "dateModified": "2026-10-20",

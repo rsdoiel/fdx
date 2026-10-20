@@ -1,70 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="language" content="EN">
-  <title>R. S. Doiel, Software Engineer/Analyst - INSTALL</title>
-
-  <link rel="stylesheet" type="text/css"  href="/printfonts/print.css" media="print" />
-  <link rel="stylesheet" type="text/css"  href="/webfonts/fonts.css" media="screen" />
-  <link rel="stylesheet" type="text/css"  href="/css/site.css" media="screen" />
-  <link title="RSS feed for rsdoiel's blog" rel="alternate" type="application/rss+xml" href="https://rsdoiel.github.io/rss.xml" />
-  <link title="markdown source for page" rel="alternative" type="application/markdown" href="INSTALL.md">
+    <title>fdx</title>
+    <link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
+<a href="#main-content" class="visually-hidden">skip to main content</a>
 <nav>
 <ul>
-<li><a href="/">Home</a></li>
-<li><a href="./">README</a></li>
-<li><a href="user-manual.html">User Manual</a></li>
-<li><a href="LICENSE">LICENSE</a></li>
-<li><a href="INSTALL.html">INSTALL</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="https://github.com/rsdoiel/fdx">GitHub</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="LICENSE">LICENSE</a></li>
+    <li><a href="INSTALL.html">INSTALL</a></li>
+    <li><a href="user-manual.html">User Manual</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="https://github.com/rsdoiel/fdx">Code Repository</a></li>
 </ul>
 </nav>
-
-<section>
-<!--  <h1>INSTALL</h1> -->
-
-<h2 id="installation">Installation</h2>
-<p>This project is experimental. Get the latest release from <a
-href="https://github.com/rsdoiel/fdx/releases/">GitHub</a>.</p>
-<h2 id="quick-install-with-curl">Quick install with curl</h2>
-<p>If you are using macOS or Linux you maybe able to install fdx using
-the following curl command.</p>
+<section id="main-content">
+<h1 id="installation-fdx">Installation <strong>fdx</strong></h1>
+<p><strong>fdx</strong> A Go package and command line programs for
+working with fdx XML files used by Screen Writing software.</p>
+<h2 id="quick-install-with-curl-or-irm">Quick install with curl or
+irm</h2>
+<p>There is an experimental installer.sh script that can be run with the
+following command to install latest table release. This may work for
+macOS, Linux and if you’re using Windows with the Unix subsystem. This
+would be run from your shell (e.g. Terminal on macOS).</p>
 <pre class="shell"><code>curl https://rsdoiel.github.io/fdx/installer.sh | sh</code></pre>
-<h2 id="install-from-source">Install from source</h2>
-<h2 id="requirements">Requirements</h2>
+<p>This will install the programs included in fdx in your
+<code>$HOME/bin</code> directory.</p>
+<p>If you are running Windows 10 or 11 use the Powershell command
+below.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode ps1"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">irm</span> https<span class="op">://</span>rsdoiel<span class="op">.</span><span class="fu">github</span><span class="op">.</span><span class="fu">io</span><span class="op">/</span>fdx<span class="op">/</span>installer<span class="op">.</span><span class="fu">ps1</span> <span class="op">|</span> <span class="fu">iex</span></span></code></pre></div>
+<h3 id="if-your-are-running-macos-or-windows">If your are running macOS
+or Windows</h3>
+<p>You may get security warnings if you are using macOS or Windows. See
+the notes for the specific operating system you’re using to fix
+issues.</p>
 <ul>
-<li>Golang &gt;= 1.20</li>
-<li>Pandoc &gt;= 3</li>
-<li>GNU Make</li>
-<li>Git</li>
+<li><a href="INSTALL_NOTES_macOS.html">INSTALL_NOTES_macOS.md</a></li>
+<li><a
+href="INSTALL_NOTES_Windows.html">INSTALL_NOTES_Windows.md</a></li>
 </ul>
-<h2 id="steps">Steps</h2>
+<h2 id="installing-from-source">Installing from source</h2>
+<h3 id="required-software">Required software</h3>
+<ul>
+<li>Go &gt;= 1.26.4</li>
+</ul>
+<h3 id="steps">Steps</h3>
 <ol type="1">
-<li>Clone the Git repository for the project</li>
-<li>change directory into the cloned project</li>
-<li>Run <code>make</code>, <code>make test</code> and
-<code>make install</code></li>
+<li>git clone https://github.com/rsdoiel/fdx</li>
+<li>Change directory into the <code>fdx</code> directory</li>
+<li>Make to build, test and install</li>
 </ol>
-<p>Here’s what that looks like for me.</p>
-<pre><code>git clone https://github.com/rsdoiel/fdx src/github.com/rsdoiel/fdx
-cd src/github.com/rsdoiel/fdx
+<pre class="shell"><code>git clone https://github.com/rsdoiel/fdx
+cd fdx
 make
 make test
 make install</code></pre>
-<p>By default it will install the programs in <code>$HOME/bin</code>.
-<code>$HOME/bin</code> needs to be included in your <code>PATH</code>.
-E.g.</p>
-<pre><code>export PATH=&quot;$HOME/bin:$PATH&quot;</code></pre>
-<p>Can be added to your <code>.profile</code>, <code>.bashrc</code> or
-<code>.zshrc</code> file depending on your system’s shell.</p>
 </section>
-
 <footer>
+<p>fdx</p>
 </footer>
-
 </body>
 </html>

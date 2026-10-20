@@ -1,51 +1,50 @@
+Installation **fdx**
+============================
 
-Installation
-------------
+**fdx** A Go package and command line programs for working with fdx XML files used by Screen Writing software.
 
-This project is experimental. Get the latest release from [GitHub](https://github.com/rsdoiel/fdx/releases/). 
+Quick install with curl or irm
+------------------------------
 
-Quick install with curl
------------------------
-
-If you are using macOS or Linux you maybe able to install fdx using the following curl command.
+There is an experimental installer.sh script that can be run with the following command to install latest table release. This may work for macOS, Linux and if you’re using Windows with the Unix subsystem. This would be run from your shell (e.g. Terminal on macOS).
 
 ~~~shell
 curl https://rsdoiel.github.io/fdx/installer.sh | sh
 ~~~
 
-Install from source
--------------------
+This will install the programs included in fdx in your `$HOME/bin` directory.
 
-## Requirements
+If you are running Windows 10 or 11 use the Powershell command below.
 
-- Golang >= 1.20
-- Pandoc >= 3
-- GNU Make
-- Git
-
-## Steps
-
-1. Clone the Git repository for the project
-2. change directory into the cloned project
-3. Run `make`, `make test` and `make install`
-
-Here's what that looks like for me.
-
+~~~ps1
+irm https://rsdoiel.github.io/fdx/installer.ps1 | iex
 ~~~
-git clone https://github.com/rsdoiel/fdx src/github.com/rsdoiel/fdx
-cd src/github.com/rsdoiel/fdx
+
+### If your are running macOS or Windows
+
+You may get security warnings if you are using macOS or Windows. See the notes for the specific operating system you’re using to fix issues.
+
+- [INSTALL_NOTES_macOS.md](INSTALL_NOTES_macOS.md)
+- [INSTALL_NOTES_Windows.md](INSTALL_NOTES_Windows.md)
+
+Installing from source
+----------------------
+
+### Required software
+
+- Go >= 1.26.4
+
+### Steps
+
+1. git clone https://github.com/rsdoiel/fdx
+2. Change directory into the `fdx` directory
+3. Make to build, test and install
+
+~~~shell
+git clone https://github.com/rsdoiel/fdx
+cd fdx
 make
 make test
 make install
 ~~~
-
-By default it will install the programs in `$HOME/bin`. `$HOME/bin` needs
-to be included in your `PATH`. E.g.
-
-~~~
-export PATH="$HOME/bin:$PATH"
-~~~
-
-Can be added to your `.profile`, `.bashrc` or `.zshrc` file depending on your system's shell.
-
 

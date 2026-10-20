@@ -114,10 +114,10 @@ func TestTitlePageToString(t *testing.T) {
 	}
 
 	haveTitlePages := map[string][]string{
-		"Big-Fish.fdx":                   []string{"BIG FISH", "This is a Southern story, full of lies and fabrications, "},
-		"Brick-&-Steel.fdx":            []string{"BRICK AND STEEL"},
+		"Big-Fish.fdx":               []string{"BIG FISH", "This is a Southern story, full of lies and fabrications, "},
+		"Brick-&-Steel.fdx":          []string{"BRICK AND STEEL"},
 		"The-Last-Birthday-Card.fdx": []string{"THE LAST BIRTHDAY CARD"},
-		"sample-03.fdx":                    []string{"SAMPLE 03"},
+		"sample-03.fdx":              []string{"SAMPLE 03"},
 	}
 	for fname, textTerms := range haveTitlePages {
 		src, err := ioutil.ReadFile(path.Join("testdata", fname))

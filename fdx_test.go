@@ -38,6 +38,8 @@ import (
 	"path"
 	"strings"
 	"testing"
+
+	"github.com/rsdoiel/fountain"
 )
 
 var (
@@ -237,4 +239,74 @@ func TestToString(t *testing.T) {
 func TestMain(m *testing.M) {
 	// Setup everything, process flags, etc.
 	os.Exit(m.Run())
+}
+
+// A scene number written as #12A# at the end of a Fountain heading is Final
+// Draft's Number attribute, not part of the heading's text.
+func TestSceneNumberFromFountain(t *testing.T) {
+	screenplay, err := fountain.Parse([]byte("INT. KITCHEN - DAY #12A#\n\nAnna waits.\n\nEXT. YARD - NIGHT\n\nRain.\n"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	document := NewFinalDraft()
+	document.FromFountain(screenplay)
+	var headings []*Paragraph
+	for _, p := range document.Content.Paragraph {
+		if p.Type == SceneHeadingType {
+			headings = append(headings, p)
+		}
+	}
+	if len(headings) != 2 {
+		t.Fatalf("got %d scene headings, want 2", len(headings))
+	}
+	if headings[0].Number != "12A" {
+		t.Errorf("Number = %q, want 12A", headings[0].Number)
+	}
+	if got := headings[0].Text[0].InnerText; got != "INT. KITCHEN - DAY" {
+		t.Errorf("heading text = %q, want it without the #12A# marker", got)
+	}
+	if headings[1].Number != "" || headings[1].Text[0].InnerText != "EXT. YARD - NIGHT" {
+		t.Errorf("unnumbered heading = %+v, want no Number and its text unchanged", headings[1])
+	}
+}
+
+// A Number on a Final Draft scene heading comes back as #N# in Fountain.
+func TestSceneNumberToString(t *testing.T) {
+	p := &Paragraph{Type: SceneHeadingType, Number: "12A", Text: StringToTextArray("int. kitchen - day")}
+	if got, want := p.String(), "INT. KITCHEN - DAY #12A#\n\n"; got != want {
+		t.Errorf("String() = %q, want %q", got, want)
+	}
+	p = &Paragraph{Type: SceneHeadingType, Text: StringToTextArray("ext. yard - night")}
+	if got, want := p.String(), "EXT. YARD - NIGHT\n\n"; got != want {
+		t.Errorf("String() = %q, want %q", got, want)
+	}
+	// Only a scene heading carries a scene number.
+	p = &Paragraph{Type: ActionType, Number: "7", Text: StringToTextArray("Rain.")}
+	if got, want := p.String(), "Rain.\n\n"; got != want {
+		t.Errorf("String() = %q, want %q", got, want)
+	}
+}
+
+// Fountain to FDX XML and back keeps the number, once.
+func TestSceneNumberRoundTrip(t *testing.T) {
+	screenplay, err := fountain.Parse([]byte("INT. KITCHEN - DAY #12A#\n\nAnna waits.\n"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	document := NewFinalDraft()
+	document.FromFountain(screenplay)
+	xml, err := document.ToXML()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !strings.Contains(string(xml), `Number="12A"`) {
+		t.Errorf("XML has no Number=\"12A\" attribute:\n%s", xml)
+	}
+	back, err := Parse(xml)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if got := back.Content.String(); strings.Count(got, "#12A#") != 1 || !strings.Contains(got, "INT. KITCHEN - DAY #12A#") {
+		t.Errorf("round trip = %q, want the heading once with #12A#", got)
+	}
 }

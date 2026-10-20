@@ -534,11 +534,15 @@ func (paragraph *Paragraph) String() string {
 		if paragraph.StartsNewPage == "Yes" {
 			src = append(src, "===\n\n")
 		}
-		for _, text := range paragraph.Text {
+		for i, text := range paragraph.Text {
 			s := text.String()
 			switch paragraph.Type {
 			case SceneHeadingType:
 				s = strings.ToUpper(s)
+				if paragraph.Number != "" && i == len(paragraph.Text)-1 {
+					// Final Draft's Number attribute is Fountain's #12A#.
+					s += " #" + paragraph.Number + "#"
+				}
 			case CharacterType:
 				s = strings.ToUpper(s)
 			case TransitionType:

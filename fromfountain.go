@@ -123,6 +123,12 @@ func (document *FinalDraft) FromFountain(screenplay *fountain.Fountain) {
 			text.InnerText = elem.Content
 			paragraph := new(Paragraph)
 			paragraph.Type = elem.TypeName()
+			if elem.Type == fountain.SceneHeadingType && elem.SceneNumber != "" {
+				// Final Draft keeps a scene number in the Number attribute,
+				// not in the heading's text.
+				paragraph.Number = elem.SceneNumber
+				text.InnerText = strings.TrimSpace(strings.TrimSuffix(strings.TrimSpace(elem.Content), "#"+elem.SceneNumber+"#"))
+			}
 			paragraph.Text = append(paragraph.Text, text)
 			document.Content.Paragraph = append(document.Content.Paragraph, paragraph)
 		}

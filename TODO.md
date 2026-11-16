@@ -32,3 +32,12 @@
 - [x] Add ParseFile() to fdx.go
 - [x] String() Paragraph needs to handle trailing new lines based on Paragraph Type
 - [x] write tests that validate the source FDX content in _testout_ version
+
+## Modernization (2026-11-16)
+
+To match the workspace standard (knowledge and opml are the models; Go 1.27.3 across repositories). Do one repository at a time; run the tests and `make -n release` after each step.
+
+- [ ] Go 1.27.3: change `go 1.26.4` in go.mod, the `Go >=` lines in codemeta.json, README.md and INSTALL.md; run `go mod tidy`, `go vet ./...` and the tests.
+- [ ] Makefile: add `check-go-version` (go.mod, codemeta.json and the Go in use agree); `check-release` calls it.
+- [ ] Drop the armv7l target and 32-bit Pi wording (dropped 2026-10-27).
+- [ ] release.ps1: take knowledge's (existing-draft check, checksums).

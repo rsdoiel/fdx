@@ -40,4 +40,4 @@ To match the workspace standard (knowledge and opml are the models; Go 1.27.3 ac
 - [x] Go 1.27.3: change `go 1.26.4` in go.mod, the `Go >=` lines in codemeta.json, README.md and INSTALL.md; run `go mod tidy`, `go vet ./...` and the tests.
 - [x] Makefile: add `check-go-version` (go.mod, codemeta.json and the Go in use agree); `check-release` calls it.
 - [x] Drop the armv7l target and 32-bit Pi wording (dropped 2026-10-27).
-- [ ] release.ps1: take knowledge's (existing-draft check, checksums).
+- [x] release.ps1: take knowledge's (existing-draft check, checksums).

@@ -15,10 +15,10 @@
   "copyrightYear": 2017,
   "copyrightHolder": "R. S. Doiel",
   "programmingLanguage": [
-    "Go >= 1.26.4"
+    "Go >= 1.27.3"
   ],
   "softwareRequirements": [
-    "Go >= 1.26.4",
+    "Go >= 1.27.3",
     "github.com/rsdoiel/fountain >= 1.0.3",
     "gopkg.in/yaml.v3 >= 3.0.1"
   ],

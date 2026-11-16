@@ -1,6 +1,6 @@
 module github.com/rsdoiel/fdx
 
-go 1.26.4
+go 1.27.3
 
 require github.com/rsdoiel/fountain v1.0.3
 

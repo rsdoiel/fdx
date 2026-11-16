@@ -37,7 +37,7 @@ go get github.com/rsdoiel/fdx
 
 ## Build and test
 
-You need Go 1.26.4 or later. Pandoc and GNU Make are only needed for the man pages and the website, and `cmt` (CMTools) only to regenerate `version.go`, `about.md` and `CITATION.cff` from `codemeta.json`.
+You need Go 1.27.3 or later. Pandoc and GNU Make are only needed for the man pages and the website, and `cmt` (CMTools) only to regenerate `version.go`, `about.md` and `CITATION.cff` from `codemeta.json`.
 
 ```shell
 make          # build the programs into bin/ and the man pages into man/

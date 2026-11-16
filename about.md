@@ -18,7 +18,7 @@ version: 1.0.4
 license_url: https://www.gnu.org/licenses/agpl-3.0.txt
 
 programming_language:
-  - Go >= 1.26.4
+  - Go >= 1.27.3
 
 keywords:
   - GitHub
@@ -55,14 +55,14 @@ A Go package and command line programs for working with fdx XML files used by Sc
 
 ## Programming languages
 
-- Go >= 1.26.4
+- Go >= 1.27.3
 
 
 
 
 ## Software Requirements
 
-- Go >= 1.26.4
+- Go >= 1.27.3
 - github.com/rsdoiel/fountain >= 1.0.3
 - gopkg.in/yaml.v3 >= 3.0.1
 

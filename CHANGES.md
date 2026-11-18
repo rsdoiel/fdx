@@ -2,6 +2,14 @@
 
 Reconstructed for v1.0.3 and v1.0.4 from the tags and the git history; maintained going forward.
 
+## Unreleased
+
+- `release.bash` and `release.ps1` resume an interrupted draft release (workspace DR-0013, proposed): run the script again and it
+  uploads only the files the draft does not already hold, replacing one whose SHA-256 differs. A published release, or a draft
+  for another commit, still stops it. `release.ps1` also takes the DR-0012 flow (no "prep" commit or push, a committed-and-pushed
+  check, `--target HEAD`, `-DryRun`). `release_test.go` drives `release.bash` with a stand-in `gh`. `release.ps1` has not been run:
+  there is no PowerShell on harvey.
+
 ## v1.0.5 — 2026-11-18
 
 ### Changed

@@ -1,6 +1,6 @@
-%fdx2txt(1) user manual | version 1.0.4 2410edd
+%fdx2txt(1) user manual | version 1.0.5 58deef0
 % R. S. Doiel
-% 2026-10-20
+% 2026-11-18
 
 # NAME
 

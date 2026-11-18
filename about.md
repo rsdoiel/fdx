@@ -14,7 +14,7 @@ maintainer:
     id: https://orcid.org/0000-0003-0900-6903
 
 repository_code: https://github.com/rsdoiel/fdx
-version: 1.0.4
+version: 1.0.5
 license_url: https://www.gnu.org/licenses/agpl-3.0.txt
 
 programming_language:
@@ -25,15 +25,15 @@ keywords:
   - text markup
   - screen play
 
-date_released: 2026-10-20
+date_released: 2026-11-18
 ---
 
 About this software
 ===================
 
-## fdx 1.0.4
+## fdx 1.0.5
 
-Scene numbers now survive a Fountain to FDX round trip. A Fountain heading ending #12A# becomes a Scene Heading with the FDX Number attribute set to 12A and the text without the marker; a Number on a Scene Heading is written back to Fountain as #12A#. Numbered headings therefore no longer carry the number in their text in FDX output. Requires fountain v1.0.3; the go directive is now 1.26.4.
+A tooling and command line release; the package API is unchanged. fdx2txt and txt2fdx follow the workspace conventions: exit codes 2 (bad command line, including a surplus argument, which used to be ignored), 65 (not an fdx file), 66 (missing input), 73, 74 and 77 instead of 1 for every failure; -h, -l and -v beside the long options; input and output may be given as arguments; a failed run no longer creates or empties the output file. A script that tested for exit status 1 must test for non-zero. The licence is AGPL-3.0-or-later throughout: the source headers still carried the BSD text that LICENSE replaced in v1.0.3. Every exported symbol has a documentation block. Requires fountain v1.0.4. See CHANGES.md.
 
 ## Authors
 
@@ -63,7 +63,7 @@ A Go package and command line programs for working with fdx XML files used by Sc
 ## Software Requirements
 
 - Go >= 1.27.3
-- github.com/rsdoiel/fountain >= 1.0.3
+- github.com/rsdoiel/fountain >= 1.0.4
 - gopkg.in/yaml.v3 >= 3.0.1
 
 

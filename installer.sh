@@ -1,11 +1,11 @@
 #!/bin/sh
-# generated with CMTools 1.0.4 2410edd
+# generated with CMTools 1.0.5 58deef0
 
 #
 # Set the package name and version to install
 #
 PACKAGE="fdx"
-VERSION="1.0.4"
+VERSION="1.0.5"
 GIT_GROUP="rsdoiel"
 RELEASE="https://github.com/$GIT_GROUP/$PACKAGE/releases/tag/v$VERSION"
 if [ "$PKG_VERSION" != "" ]; then

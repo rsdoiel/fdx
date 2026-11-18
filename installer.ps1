@@ -1,12 +1,12 @@
 #!/usr/bin/env pwsh
-# generated with CMTools 1.0.4 2410edd
+# generated with CMTools 1.0.5 58deef0
 
 #
 # Set the package name and version to install
 #
 param(
   [Parameter()]
-  [String]$VERSION = "1.0.4"
+  [String]$VERSION = "1.0.5"
 )
 [String]$PKG_VERSION = [Environment]::GetEnvironmentVariable("PKG_VERSION")
 if ($PKG_VERSION) {

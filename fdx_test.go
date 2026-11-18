@@ -1,39 +1,24 @@
-// fdx is a package encoding/decoding fdx formatted XML files.
+// Copyright (C) 2017-2026 R. S. Doiel
 //
-// @author R. S. Doiel, <rsdoiel@gmail.com>
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
 //
-// # BSD 2-Clause License
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
 //
-// Copyright (c) 2019, R. S. Doiel
-// All rights reserved.
-//
-// Redistribution and use in source and binary forms, with or without
-// modification, are permitted provided that the following conditions are met:
-//
-//   - Redistributions of source code must retain the above copyright notice, this
-//     list of conditions and the following disclaimer.
-//
-//   - Redistributions in binary form must reproduce the above copyright notice,
-//     this list of conditions and the following disclaimer in the documentation
-//     and/or other materials provided with the distribution.
-//
-// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-// DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-// SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-// CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-// OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 package fdx
 
 import (
 	"bytes"
 	"encoding/xml"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path"
 	"strings"
@@ -47,7 +32,7 @@ var (
 )
 
 func testFdxFile(t *testing.T, fname string) {
-	src, err := ioutil.ReadFile(fname)
+	src, err := os.ReadFile(fname)
 	if err != nil {
 		if strings.HasPrefix(fname, "sample") == true {
 			t.Errorf("%s, %s", fname, err)
@@ -65,7 +50,7 @@ func testFdxFile(t *testing.T, fname string) {
 		if src2, err := xml.MarshalIndent(fdx, " ", "    "); err != nil {
 			t.Errorf("%s", err)
 		} else {
-			if err := ioutil.WriteFile(path.Join("testout", path.Base(fname)), src2, 0666); err != nil {
+			if err := os.WriteFile(path.Join("testout", path.Base(fname)), src2, 0666); err != nil {
 				t.Errorf("%s", err)
 			}
 		}
@@ -94,7 +79,7 @@ func TestTitlePageToString(t *testing.T) {
 	}
 	for _, fname := range noTitlePages {
 		fullName := path.Join("testdata", fname)
-		src, err := ioutil.ReadFile(fullName)
+		src, err := os.ReadFile(fullName)
 		if err != nil {
 			t.Errorf("%s", err)
 		} else {
@@ -120,7 +105,7 @@ func TestTitlePageToString(t *testing.T) {
 		"sample-03.fdx":              []string{"SAMPLE 03"},
 	}
 	for fname, textTerms := range haveTitlePages {
-		src, err := ioutil.ReadFile(path.Join("testdata", fname))
+		src, err := os.ReadFile(path.Join("testdata", fname))
 		if err != nil {
 			if strings.HasPrefix(fname, "sample") == true {
 				t.Errorf("%s", err)
@@ -234,11 +219,6 @@ func TestToString(t *testing.T) {
 	if expected != result {
 		t.Errorf("expected %q, got %q for %T", expected, result, doc)
 	}
-}
-
-func TestMain(m *testing.M) {
-	// Setup everything, process flags, etc.
-	os.Exit(m.Run())
 }
 
 // A scene number written as #12A# at the end of a Fountain heading is Final

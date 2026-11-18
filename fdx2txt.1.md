@@ -1,53 +1,74 @@
-%fdx2txt(1) | version 1.0.4 2410edd
+%fdx2txt(1) user manual | version 1.0.4 2410edd
 % R. S. Doiel
-% 2026-10-20 
+% 2026-10-20
 
 # NAME
 
-fdx2txt
+fdx2txt — read an fdx file and write plain text
 
 # SYNOPSIS
 
-fdx2txt [OPTIONS]
+fdx2txt [OPTIONS] [INPUT_FILENAME [OUTPUT_FILENAME]]
 
 # DESCRIPTION
 
-fdx2txt is a command line program that reads an fdx file
-and returns plain text
+fdx2txt reads an fdx (Final Draft XML) file and writes the screenplay as plain text suitable for reading on the console.
 
 # OPTIONS
 
--help
-: display help
+-h, -help
+: display this help page
 
--license
-: display license
+-l, -license
+: display the license
 
--version
-: display version
+-v, -version
+: display the version
 
+-i, -input FILENAME
+: read from FILENAME; the default, and -, is standard input
 
--i
-: read input from file
+-o, -output FILENAME
+: write to FILENAME; the default, and -, is standard output
 
--o
-: write output to file
+-nl, -newline
+: add a trailing newline (off by default)
 
--newline
-: add a trailing newline 
+-quiet
+: suppress error messages; the exit status still says what happened
+
+The input and output may also be given as the first and second argument.
+
+# EXIT STATUS
+
+0
+: success
+
+2
+: bad command line: an unknown option, a bad option value, a surplus argument
+
+65
+: the input is not a valid fdx file
+
+66
+: an input file does not exist
+
+73
+: the output file cannot be created
+
+74
+: reading or writing failed part way
+
+77
+: the operating system refused access to a file
 
 # EXAMPLES
 
 Convert *screenplay.fdx* into *screenplay.txt*.
 
-~~~
     fdx2txt -i screenplay.fdx -o screenplay.txt
-~~~
 
 Or alternatively
 
-~~~
-    cat screenplay.fdx | fdx2txt > screenplay.txt
-~~~
-
+    cat screenplay.fdx | fdx2txt >screenplay.txt
 

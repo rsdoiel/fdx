@@ -27,6 +27,8 @@ xml, _ := out.ToXML()                  // an FDX document
 [txt2fdx](txt2fdx.1.md)
 : reads a Fountain file and writes an FDX file.
 
+Both take the input and output as options or as the first and second argument, and exit with the workspace codes (2 usage, 65 bad input, 66 missing input, 73, 74, 77) listed in their man pages. See [CHANGES.md](CHANGES.md) for what each release changed.
+
 ## Install
 
 Get a release from [GitHub](https://github.com/rsdoiel/fdx/releases), or see [INSTALL.md](INSTALL.md), which also covers installing from source. To use the package in a Go program:

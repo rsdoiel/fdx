@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>fdx</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<a href="#main-content" class="visually-hidden">skip to main content</a>
+<nav>
+<ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="LICENSE">LICENSE</a></li>
+    <li><a href="INSTALL.html">INSTALL</a></li>
+    <li><a href="user-manual.html">User Manual</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="https://github.com/rsdoiel/fdx">Code Repository</a></li>
+</ul>
+</nav>
+<section id="main-content">
+<h1 id="changes">Changes</h1>
+<p>Reconstructed for v1.0.3 and v1.0.4 from the tags and the git
+history; maintained going forward.</p>
+<h2 id="unreleased">Unreleased</h2>
+<ul>
+<li><code>release.bash</code> and <code>release.ps1</code> resume an
+interrupted draft release (workspace DR-0013, proposed): run the script
+again and it uploads only the files the draft does not already hold,
+replacing one whose SHA-256 differs. A published release, or a draft for
+another commit, still stops it. <code>release.ps1</code> also takes the
+DR-0012 flow (no “prep” commit or push, a committed-and-pushed check,
+<code>--target HEAD</code>, <code>-DryRun</code>).
+<code>release_test.go</code> drives <code>release.bash</code> with a
+stand-in <code>gh</code>. <code>release.ps1</code> has not been run:
+there is no PowerShell on harvey.</li>
+</ul>
+<h2 id="v1.0.5-2026-11-18">v1.0.5 — 2026-11-18</h2>
+<h3 id="changed">Changed</h3>
+<ul>
+<li><strong>The licence is the GNU Affero General Public License,
+version 3 or (at your option) any later version, throughout.</strong>
+<code>LICENSE</code> has said so since v1.0.3 (2024-05-20), but the
+headers of <code>fdx.go</code>, <code>fromfountain.go</code> and
+<code>fdx_test.go</code> still carried the BSD 2-Clause text of v1.0.2
+and earlier, and no release note recorded the change. The headers now
+carry the AGPL notice, and <code>LicenseText</code> (shown by
+<code>-license</code>) is the AGPL text. v1.0.2 and the releases before
+it remain available under the BSD 2-Clause licence they were published
+with.</li>
+<li><strong>The two programs follow the workspace command line
+conventions.</strong> Exit codes follow workspace DR-0003: 2 for a bad
+command line (an unknown option, a bad value, a surplus argument), 65
+for input that is not an fdx file, 66 for a missing input, 73 for an
+output that cannot be created, 74 for a read or write failure, 77 for a
+permission refusal. Before, every failure exited 1. An error is one line
+on standard error prefixed with the program name; <code>-quiet</code>
+drops the message and keeps the code. A script that tested for exit
+status 1 must test for non-zero.</li>
+<li><code>-h</code>, <code>-l</code> and <code>-v</code> join
+<code>-help</code>, <code>-license</code> and <code>-version</code>;
+<code>-input</code>, <code>-output</code> and <code>-nl</code> are long
+and short spellings of <code>-i</code>, <code>-o</code> and
+<code>-newline</code>. The input and output may be given as the first
+and second argument; a third argument is an error (before, any argument
+was ignored and the program read standard input). <code>-help</code>,
+<code>-license</code> and <code>-version</code> answer before any file
+is opened. The trailing newline defaults are unchanged:
+<code>fdx2txt</code> adds none, <code>txt2fdx</code> adds one.</li>
+<li>A run that fails no longer creates or empties the output file; it is
+created after the input has been read and converted.</li>
+<li>Help text is Markdown in the man page structure with an EXIT STATUS
+section, kept in <code>internal/cli/helptext.go</code>; the command code
+moved to <code>internal/cli</code>. The <code>*.1.md</code> pages are
+generated from it by <code>make</code>.</li>
+<li>Every exported type, function and constant in the package has a
+documentation block with an example. The deprecated
+<code>io/ioutil</code> calls are gone. Dead commented-out code in
+<code>fdx.go</code> was removed.</li>
+<li>Tests: package coverage 54% to 99%, <code>internal/cli</code> 0% to
+94% (run in process as well as through the built binaries). They pin
+what the code plainly intends (styles, paragraph rules, title page
+fields, nil handling, exit codes); they do not claim Final Draft
+agrees.</li>
+<li>Requires fountain v1.0.4. Go 1.27.3 is the minimum version. The
+Makefile gained <code>check-go-version</code> and
+<code>check-committed</code>; a release is built from a clean, pushed
+commit (workspace DR-0012); <code>release.bash</code> takes
+<code>--dry-run</code>; the armv7l target and the website’s pagefind
+search are gone.</li>
+</ul>
+<p>The package API is unchanged from v1.0.4.</p>
+<h2 id="v1.0.4-2026-10-20">v1.0.4 — 2026-10-20</h2>
+<ul>
+<li>Scene numbers survive a Fountain to FDX round trip. A Fountain
+heading ending <code>#12A#</code> becomes a Scene Heading with the FDX
+<code>Number</code> attribute set to <code>12A</code> and the text
+without the marker; a <code>Number</code> on a Scene Heading is written
+back to Fountain as <code>#12A#</code>. Requires fountain v1.0.3.</li>
+</ul>
+<h2 id="v1.0.3-2024-05-20">v1.0.3 — 2024-05-20</h2>
+<ul>
+<li>Changed the licence from BSD 2-Clause to AGPL-3.0-or-later
+(<code>LICENSE</code>).</li>
+</ul>
+</section>
+<footer>
+<p>fdx</p>
+</footer>
+</body>
+</html>

@@ -18,44 +18,83 @@
 </nav>
 <section id="main-content">
 <h1 id="name">NAME</h1>
-<p>fdx2txt</p>
+<p>fdx2txt — read an fdx file and write plain text</p>
 <h1 id="synopsis">SYNOPSIS</h1>
-<p>fdx2txt <a href="#options">OPTIONS</a></p>
+<p>fdx2txt <a href="#options">OPTIONS</a> [INPUT_FILENAME
+[OUTPUT_FILENAME]]</p>
 <h1 id="description">DESCRIPTION</h1>
-<p>fdx2txt is a command line program that reads an fdx file and returns
-plain text</p>
+<p>fdx2txt reads an fdx (Final Draft XML) file and writes the screenplay
+as plain text suitable for reading on the console.</p>
 <h1 id="options">OPTIONS</h1>
 <dl>
-<dt>-help</dt>
+<dt>-h, -help</dt>
 <dd>
-display help
+display this help page
 </dd>
-<dt>-license</dt>
+<dt>-l, -license</dt>
 <dd>
-display license
+display the license
 </dd>
-<dt>-version</dt>
+<dt>-v, -version</dt>
 <dd>
-display version
+display the version
 </dd>
-<dt>-i</dt>
+<dt>-i, -input FILENAME</dt>
 <dd>
-read input from file
+read from FILENAME; the default, and -, is standard input
 </dd>
-<dt>-o</dt>
+<dt>-o, -output FILENAME</dt>
 <dd>
-write output to file
+write to FILENAME; the default, and -, is standard output
 </dd>
-<dt>-newline</dt>
+<dt>-nl, -newline</dt>
 <dd>
-add a trailing newline
+add a trailing newline (off by default)
+</dd>
+<dt>-quiet</dt>
+<dd>
+suppress error messages; the exit status still says what happened
+</dd>
+</dl>
+<p>The input and output may also be given as the first and second
+argument.</p>
+<h1 id="exit-status">EXIT STATUS</h1>
+<dl>
+<dt>0</dt>
+<dd>
+success
+</dd>
+<dt>2</dt>
+<dd>
+bad command line: an unknown option, a bad option value, a surplus
+argument
+</dd>
+<dt>65</dt>
+<dd>
+the input is not a valid fdx file
+</dd>
+<dt>66</dt>
+<dd>
+an input file does not exist
+</dd>
+<dt>73</dt>
+<dd>
+the output file cannot be created
+</dd>
+<dt>74</dt>
+<dd>
+reading or writing failed part way
+</dd>
+<dt>77</dt>
+<dd>
+the operating system refused access to a file
 </dd>
 </dl>
 <h1 id="examples">EXAMPLES</h1>
 <p>Convert <em>screenplay.fdx</em> into <em>screenplay.txt</em>.</p>
-<pre><code>    fdx2txt -i screenplay.fdx -o screenplay.txt</code></pre>
+<pre><code>fdx2txt -i screenplay.fdx -o screenplay.txt</code></pre>
 <p>Or alternatively</p>
-<pre><code>    cat screenplay.fdx | fdx2txt &gt; screenplay.txt</code></pre>
+<pre><code>cat screenplay.fdx | fdx2txt &gt;screenplay.txt</code></pre>
 </section>
 <footer>
 <p>fdx</p>

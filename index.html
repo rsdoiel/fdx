@@ -63,6 +63,10 @@ reads an FDX file and writes plain text in a Fountain-like format.
 reads a Fountain file and writes an FDX file.
 </dd>
 </dl>
+<p>Both take the input and output as options or as the first and second
+argument, and exit with the workspace codes (2 usage, 65 bad input, 66
+missing input, 73, 74, 77) listed in their man pages. See <a
+href="CHANGES.html">CHANGES.md</a> for what each release changed.</p>
 <h2 id="install">Install</h2>
 <p>Get a release from <a
 href="https://github.com/rsdoiel/fdx/releases">GitHub</a>, or see <a
@@ -70,7 +74,7 @@ href="INSTALL.html">INSTALL.md</a>, which also covers installing from
 source. To use the package in a Go program:</p>
 <pre class="shell"><code>go get github.com/rsdoiel/fdx</code></pre>
 <h2 id="build-and-test">Build and test</h2>
-<p>You need Go 1.26.4 or later. Pandoc and GNU Make are only needed for
+<p>You need Go 1.27.3 or later. Pandoc and GNU Make are only needed for
 the man pages and the website, and <code>cmt</code> (CMTools) only to
 regenerate <code>version.go</code>, <code>about.md</code> and
 <code>CITATION.cff</code> from <code>codemeta.json</code>.</p>

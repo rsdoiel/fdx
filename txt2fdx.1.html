@@ -18,44 +18,90 @@
 </nav>
 <section id="main-content">
 <h1 id="name">NAME</h1>
-<p>txt2fdx</p>
+<p>txt2fdx — read a plain text (Fountain) screenplay and write an fdx
+file</p>
 <h1 id="synopsis">SYNOPSIS</h1>
-<p>txt2fdx <a href="#options">OPTIONS</a></p>
+<p>txt2fdx <a href="#options">OPTIONS</a> [INPUT_FILENAME
+[OUTPUT_FILENAME]]</p>
 <h1 id="description">DESCRIPTION</h1>
-<p>txt2fdx is a command line program that reads a plain text file file
-and returns a fdx file.</p>
+<p>txt2fdx reads a screenplay in plain text, in Fountain markup, and
+writes an fdx (Final Draft XML) file. A scene heading ending in a number
+between hash marks, such as #12A#, becomes a Scene Heading with that
+number.</p>
 <h1 id="options">OPTIONS</h1>
 <dl>
-<dt>-help</dt>
+<dt>-h, -help</dt>
 <dd>
-display help
+display this help page
 </dd>
-<dt>-license</dt>
+<dt>-l, -license</dt>
 <dd>
-display license
+display the license
 </dd>
-<dt>-version</dt>
+<dt>-v, -version</dt>
 <dd>
-display version
+display the version
 </dd>
-<dt>-i</dt>
+<dt>-i, -input FILENAME</dt>
 <dd>
-read input for filename
+read from FILENAME; the default, and -, is standard input
 </dd>
-<dt>-o</dt>
+<dt>-o, -output FILENAME</dt>
 <dd>
-write output to filename
+write to FILENAME; the default, and -, is standard output
 </dd>
-<dt>-newline</dt>
+<dt>-nl, -newline</dt>
 <dd>
-add a trailing newline
+add a trailing newline (the default; -newline=false leaves it off)
+</dd>
+<dt>-quiet</dt>
+<dd>
+suppress error messages; the exit status still says what happened
+</dd>
+</dl>
+<p>The input and output may also be given as the first and second
+argument.</p>
+<h1 id="exit-status">EXIT STATUS</h1>
+<dl>
+<dt>0</dt>
+<dd>
+success
+</dd>
+<dt>2</dt>
+<dd>
+bad command line: an unknown option, a bad option value, a surplus
+argument
+</dd>
+<dt>65</dt>
+<dd>
+the input cannot be parsed as a Fountain screenplay
+</dd>
+<dt>66</dt>
+<dd>
+an input file does not exist
+</dd>
+<dt>70</dt>
+<dd>
+the fdx file could not be produced (a bug)
+</dd>
+<dt>73</dt>
+<dd>
+the output file cannot be created
+</dd>
+<dt>74</dt>
+<dd>
+reading or writing failed part way
+</dd>
+<dt>77</dt>
+<dd>
+the operating system refused access to a file
 </dd>
 </dl>
 <h1 id="examples">EXAMPLES</h1>
 <p>Convert <em>screenplay.txt</em> into <em>screenplay.fdx</em>.</p>
-<pre><code>    txt2fdx -i screenplay.txt -o screenplay.fdx</code></pre>
+<pre><code>txt2fdx -i screenplay.txt -o screenplay.fdx</code></pre>
 <p>Or alternatively</p>
-<pre><code>    cat screenplay.txt | txt2fdx &gt; screenplay.fdx</code></pre>
+<pre><code>cat screenplay.txt | txt2fdx &gt;screenplay.fdx</code></pre>
 </section>
 <footer>
 <p>fdx</p>
